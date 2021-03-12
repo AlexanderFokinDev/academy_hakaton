@@ -16,9 +16,9 @@ import timber.log.Timber
 
 @HiltWorker
 class MoveonDatabaseWorker @AssistedInject constructor(
-    @Assisted appContext: Context,
-    @Assisted workerParams: WorkerParameters,
-    val workerDependency: WorkerDependency
+        @Assisted appContext: Context,
+        @Assisted workerParams: WorkerParameters,
+        val workerDependency: WorkerDependency
 ) : CoroutineWorker(appContext, workerParams) {
 
     override suspend fun doWork(): Result = coroutineScope {

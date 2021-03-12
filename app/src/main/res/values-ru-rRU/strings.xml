@@ -17,4 +17,7 @@
     <string name="statistics_result3">"%1$s "</string>
     <string name="statistics_level">"Уровень: %1$s "</string>
 
+    <!-- Countries fragment -->
+    <string name="image_desc_country_flag">Флаг страны</string>
+
 </resources>
