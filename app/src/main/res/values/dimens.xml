@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- margins -->
+    <dimen name="margin_150">50dp</dimen>
+    <dimen name="margin_140">44dp</dimen>
+    <dimen name="margin_130">36dp</dimen>
+    <dimen name="margin_120">30dp</dimen>
+    <dimen name="margin_110">24dp</dimen>
+    <dimen name="margin_100">20dp</dimen>
+    <dimen name="margin_90">18dp</dimen>
+    <dimen name="margin_80">16dp</dimen>
+    <dimen name="margin_70">14dp</dimen>
+    <dimen name="margin_60">12dp</dimen>
+    <dimen name="margin_50">10dp</dimen>
+    <dimen name="margin_40">8dp</dimen>
+    <dimen name="margin_30">6dp</dimen>
+    <dimen name="margin_20">4dp</dimen>
+    <dimen name="margin_10">2dp</dimen>
+
+    <!-- paddings -->
+    <dimen name="padding_150">50dp</dimen>
+    <dimen name="padding_140">44dp</dimen>
+    <dimen name="padding_130">36dp</dimen>
+    <dimen name="padding_120">30dp</dimen>
+    <dimen name="padding_110">24dp</dimen>
+    <dimen name="padding_100">20dp</dimen>
+    <dimen name="padding_90">18dp</dimen>
+    <dimen name="padding_80">16dp</dimen>
+    <dimen name="padding_70">14dp</dimen>
+    <dimen name="padding_60">12dp</dimen>
+    <dimen name="padding_50">10dp</dimen>
+    <dimen name="padding_40">8dp</dimen>
+    <dimen name="padding_30">6dp</dimen>
+    <dimen name="padding_20">4dp</dimen>
+    <dimen name="padding_10">2dp</dimen>
+
+    <dimen name="min_height_200">200dp</dimen>
+    <dimen name="min_height_100">100dp</dimen>
+    <dimen name="min_height_20">20dp</dimen>
+
+    <!-- text sizes -->
+    <dimen name="text_size_h1">96sp</dimen>
+    <dimen name="text_size_h2">60sp</dimen>
+    <dimen name="text_size_h3">48sp</dimen>
+    <dimen name="text_size_h4">34sp</dimen>
+    <dimen name="text_size_h5">24sp</dimen>
+    <dimen name="text_size_h6">20sp</dimen>
+    <dimen name="text_size_subtitle1">16sp</dimen>
+    <dimen name="text_size_subtitle2">14sp</dimen>
+    <dimen name="text_size_line1">12sp</dimen>
+    <dimen name="text_size_line2">10sp</dimen>
+
+    <dimen name="height_line_small">34dp</dimen>
+
+</resources>

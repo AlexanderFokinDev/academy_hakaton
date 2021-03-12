@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="moveOnButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
+        <item name="backgroundTint">@color/blue_900</item>
+        <item name="android:textSize">@dimen/text_size_subtitle1</item>
+        <item name="android:fontFamily">@font/roboto_light</item>
+    </style>
+
+</resources>
