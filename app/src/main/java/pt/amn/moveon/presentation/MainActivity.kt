@@ -2,8 +2,11 @@ package pt.amn.moveon.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.onNavDestinationSelected
 import pt.amn.moveon.R
 
 class MainActivity : AppCompatActivity() {
@@ -18,5 +21,25 @@ class MainActivity : AppCompatActivity() {
                 as NavHostFragment? ?: return
         navController = host.navController
 
+        // Action bar
+        setSupportActionBar(findViewById(R.id.toolbar))
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+
+        menuInflater.inflate(R.menu.main_menu, menu)
+
+        return super.onCreateOptionsMenu(menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.mainmenu_action_exit -> finish()
+        }
+
+        return item.onNavDestinationSelected(navController)
+                || super.onOptionsItemSelected(item)
+    }
+
+
 }
