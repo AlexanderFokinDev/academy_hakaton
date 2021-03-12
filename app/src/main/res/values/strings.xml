@@ -8,4 +8,13 @@
     <string name="menu_item_map">Map</string>
     <string name="menu_item_home">Home</string>
 
+    <!-- Workplace fragment -->
+    <string name="statistics_result">Your result</string>
+    <string name="statistics_places">"Count of visited places"</string>
+    <string name="workplace_editcountries">My countries</string>
+    <string name="statistics_result1">%1$s countries</string>
+    <string name="statistics_result2">" %1$.2f %% of the world"</string>
+    <string name="statistics_result3">"%1$s "</string>
+    <string name="statistics_level">"Level: %1$s "</string>
+
 </resources>

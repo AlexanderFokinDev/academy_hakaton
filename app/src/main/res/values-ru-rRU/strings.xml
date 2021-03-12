@@ -8,4 +8,13 @@
     <string name="menu_item_map">Map</string>
     <string name="menu_item_home">Home</string>
 
+    <!-- Workplace fragment -->
+    <string name="statistics_result">Ваш результат</string>
+    <string name="statistics_places">"Количество посещенных мест"</string>
+    <string name="workplace_editcountries">Мои страны</string>
+    <string name="statistics_result1">%1$s страны</string>
+    <string name="statistics_result2">" %1$.2f %% мира"</string>
+    <string name="statistics_result3">"%1$s "</string>
+    <string name="statistics_level">"Уровень: %1$s "</string>
+
 </resources>
