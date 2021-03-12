@@ -1,7 +1,8 @@
-package pt.amn.moveon
+package pt.amn.moveon.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import pt.amn.moveon.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
