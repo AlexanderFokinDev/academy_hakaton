@@ -5,7 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/gradient_background"
     tools:context=".presentation.MapFragment">
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/sw_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/switch_map" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/map"

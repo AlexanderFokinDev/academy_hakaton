@@ -1,16 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    android:orientation="vertical"
     tools:context=".presentation.SettingsFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_create_backup"
+        style="@style/moveOnButton"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="SettingsFragment"
-        android:textSize="32sp"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_100"
+        android:text="@string/bt_create_backup" />
 
-</FrameLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bt_restore_backup"
+        style="@style/moveOnButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_100"
+        android:text="@string/bt_restore_backup" />
+
+</LinearLayout>
