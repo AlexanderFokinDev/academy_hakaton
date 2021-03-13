@@ -15,7 +15,7 @@
     <string name="statistics_result1">%1$s countries</string>
     <string name="statistics_result2">" %1$.2f %% of the world"</string>
     <string name="statistics_result3">"%1$s "</string>
-    <string name="statistics_level">"Level: %1$s "</string>
+    <string name="statistics_level">"Level %1$s"</string>
 
     <!-- Countries fragment -->
     <string name="image_desc_country_flag">Country flag</string>

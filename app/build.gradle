@@ -84,4 +84,7 @@ dependencies {
 
     // Map
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
+
+    // Animation
+    implementation 'com.airbnb.android:lottie:3.6.1'
 }

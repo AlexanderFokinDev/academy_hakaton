@@ -15,7 +15,7 @@
     <string name="statistics_result1">%1$s страны</string>
     <string name="statistics_result2">" %1$.2f %% мира"</string>
     <string name="statistics_result3">"%1$s "</string>
-    <string name="statistics_level">"Уровень: %1$s "</string>
+    <string name="statistics_level">"Путешественник %1$s уровня"</string>
 
     <!-- Countries fragment -->
     <string name="image_desc_country_flag">Флаг страны</string>
