@@ -1,7 +1,10 @@
 package pt.amn.moveon.domain.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 import java.util.*
 
+@Parcelize
 data class Country(
     val id: Int,
     val nameEn: String,
@@ -11,7 +14,7 @@ data class Country(
     var visited: Boolean,
     val flagResId: String,
     val alpha2: String
-) {
+) : Parcelable {
 
     fun getLocalName(): String =
         when (Locale.getDefault().language) {

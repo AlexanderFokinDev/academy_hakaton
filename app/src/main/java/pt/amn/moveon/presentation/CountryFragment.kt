@@ -5,29 +5,47 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
+import com.google.android.gms.common.api.Status
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.widget.AutocompleteSupportFragment
+import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
+import dagger.hilt.android.AndroidEntryPoint
+import pt.amn.moveon.BuildConfig
 import pt.amn.moveon.R
+import pt.amn.moveon.databinding.FragmentCountryBinding
+import pt.amn.moveon.domain.models.Country
+import pt.amn.moveon.presentation.adapters.PlacesAdapter
+import pt.amn.moveon.presentation.viewmodels.CountryViewModel
+import pt.amn.moveon.utils.loadDrawableImage
+import timber.log.Timber
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+const val ARG_COUNTRY = "country"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CountryFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+@AndroidEntryPoint
 class CountryFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    private var _binding: FragmentCountryBinding? = null
+
+    // This property is only valid between onCreateView and onDestroyView
+    private val binding get() = _binding!!
+
+    private lateinit var autocompleteSupportFragment: AutocompleteSupportFragment
+
+    private lateinit var country: Country
+
+    private lateinit var adapter: PlacesAdapter
+
+    private val viewModel: CountryViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        arguments?.let { bundle ->
+            country = bundle.getParcelable<Country>(ARG_COUNTRY) ?: return
         }
+        adapter = PlacesAdapter()
     }
 
     override fun onCreateView(
@@ -35,25 +53,128 @@ class CountryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_country, container, false)
+        _binding = FragmentCountryBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.setCountry(country)
+
+        binding.run {
+            rvPlaces.adapter = adapter
+            tvCountry.setText(country.getLocalName())
+            ivFlag.loadDrawableImage(requireContext(), binding.root, country.flagResId)
+        }
+
+        viewModel.placesList.observe(viewLifecycleOwner, androidx.lifecycle.Observer { resPlaces ->
+            when (resPlaces.status) {
+                pt.amn.moveon.presentation.viewmodels.utils.Status.SUCCESS -> {
+                    updateData(resPlaces.data ?: emptyList())
+                }
+                pt.amn.moveon.presentation.viewmodels.utils.Status.ERROR -> {
+                    Toast.makeText(requireContext(), resPlaces.message, Toast.LENGTH_LONG)
+                        .show()
+                }
+
+            }
+        })
+
+        initializeAutocompleteSupportFragment()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        autocompleteSupportFragment.setText("")
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
+    }
+
+    private fun initializeAutocompleteSupportFragment() {
+
+        if (!Places.isInitialized()) {
+            Places.initialize(requireContext(), BuildConfig.MAPS_API_KEY)
+        }
+
+        autocompleteSupportFragment =
+            childFragmentManager.findFragmentById(R.id.country_place_autocomplete_fragment)
+                    as AutocompleteSupportFragment
+
+        // Specify the types of place data to return.
+        autocompleteSupportFragment.setPlaceFields(
+            listOf(
+                Place.Field.ID,
+                Place.Field.NAME,
+                Place.Field.LAT_LNG
+            )
+        )
+
+        autocompleteSupportFragment.setHint(getString(R.string.place_name))
+
+        autocompleteSupportFragment.setCountry(country.alpha2)
+
+        autocompleteSupportFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
+            override fun onPlaceSelected(place: Place) {
+
+                val latlng = place.latLng
+                if (latlng != null) {
+
+                    viewModel.addPlace(
+                        place.id ?: return,
+                        place.latLng?.latitude ?: return,
+                        place.latLng?.longitude ?: return,
+                        place.name ?: return,
+                        country.id
+                    )
+
+                    // When a user adds a new place, the country is marked as visited
+                    if (!country.visited) {
+                        viewModel.changeVisitedFlagOfCountry(country, true)
+                    }
+
+                } else {
+                    Timber.d("$TAG, ${getString(R.string.place_didnt_find)}")
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.place_didnt_find),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
+
+                autocompleteSupportFragment.setText("")
+            }
+
+            override fun onError(status: Status) {
+                Timber.d("$TAG, ${getString(R.string.place_error_occured)} $status")
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.place_error_occured),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
+        })
+
+    }
+
+    fun updateData(placesList: List<pt.amn.moveon.domain.models.Place>) {
+        adapter.bindPlaces(placesList)
+        adapter.notifyDataSetChanged()
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CountryFragment.
-         */
-        // TODO: Rename and change types and number of parameters
+
+        private const val TAG = "CountryFragment"
+
         @JvmStatic
-        fun newInstance(param1: String, param2: String) =
+        fun newInstance(param1: Country) =
             CountryFragment().apply {
                 arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+                    putParcelable(ARG_COUNTRY, param1)
                 }
             }
     }

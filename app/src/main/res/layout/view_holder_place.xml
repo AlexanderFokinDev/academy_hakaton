@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fadingEdge="none"
+        android:fontFamily="@font/roboto_black"
+        android:gravity="start"
+        android:paddingStart="@dimen/padding_80"
+        android:paddingEnd="@dimen/padding_120"
+        android:textSize="@dimen/text_size_h5"
+        android:textStyle="bold"
+        tools:text="@tools:sample/cities" />
+
+</LinearLayout>

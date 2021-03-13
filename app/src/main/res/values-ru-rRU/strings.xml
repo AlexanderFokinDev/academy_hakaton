@@ -20,4 +20,9 @@
     <!-- Countries fragment -->
     <string name="image_desc_country_flag">Флаг страны</string>
 
+    <!-- Country fragment -->
+    <string name="place_name">Что посетили в стране</string>
+    <string name="place_didnt_find">Координаты места не найдены</string>
+    <string name="place_error_occured">"Произошла ошибка: "</string>
+
 </resources>
