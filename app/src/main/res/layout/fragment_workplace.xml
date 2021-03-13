@@ -104,6 +104,16 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:lottie_rawRes="@raw/animation_jorney"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center_horizontal"
+        app:lottie_loop="false"
+        app:lottie_autoPlay="false"/>
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bt_edit_countries"
         style="@style/moveOnButton"
