@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -19,6 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import pt.amn.moveon.R
 import pt.amn.moveon.databinding.FragmentMapBinding
 import pt.amn.moveon.domain.models.Country
+import pt.amn.moveon.domain.models.Place
 import pt.amn.moveon.presentation.viewmodels.MapViewModel
 import pt.amn.moveon.presentation.viewmodels.utils.Status
 import pt.amn.moveon.utils.START_MAP_LATITUDE
@@ -46,6 +48,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var myMap: GoogleMap
 
     private val viewModel: MapViewModel by viewModels()
+
+    private var countries = listOf<Country>()
+    private var places = listOf<Place>()
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -78,6 +83,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             when (resCountries.status) {
                 Status.SUCCESS -> {
                     setVisitedCountriesFlags(resCountries.data ?: emptyList())
+                    countries = resCountries.data ?: emptyList()
                 }
                 Status.ERROR -> {
                     Toast.makeText(requireContext(), resCountries.message, Toast.LENGTH_LONG)
@@ -87,6 +93,34 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 }
             }
         })
+
+        viewModel.visitedPlaces.observe(viewLifecycleOwner, Observer { resPlaces ->
+            when (resPlaces.status) {
+                Status.SUCCESS -> {
+                    //setVisitedPlacesFlags(resPlaces.data ?: emptyList())
+                    places = resPlaces.data ?: emptyList()
+                }
+                Status.ERROR -> {
+                    Toast.makeText(requireContext(), resPlaces.message, Toast.LENGTH_LONG)
+                        .show()
+                }
+                Status.LOADING -> {
+                }
+            }
+        })
+
+        binding.run {
+            swMap.setOnCheckedChangeListener {_, isChecked ->
+                myMap.clear()
+
+                if (isChecked) {
+                    setVisitedPlacesFlags(places);
+                } else {
+                    setVisitedCountriesFlags(countries)
+                }
+
+            }
+        }
     }
 
     override fun onDestroyView() {
@@ -124,6 +158,26 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker_green)))
         } catch (ex: Exception) {
             Timber.d("$TAG, Error of adding country at the map $ex")
+        }
+
+    }
+
+    private fun setVisitedPlacesFlags(visitedPlaces: List<Place>) {
+        for (place in visitedPlaces) {
+            addPlaceMarker(place)
+        }
+    }
+
+    private fun addPlaceMarker(place: Place) {
+
+        try {
+            myMap.addMarker(
+                MarkerOptions()
+                    .position(LatLng(place.latitude, place.longitude))
+                    .title(place.name)
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker_blue)))
+        } catch (ex: Exception) {
+            Timber.d("$TAG, Error of adding place at the map $ex")
         }
 
     }

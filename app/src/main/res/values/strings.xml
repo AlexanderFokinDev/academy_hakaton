@@ -25,4 +25,11 @@
     <string name="place_didnt_find">Place LatLng haven\'t found</string>
     <string name="place_error_occured">An error occurred:</string>
 
+    <!-- Map fragment -->
+    <string name="switch_map">Show visited places</string>
+
+    <!-- Settings fragment -->
+    <string name="bt_create_backup">Create backup</string>
+    <string name="bt_restore_backup">Restore backup</string>
+
 </resources>

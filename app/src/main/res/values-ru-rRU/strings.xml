@@ -25,4 +25,11 @@
     <string name="place_didnt_find">Координаты места не найдены</string>
     <string name="place_error_occured">"Произошла ошибка: "</string>
 
+    <!-- Map fragment -->
+    <string name="switch_map">Показать посещенные места</string>
+
+    <!-- Settings fragment -->
+    <string name="bt_create_backup">Create backup</string>
+    <string name="bt_restore_backup">Restore backup</string>
+
 </resources>
