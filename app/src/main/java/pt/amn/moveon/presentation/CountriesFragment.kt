@@ -71,7 +71,6 @@ class CountriesFragment : Fragment() {
         viewModel.countriesList.observe(viewLifecycleOwner, Observer { resCountries ->
             when (resCountries.status) {
                 Status.SUCCESS -> {
-                    // load the list of actors
                     updateData(resCountries.data ?: emptyList())
                 }
                 Status.ERROR -> {
@@ -96,7 +95,10 @@ class CountriesFragment : Fragment() {
 
     private val recyclerListener = object : OnRecyclerCountriesClicked {
         override fun onCountryClick(country: Country) {
-            findNavController().navigate(R.id.action_countriesFragment_to_countryFragment)
+            val arguments = Bundle().apply {
+                putParcelable(ARG_COUNTRY, country)
+            }
+            findNavController().navigate(R.id.action_countriesFragment_to_countryFragment, arguments)
         }
 
         override fun onVisitedCheck(country: Country, visited: Boolean) {

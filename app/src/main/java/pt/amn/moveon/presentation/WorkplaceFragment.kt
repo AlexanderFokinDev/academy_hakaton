@@ -37,6 +37,7 @@ class WorkplaceFragment : Fragment() {
     private val viewModel: WorkplaceViewModel by viewModels()
 
     private var countVisitedCountries: Int = 1
+    private var countVisitedPlaces: Int = 0
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -67,6 +68,13 @@ class WorkplaceFragment : Fragment() {
         viewModel.visitedCountries.observe(viewLifecycleOwner, Observer { resCountries ->
             if (resCountries.status == Status.SUCCESS) {
                 countVisitedCountries = resCountries.data?.size ?: 1
+                updateStatistics()
+            }
+        })
+
+        viewModel.visitedPlaces.observe(viewLifecycleOwner, Observer { resPlaces ->
+            if (resPlaces.status == Status.SUCCESS) {
+                countVisitedPlaces = resPlaces.data?.size ?: 0
                 updateStatistics()
             }
         })
@@ -103,7 +111,6 @@ class WorkplaceFragment : Fragment() {
 
         binding.run {
 
-            // TODO: fill statistics information
             tvCountStatistics.text =
                 String.format(getString(R.string.statistics_result1), countVisitedCountries)
 
@@ -113,7 +120,7 @@ class WorkplaceFragment : Fragment() {
             tvLevel.text = String.format(getString(R.string.statistics_level), level)
             progressBarLevel.progress = level
 
-            tvPlacesStatistics.text = String.format(getString(R.string.statistics_result3), 179)
+            tvPlacesStatistics.text = String.format(getString(R.string.statistics_result3), countVisitedPlaces)
 
             animation.playAnimation()
 

@@ -14,6 +14,9 @@ interface CountryDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(countries: List<CountryEntity>)
 
+    @Query("SELECT * FROM countries WHERE id = :id")
+    suspend fun getCountryById(id: Int): CountryEntity
+
     @Update
     suspend fun update(country: CountryEntity)
 }

@@ -10,10 +10,11 @@ import androidx.work.WorkManager
 import pt.amn.moveon.utils.DATABASE_NAME
 import pt.amn.moveon.workers.MoveonDatabaseWorker
 
-@Database(entities = [CountryEntity::class], version = 1)
+@Database(entities = [CountryEntity::class, PlaceEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun countryDao(): CountryDao
+    abstract fun placeDao(): PlaceDao
 
     companion object {
         // For Singleton instantiation
