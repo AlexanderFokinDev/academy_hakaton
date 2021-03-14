@@ -20,7 +20,7 @@
     <TextView
         android:id="@+id/tv_country"
         android:layout_width="0dp"
-        android:layout_height="@dimen/height_line_small"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_light"
         android:paddingStart="@dimen/padding_50"
         android:paddingEnd="@dimen/padding_120"
