@@ -3,7 +3,7 @@ package pt.amn.moveon.data.local
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import pt.amn.moveon.domain.models.Place
+import pt.amn.moveon.domain.models.MoveOnPlace
 
 @Entity(tableName = "places")
 data class PlaceEntity(
@@ -16,9 +16,9 @@ data class PlaceEntity(
     val country_id: Int
 )
 
-fun PlaceEntity.toDomainModel(): Place {
+fun PlaceEntity.toDomainModel(): MoveOnPlace {
 
-    return Place(
+    return MoveOnPlace(
         id = this.id,
         name = this.name,
         latitude = this.latitude,
@@ -27,7 +27,7 @@ fun PlaceEntity.toDomainModel(): Place {
     )
 }
 
-fun Place.toEntityModel(): PlaceEntity {
+fun MoveOnPlace.toEntityModel(): PlaceEntity {
 
     return PlaceEntity(
         id = this.id,

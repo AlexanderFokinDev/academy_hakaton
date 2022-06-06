@@ -16,7 +16,7 @@ import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.presentation.adapters.CountriesAdapter
 import pt.amn.moveon.presentation.adapters.OnRecyclerCountriesClicked
 import pt.amn.moveon.presentation.viewmodels.CountriesViewModel
-import pt.amn.moveon.presentation.viewmodels.utils.Status
+import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -70,14 +70,14 @@ class CountriesFragment : Fragment() {
 
         viewModel.countriesList.observe(viewLifecycleOwner, Observer { resCountries ->
             when (resCountries.status) {
-                Status.SUCCESS -> {
+                LoadStatus.SUCCESS -> {
                     updateData(resCountries.data ?: emptyList())
                 }
-                Status.ERROR -> {
+                LoadStatus.ERROR -> {
                     Toast.makeText(requireContext(), resCountries.message, Toast.LENGTH_LONG)
                         .show()
                 }
-                Status.LOADING -> {
+                LoadStatus.LOADING -> {
                 }
             }
         })

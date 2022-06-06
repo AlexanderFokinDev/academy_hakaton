@@ -1,10 +1,9 @@
 package pt.amn.moveon.domain.usecases
 
-import androidx.lifecycle.LiveData
-import pt.amn.moveon.data.local.PlaceEntity
+import com.google.android.libraries.places.api.model.Place
 import pt.amn.moveon.data.repositories.RepositoryResult
 import pt.amn.moveon.domain.models.Country
-import pt.amn.moveon.domain.models.Place
+import pt.amn.moveon.domain.models.MoveOnPlace
 import pt.amn.moveon.domain.repositories.MoveOnRepository
 
 class GetCountriesUseCase(private val repository: MoveOnRepository) {
@@ -27,15 +26,15 @@ class GetCountriesUseCase(private val repository: MoveOnRepository) {
         return repository.getCountryById(id)
     }
 
-    suspend fun getVisitedPlaces() : RepositoryResult<Place> {
+    suspend fun getVisitedPlaces() : RepositoryResult<MoveOnPlace> {
         return repository.getVisitedPlaces()
     }
 
-    suspend fun getVisitedPlacesInCountry(countryId: Int) : RepositoryResult<Place> {
+    suspend fun getVisitedPlacesInCountry(countryId: Int) : RepositoryResult<MoveOnPlace> {
         return repository.getVisitedPlacesInCountry(countryId)
     }
 
-    suspend fun addPlace(place: Place)
+    suspend fun addPlace(place: MoveOnPlace)
             : RepositoryResult<Boolean> {
         // check dublicates
         val result = repository.getPlaceByName(place.name)

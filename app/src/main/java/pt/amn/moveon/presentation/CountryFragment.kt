@@ -17,8 +17,10 @@ import pt.amn.moveon.BuildConfig
 import pt.amn.moveon.R
 import pt.amn.moveon.databinding.FragmentCountryBinding
 import pt.amn.moveon.domain.models.Country
+import pt.amn.moveon.domain.models.MoveOnPlace
 import pt.amn.moveon.presentation.adapters.PlacesAdapter
 import pt.amn.moveon.presentation.viewmodels.CountryViewModel
+import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
 import pt.amn.moveon.utils.loadDrawableImage
 import timber.log.Timber
 
@@ -70,10 +72,10 @@ class CountryFragment : Fragment() {
 
         viewModel.placesList.observe(viewLifecycleOwner, androidx.lifecycle.Observer { resPlaces ->
             when (resPlaces.status) {
-                pt.amn.moveon.presentation.viewmodels.utils.Status.SUCCESS -> {
+                LoadStatus.SUCCESS -> {
                     updateData(resPlaces.data ?: emptyList())
                 }
-                pt.amn.moveon.presentation.viewmodels.utils.Status.ERROR -> {
+                LoadStatus.ERROR -> {
                     Toast.makeText(requireContext(), resPlaces.message, Toast.LENGTH_LONG)
                         .show()
                 }
@@ -161,7 +163,7 @@ class CountryFragment : Fragment() {
 
     }
 
-    fun updateData(placesList: List<pt.amn.moveon.domain.models.Place>) {
+    fun updateData(placesList: List<MoveOnPlace>) {
         adapter.bindPlaces(placesList)
         adapter.notifyDataSetChanged()
     }

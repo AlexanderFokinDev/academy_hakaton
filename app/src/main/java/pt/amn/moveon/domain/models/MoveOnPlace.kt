@@ -1,6 +1,6 @@
 package pt.amn.moveon.domain.models
 
-data class Place(
+data class MoveOnPlace(
     val id: String,
     val name: String,
     val latitude: Double,
