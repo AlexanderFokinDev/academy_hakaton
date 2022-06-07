@@ -23,6 +23,7 @@ import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.domain.models.MoveOnPlace
 import pt.amn.moveon.presentation.viewmodels.MapViewModel
 import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
+import pt.amn.moveon.utils.AppUtils
 import pt.amn.moveon.utils.START_MAP_LATITUDE
 import pt.amn.moveon.utils.START_MAP_LONGITUDE
 import timber.log.Timber
@@ -75,6 +76,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (!AppUtils.isOnline(context))
+            Toast.makeText(requireContext(), "Internet unavailable", Toast.LENGTH_LONG)
+                .show()
 
         googleMapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         googleMapFragment.getMapAsync(this@MapFragment)
