@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import pt.amn.moveon.databinding.ViewHolderPlaceBinding
-import pt.amn.moveon.domain.models.Place
+import pt.amn.moveon.domain.models.MoveOnPlace
 
 class PlacesAdapter() : RecyclerView.Adapter<PlacesAdapter.PlacesViewHolder>() {
 
-    private var places: List<Place> = listOf()
+    private var places: List<MoveOnPlace> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlacesViewHolder {
         return PlacesViewHolder(
@@ -27,14 +27,14 @@ class PlacesAdapter() : RecyclerView.Adapter<PlacesAdapter.PlacesViewHolder>() {
         return places.size
     }
 
-    fun bindPlaces(newPlaces: List<Place>) {
+    fun bindPlaces(newPlaces: List<MoveOnPlace>) {
         places = newPlaces
     }
 
     class PlacesViewHolder(private val binding: ViewHolderPlaceBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(place: Place) {
+        fun onBind(place: MoveOnPlace) {
 
             binding.run {
                 tvName.text = place.name
