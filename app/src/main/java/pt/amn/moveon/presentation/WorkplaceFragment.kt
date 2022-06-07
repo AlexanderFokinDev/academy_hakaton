@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -14,7 +13,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import pt.amn.moveon.R
 import pt.amn.moveon.databinding.FragmentWorkplaceBinding
 import pt.amn.moveon.presentation.viewmodels.WorkplaceViewModel
-import pt.amn.moveon.presentation.viewmodels.utils.Status
+import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
 import pt.amn.moveon.utils.COUNT_COUNTRIES_IN_THE_WORLD
 
 // TODO: Rename parameter arguments, choose names that match
@@ -66,14 +65,14 @@ class WorkplaceFragment : Fragment() {
         updateStatistics()
 
         viewModel.visitedCountries.observe(viewLifecycleOwner, Observer { resCountries ->
-            if (resCountries.status == Status.SUCCESS) {
+            if (resCountries.status == LoadStatus.SUCCESS) {
                 countVisitedCountries = resCountries.data?.size ?: 1
                 updateStatistics()
             }
         })
 
         viewModel.visitedPlaces.observe(viewLifecycleOwner, Observer { resPlaces ->
-            if (resPlaces.status == Status.SUCCESS) {
+            if (resPlaces.status == LoadStatus.SUCCESS) {
                 countVisitedPlaces = resPlaces.data?.size ?: 0
                 updateStatistics()
             }
