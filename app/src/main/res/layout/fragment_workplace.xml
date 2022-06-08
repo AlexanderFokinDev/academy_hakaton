@@ -8,13 +8,16 @@
     android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mtrl_card_statistics"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_50"
         android:layout_marginTop="@dimen/margin_50"
         android:layout_marginEnd="@dimen/margin_50"
         android:minHeight="@dimen/min_height_200"
-        app:cardBackgroundColor="@android:color/transparent">
+        app:cardBackgroundColor="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="true">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -107,8 +110,8 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         app:lottie_rawRes="@raw/animation_jorney"
         android:scaleType="centerCrop"
         android:layout_gravity="center_horizontal"

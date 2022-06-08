@@ -83,6 +83,10 @@ class WorkplaceFragment : Fragment() {
                 findNavController().navigate(R.id.action_workplaceFragment_to_countriesFragment)
             }
 
+            mtrlCardStatistics.setOnClickListener {
+                findNavController().navigate(R.id.action_workplaceFragment_to_countriesFragment)
+            }
+
             animation.setOnClickListener {
                 findNavController().navigate(R.id.action_workplaceFragment_to_countriesFragment)
             }
