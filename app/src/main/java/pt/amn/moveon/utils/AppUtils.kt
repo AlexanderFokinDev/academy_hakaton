@@ -7,6 +7,10 @@ import android.net.ConnectivityManager
 class AppUtils {
 
     companion object {
+
+        /**
+         * Check an internet connection
+         */
         fun isOnline(context: Context?): Boolean {
 
             if (context == null) return false
@@ -15,6 +19,7 @@ class AppUtils {
             val netInfo = cm.activeNetworkInfo
             return netInfo != null && netInfo.isConnectedOrConnecting
         }
+
     }
 
 }
