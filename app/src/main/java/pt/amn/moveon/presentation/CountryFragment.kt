@@ -30,16 +30,12 @@ const val ARG_COUNTRY = "country"
 class CountryFragment : Fragment() {
 
     private var _binding: FragmentCountryBinding? = null
-
     // This property is only valid between onCreateView and onDestroyView
     private val binding get() = _binding!!
 
     private lateinit var autocompleteSupportFragment: AutocompleteSupportFragment
-
     private lateinit var country: Country
-
     private lateinit var adapter: PlacesAdapter
-
     private val viewModel: CountryViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +62,7 @@ class CountryFragment : Fragment() {
 
         binding.run {
             rvPlaces.adapter = adapter
-            tvCountry.setText(country.getLocalName())
+            tvCountry.text = country.getLocalName()
             ivFlag.loadDrawableImage(requireContext(), binding.root, country.flagResId)
         }
 
@@ -79,7 +75,7 @@ class CountryFragment : Fragment() {
                     Toast.makeText(requireContext(), resPlaces.message, Toast.LENGTH_LONG)
                         .show()
                 }
-
+                else -> {}
             }
         })
 
@@ -163,7 +159,7 @@ class CountryFragment : Fragment() {
 
     }
 
-    fun updateData(placesList: List<MoveOnPlace>) {
+    private fun updateData(placesList: List<MoveOnPlace>) {
         adapter.bindPlaces(placesList)
         adapter.notifyDataSetChanged()
     }

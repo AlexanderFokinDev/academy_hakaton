@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import pt.amn.moveon.databinding.ViewHolderPlaceBinding
 import pt.amn.moveon.domain.models.MoveOnPlace
 
-class PlacesAdapter() : RecyclerView.Adapter<PlacesAdapter.PlacesViewHolder>() {
+class PlacesAdapter : RecyclerView.Adapter<PlacesAdapter.PlacesViewHolder>() {
 
     private var places: List<MoveOnPlace> = listOf()
 
