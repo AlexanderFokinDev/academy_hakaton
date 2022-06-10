@@ -110,7 +110,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         super.onDestroyView()
     }
 
-    override fun onMapReady(myMap: GoogleMap) {
+    override fun onMapReady(p0: GoogleMap) {
+
+        myMap = p0
 
         myMap.moveCamera(
             CameraUpdateFactory.newLatLng(
