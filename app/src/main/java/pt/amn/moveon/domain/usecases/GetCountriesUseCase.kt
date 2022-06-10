@@ -1,6 +1,5 @@
 package pt.amn.moveon.domain.usecases
 
-import com.google.android.libraries.places.api.model.Place
 import pt.amn.moveon.data.repositories.RepositoryResult
 import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.domain.models.MoveOnPlace
@@ -38,7 +37,7 @@ class GetCountriesUseCase(private val repository: MoveOnRepository) {
             : RepositoryResult<Boolean> {
         // check dublicates
         val result = repository.getPlaceByName(place.name)
-        if (result.dataList.size > 0) {
+        if (result.dataList.isNotEmpty()) {
             return RepositoryResult(false, listOf(), "")
         }
         return repository.addPlace(place)

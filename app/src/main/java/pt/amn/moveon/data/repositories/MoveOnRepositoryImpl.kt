@@ -42,10 +42,10 @@ class MoveOnRepositoryImpl @Inject constructor(private val database: AppDatabase
 
     override suspend fun getPlaceByName(name: String): RepositoryResult<MoveOnPlace> {
         val result = fetchPlaceFromDatabaseByName(name)
-        if (result == null) {
-            return RepositoryResult(false, listOf(), "")
+        return if (result == null) {
+            RepositoryResult(false, listOf(), "")
         } else {
-            return RepositoryResult(false, listOf(result), "")
+            RepositoryResult(false, listOf(result), "")
         }
     }
 
@@ -94,5 +94,4 @@ class MoveOnRepositoryImpl @Inject constructor(private val database: AppDatabase
 class RepositoryResult<T>(
     var isError: Boolean,
     var dataList: List<T>,
-    var description: String = "") {
-}
+    var description: String = "")
