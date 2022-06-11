@@ -31,5 +31,6 @@
     <!-- Settings fragment -->
     <string name="bt_create_backup">Create backup</string>
     <string name="bt_restore_backup">Restore backup</string>
+    <string name="app_version">Версия %1$s</string>
 
 </resources>
