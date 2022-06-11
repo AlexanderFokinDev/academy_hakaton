@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import pt.amn.moveon.BuildConfig
 import pt.amn.moveon.R
 import pt.amn.moveon.databinding.FragmentSettingsBinding
 
@@ -29,11 +30,16 @@ class SettingsFragment : Fragment() {
 
         binding.run {
             btCreateBackup.setOnClickListener {
-                Toast.makeText(requireContext(), R.string.bt_create_backup, Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), R.string.bt_create_backup, Toast.LENGTH_LONG)
+                    .show()
             }
             btRestoreBackup.setOnClickListener {
-                Toast.makeText(requireContext(), R.string.bt_restore_backup, Toast.LENGTH_LONG).show()
+                Toast.makeText(requireContext(), R.string.bt_restore_backup, Toast.LENGTH_LONG)
+                    .show()
             }
+
+            tvVersion.text =
+                String.format(getString(R.string.app_version), BuildConfig.VERSION_NAME)
         }
     }
 
