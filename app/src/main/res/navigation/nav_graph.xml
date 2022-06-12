@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
@@ -10,7 +9,7 @@
         android:id="@+id/startFragment"
         android:name="pt.amn.moveon.presentation.StartFragment"
         android:label="fragment_start"
-        tools:layout="@layout/fragment_start" >
+        tools:layout="@layout/fragment_start">
         <action
             android:id="@+id/action_startFragment_to_workplaceFragment"
             app:destination="@id/workplaceFragment" />
@@ -19,7 +18,7 @@
         android:id="@+id/workplaceFragment"
         android:name="pt.amn.moveon.presentation.WorkplaceFragment"
         android:label="fragment_workplace"
-        tools:layout="@layout/fragment_workplace" >
+        tools:layout="@layout/fragment_workplace">
         <action
             android:id="@+id/action_workplaceFragment_to_mapFragment"
             app:destination="@id/mapFragment" />
@@ -39,19 +38,29 @@
         android:id="@+id/countriesFragment"
         android:name="pt.amn.moveon.presentation.CountriesFragment"
         android:label="fragment_countries"
-        tools:layout="@layout/fragment_countries" >
+        tools:layout="@layout/fragment_countries">
         <action
             android:id="@+id/action_countriesFragment_to_countryFragment"
             app:destination="@id/countryFragment" />
+        <action
+            android:id="@+id/action_countriesFragment_to_workplaceFragment"
+            app:destination="@id/workplaceFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
         android:name="pt.amn.moveon.presentation.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+
     <fragment
         android:id="@+id/countryFragment"
         android:name="pt.amn.moveon.presentation.CountryFragment"
         android:label="fragment_country"
-        tools:layout="@layout/fragment_country" />
+        tools:layout="@layout/fragment_country">
+
+        <action
+            android:id="@+id/action_countryFragment_to_workplaceFragment"
+            app:destination="@id/workplaceFragment" />
+    </fragment>
+
 </navigation>

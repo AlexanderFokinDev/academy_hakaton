@@ -3,6 +3,7 @@ package pt.amn.moveon.presentation
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -15,6 +16,11 @@ class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     // This property is only valid between onCreateView and onDestroyView
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +47,12 @@ class SettingsFragment : Fragment() {
             tvVersion.text =
                 String.format(getString(R.string.app_version), BuildConfig.VERSION_NAME)
         }
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        menu.findItem(R.id.workplaceFragment).isVisible = true
+        menu.findItem(R.id.mainmenu_action_back).isVisible = false
+        super.onPrepareOptionsMenu(menu)
     }
 
     override fun onDestroyView() {

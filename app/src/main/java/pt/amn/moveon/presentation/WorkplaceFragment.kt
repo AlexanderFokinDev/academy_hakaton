@@ -79,6 +79,7 @@ class WorkplaceFragment : Fragment() {
 
     override fun onPrepareOptionsMenu(menu: Menu) {
         menu.findItem(R.id.workplaceFragment).isVisible = false
+        menu.findItem(R.id.mainmenu_action_back).isVisible = false
         super.onPrepareOptionsMenu(menu)
     }
 

@@ -110,6 +110,7 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation"
+        android:contentDescription="@string/cont_descr_map_animation"
         android:layout_width="120dp"
         android:layout_height="120dp"
         app:lottie_rawRes="@raw/animation_jorney"
