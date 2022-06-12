@@ -21,7 +21,8 @@ class AppUtils {
             return netInfo != null && netInfo.isConnectedOrConnecting
         }
 
-        fun getGoogleApiKey(): String = BuildConfig.MAPS_API_KEY
+        fun getGoogleApiKey(): String =
+            BuildConfig.MAPS_API_KEY_PART1 + BuildConfig.MAPS_API_KEY_PART2 + BuildConfig.MAPS_API_KEY_PART3
 
     }
 
