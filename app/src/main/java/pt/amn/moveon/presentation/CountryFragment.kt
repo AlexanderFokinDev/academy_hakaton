@@ -3,10 +3,12 @@ package pt.amn.moveon.presentation
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
@@ -21,6 +23,7 @@ import pt.amn.moveon.domain.models.MoveOnPlace
 import pt.amn.moveon.presentation.adapters.PlacesAdapter
 import pt.amn.moveon.presentation.viewmodels.CountryViewModel
 import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
+import pt.amn.moveon.utils.AppUtils
 import pt.amn.moveon.utils.loadDrawableImage
 import timber.log.Timber
 
@@ -44,6 +47,7 @@ class CountryFragment : Fragment() {
             country = bundle.getParcelable<Country>(ARG_COUNTRY) ?: return
         }
         adapter = PlacesAdapter()
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -82,6 +86,12 @@ class CountryFragment : Fragment() {
         initializeAutocompleteSupportFragment()
     }
 
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        menu.findItem(R.id.workplaceFragment).isVisible = false
+        menu.findItem(R.id.mainmenu_action_back).isVisible = true
+        super.onPrepareOptionsMenu(menu)
+    }
+
     override fun onResume() {
         super.onResume()
         autocompleteSupportFragment.setText("")
@@ -95,7 +105,7 @@ class CountryFragment : Fragment() {
     private fun initializeAutocompleteSupportFragment() {
 
         if (!Places.isInitialized()) {
-            Places.initialize(requireContext(), BuildConfig.MAPS_API_KEY)
+            Places.initialize(requireContext(), AppUtils.getGoogleApiKey())
         }
 
         autocompleteSupportFragment =

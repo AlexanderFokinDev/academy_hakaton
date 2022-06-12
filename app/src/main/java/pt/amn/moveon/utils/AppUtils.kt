@@ -2,6 +2,7 @@ package pt.amn.moveon.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
+import pt.amn.moveon.BuildConfig
 
 
 class AppUtils {
@@ -19,6 +20,8 @@ class AppUtils {
             val netInfo = cm.activeNetworkInfo
             return netInfo != null && netInfo.isConnectedOrConnecting
         }
+
+        fun getGoogleApiKey(): String = BuildConfig.MAPS_API_KEY
 
     }
 

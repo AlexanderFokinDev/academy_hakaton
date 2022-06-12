@@ -36,6 +36,7 @@
         android:layout_height="@dimen/height_line_small"
         android:gravity="center_vertical"
         android:button="@drawable/outline_place_black_24"
+        android:contentDescription="@string/cont_descr_cb_check"
         app:layout_constraintStart_toEndOf="@id/tv_country"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>

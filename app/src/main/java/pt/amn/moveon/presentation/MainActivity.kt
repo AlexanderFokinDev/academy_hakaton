@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         // Action bar
         setSupportActionBar(findViewById(R.id.toolbar))
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         when (item.itemId) {
             R.id.mainmenu_action_exit -> finish()
+            R.id.mainmenu_action_back -> onBackPressed()
         }
 
         return item.onNavDestinationSelected(navController)

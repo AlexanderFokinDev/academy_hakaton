@@ -3,6 +3,7 @@ package pt.amn.moveon.presentation
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
@@ -32,6 +33,7 @@ class CountriesFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter = CountriesAdapter(requireContext(), recyclerListener)
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(
@@ -63,6 +65,12 @@ class CountriesFragment : Fragment() {
                 }
             }
         })
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        menu.findItem(R.id.workplaceFragment).isVisible = false
+        menu.findItem(R.id.mainmenu_action_back).isVisible = true
+        super.onPrepareOptionsMenu(menu)
     }
 
     override fun onDestroyView() {
