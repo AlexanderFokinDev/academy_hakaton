@@ -15,8 +15,8 @@ android {
         applicationId "pt.amn.moveon"
         minSdkVersion 21
         targetSdkVersion 32
-        versionCode 4
-        versionName "1.0.3"
+        versionCode 5
+        versionName "1.0.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -76,7 +76,7 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
     // Converters
-    implementation "com.google.code.gson:gson:2.8.9"
+    implementation "com.google.code.gson:gson:2.9.0"
 
     // Glide
     implementation("com.github.bumptech.glide:glide:4.11.0") {

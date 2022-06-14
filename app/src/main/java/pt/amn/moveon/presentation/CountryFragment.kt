@@ -160,7 +160,7 @@ class CountryFragment : Fragment() {
                 Timber.d("$TAG, ${getString(R.string.place_error_occured)} $status")
                 Toast.makeText(
                     requireContext(),
-                    getString(R.string.place_error_occured),
+                    getString(R.string.place_error_occured) + status.statusMessage,
                     Toast.LENGTH_LONG
                 ).show()
             }
