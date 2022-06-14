@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="pt.amn.moveon"
-    android:versionCode="4"
-    android:versionName="1.0.3">
+    android:versionCode="5"
+    android:versionName="1.0.4">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -27,10 +27,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="${MAPS_API_KEY_PART1}${MAPS_API_KEY_PART2}${MAPS_API_KEY_PART3}" />
 
     </application>
 

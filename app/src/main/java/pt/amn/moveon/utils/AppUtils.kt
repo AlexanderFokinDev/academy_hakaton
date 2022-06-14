@@ -3,6 +3,7 @@ package pt.amn.moveon.utils
 import android.content.Context
 import android.net.ConnectivityManager
 import pt.amn.moveon.BuildConfig
+import android.util.Base64
 
 
 class AppUtils {
@@ -22,7 +23,8 @@ class AppUtils {
         }
 
         fun getGoogleApiKey(): String =
-            BuildConfig.MAPS_API_KEY_PART1 + BuildConfig.MAPS_API_KEY_PART2 + BuildConfig.MAPS_API_KEY_PART3
+            String(Base64.decode(BuildConfig.MAPS_API_KEY, Base64.DEFAULT))
+
 
     }
 
