@@ -23,7 +23,7 @@ class AppUtils {
         }
 
         fun getGoogleApiKey(): String =
-            String(Base64.decode(BuildConfig.MAPS_API_KEY, Base64.DEFAULT))
+            String(Base64.decode(BuildConfig.MAPS_API_KEY_B64, Base64.DEFAULT))
 
 
     }
