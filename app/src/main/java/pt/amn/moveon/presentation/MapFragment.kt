@@ -36,7 +36,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private val binding get() = _binding!!
 
     private lateinit var googleMapFragment: SupportMapFragment
-    private lateinit var myMap: GoogleMap
+    private var myMap: GoogleMap? = null
 
     private val viewModel: MapViewModel by viewModels()
 
@@ -60,6 +60,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initializeUI()
+    }
+
+    private fun initializeUI() {
         if (!AppUtils.isOnline(context))
             Toast.makeText(requireContext(), "Internet unavailable", Toast.LENGTH_LONG)
                 .show()
@@ -85,7 +89,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         viewModel.visitedPlaces.observe(viewLifecycleOwner, Observer { resPlaces ->
             when (resPlaces.status) {
                 LoadStatus.SUCCESS -> {
-                    //setVisitedPlacesFlags(resPlaces.data ?: emptyList())
                     places = resPlaces.data ?: emptyList()
                 }
                 LoadStatus.ERROR -> {
@@ -98,17 +101,24 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         })
 
         binding.run {
-            swMap.setOnCheckedChangeListener {_, isChecked ->
-                myMap.clear()
-
-                if (isChecked) {
-                    setVisitedPlacesFlags(places)
-                } else {
-                    setVisitedCountriesFlags(countries)
-                }
-
+            swMap.setOnCheckedChangeListener { _, isChecked ->
+                fillMapPoints(isChecked)
             }
         }
+    }
+
+    private fun fillMapPoints(isChecked: Boolean) {
+        clearMap()
+
+        if (isChecked) {
+            setVisitedPlacesFlags(places)
+        } else {
+            setVisitedCountriesFlags(countries)
+        }
+    }
+
+    private fun clearMap() {
+        myMap?.clear()
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
@@ -125,19 +135,26 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onMapReady(p0: GoogleMap) {
 
         myMap = p0
-
-        myMap.moveCamera(
-            CameraUpdateFactory.newLatLng(
-                LatLng(
-                    START_MAP_LATITUDE,
-                    START_MAP_LONGITUDE
-                )
-            )
-        )
+        moveCamera(START_MAP_LATITUDE, START_MAP_LONGITUDE)
+        fillMapPoints(binding.swMap.isChecked)
 
     }
 
+    private fun moveCamera(latitude: Double, longitude: Double) {
+        myMap?.moveCamera(
+            CameraUpdateFactory.newLatLng(
+                LatLng(
+                    latitude,
+                    longitude
+                )
+            )
+        )
+    }
+
     private fun setVisitedCountriesFlags(visitedCountries: List<Country>) {
+
+        if (myMap == null) return
+
         for (country in visitedCountries) {
             addCountryMarker(country)
         }
@@ -146,7 +163,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun addCountryMarker(country: Country) {
 
         try {
-            myMap.addMarker(
+            myMap?.addMarker(
                 MarkerOptions()
                 .position(LatLng(country.latitude, country.longitude))
                 .title(country.getLocalName())
@@ -158,6 +175,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun setVisitedPlacesFlags(visitedPlaces: List<MoveOnPlace>) {
+
+        if (myMap == null) return
+
         for (place in visitedPlaces) {
             addPlaceMarker(place)
         }
@@ -166,7 +186,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun addPlaceMarker(place: MoveOnPlace) {
 
         try {
-            myMap.addMarker(
+            myMap?.addMarker(
                 MarkerOptions()
                     .position(LatLng(place.latitude, place.longitude))
                     .title(place.name)

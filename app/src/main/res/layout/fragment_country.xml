@@ -27,8 +27,9 @@
             android:fontFamily="@font/roboto_black"
             android:paddingStart="@dimen/padding_50"
             android:paddingEnd="@dimen/padding_120"
-            tools:text="@tools:sample/cities"
-            android:textSize="@dimen/text_size_h5"/>
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_h5"
+            tools:text="@tools:sample/cities" />
 
     </LinearLayout>
 
