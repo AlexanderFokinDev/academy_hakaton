@@ -17,6 +17,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.*
 import pt.amn.moveon.R
 import pt.amn.moveon.databinding.FragmentMapBinding
 import pt.amn.moveon.domain.models.Country
@@ -42,6 +43,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private var countries = listOf<Country>()
     private var places = listOf<MoveOnPlace>()
+
+    private val handlerException = CoroutineExceptionHandler { _, throwable ->
+        Timber.d("$TAG, exception handled ${throwable.message}")
+    }
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main + handlerException)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,7 +80,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         viewModel.visitedCountries.observe(viewLifecycleOwner, Observer { resCountries ->
             when (resCountries.status) {
                 LoadStatus.SUCCESS -> {
-                    setVisitedCountriesFlags(resCountries.data ?: emptyList())
+                    //setVisitedCountriesFlags(resCountries.data ?: emptyList())
                     countries = resCountries.data ?: emptyList()
                 }
                 LoadStatus.ERROR -> {
@@ -102,12 +108,14 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         binding.run {
             swMap.setOnCheckedChangeListener { _, isChecked ->
-                fillMapPoints(isChecked)
+                scope.launch {
+                    fillMapPoints(isChecked)
+                }
             }
         }
     }
 
-    private fun fillMapPoints(isChecked: Boolean) {
+    private suspend fun fillMapPoints(isChecked: Boolean) {
         clearMap()
 
         if (isChecked) {
@@ -136,7 +144,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
         myMap = p0
         moveCamera(START_MAP_LATITUDE, START_MAP_LONGITUDE)
-        fillMapPoints(binding.swMap.isChecked)
+
+        scope.launch {
+            fillMapPoints(binding.swMap.isChecked)
+        }
 
     }
 
@@ -151,13 +162,17 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         )
     }
 
-    private fun setVisitedCountriesFlags(visitedCountries: List<Country>) {
+    private suspend fun setVisitedCountriesFlags(visitedCountries: List<Country>) {
 
-        if (myMap == null) return
+        withContext(Dispatchers.Main) {
+            if (myMap != null) {
 
-        for (country in visitedCountries) {
-            addCountryMarker(country)
+                for (country in visitedCountries) {
+                    addCountryMarker(country)
+                }
+            }
         }
+
     }
 
     private fun addCountryMarker(country: Country) {
@@ -174,14 +189,15 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     }
 
-    private fun setVisitedPlacesFlags(visitedPlaces: List<MoveOnPlace>) {
+    private suspend fun setVisitedPlacesFlags(visitedPlaces: List<MoveOnPlace>) =
+        withContext(Dispatchers.Main) {
+            if (myMap != null) {
 
-        if (myMap == null) return
-
-        for (place in visitedPlaces) {
-            addPlaceMarker(place)
+                for (place in visitedPlaces) {
+                    addPlaceMarker(place)
+                }
+            }
         }
-    }
 
     private fun addPlaceMarker(place: MoveOnPlace) {
 
