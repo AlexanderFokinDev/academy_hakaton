@@ -10,11 +10,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.*
 import pt.amn.moveon.R
 import pt.amn.moveon.databinding.FragmentWorkplaceBinding
 import pt.amn.moveon.presentation.viewmodels.WorkplaceViewModel
 import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
 import pt.amn.moveon.utils.COUNT_COUNTRIES_IN_THE_WORLD
+import timber.log.Timber
 
 @AndroidEntryPoint
 class WorkplaceFragment : Fragment() {
@@ -27,6 +29,11 @@ class WorkplaceFragment : Fragment() {
 
     private var countVisitedCountries: Int = 1
     private var countVisitedPlaces: Int = 0
+
+    private val handlerException = CoroutineExceptionHandler { _, throwable ->
+        Timber.d("${TAG}, exception handled ${throwable.message}")
+    }
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main + handlerException)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,8 +80,14 @@ class WorkplaceFragment : Fragment() {
                 findNavController().navigate(R.id.action_workplaceFragment_to_countriesFragment)
             }
 
-            animation.playAnimation()
+            scope.launch {
+                playAnimation()
+            }
         }
+    }
+
+    private suspend fun playAnimation() = withContext(Dispatchers.Main) {
+        binding.animation.playAnimation()
     }
 
     override fun onPrepareOptionsMenu(menu: Menu) {
@@ -108,9 +121,16 @@ class WorkplaceFragment : Fragment() {
 
             tvPlacesStatistics.text = String.format(getString(R.string.statistics_result3), countVisitedPlaces)
 
-            animation.playAnimation()
+            scope.launch {
+                playAnimation()
+            }
 
         }
 
     }
+
+    companion object {
+        private const val TAG = "WorkplaceFragment"
+    }
+
 }
