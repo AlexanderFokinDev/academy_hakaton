@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import pt.amn.moveon.utils.DATABASE_NAME
+import pt.amn.moveon.common.DATABASE_NAME
 import pt.amn.moveon.workers.MoveonDatabaseWorker
 
 @Database(entities = [CountryEntity::class, PlaceEntity::class], version = 1)

@@ -11,8 +11,8 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.coroutineScope
 import pt.amn.moveon.data.local.CountryEntity
-import pt.amn.moveon.utils.COUNTRIES_DATA_FILENAME
-import timber.log.Timber
+import pt.amn.moveon.common.COUNTRIES_DATA_FILENAME
+import pt.amn.moveon.common.LogNavigator
 
 @HiltWorker
 class MoveonDatabaseWorker @AssistedInject constructor(
@@ -30,12 +30,12 @@ class MoveonDatabaseWorker @AssistedInject constructor(
 
                     workerDependency.database.countryDao().insertAll(countryList)
 
-                    Timber.d("$TAG, Success seeding database, count of countries = ${countryList.size}")
+                    LogNavigator.debugMessage("$TAG, Success seeding database, count of countries = ${countryList.size}")
                     Result.success()
                 }
             }
         } catch (ex: Exception) {
-            Timber.d("$TAG, Error seeding database $ex")
+            LogNavigator.debugMessage("$TAG, Error seeding database $ex")
             Result.failure()
         }
 

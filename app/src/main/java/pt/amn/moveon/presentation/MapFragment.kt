@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -24,10 +23,10 @@ import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.domain.models.MoveOnPlace
 import pt.amn.moveon.presentation.viewmodels.MapViewModel
 import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
-import pt.amn.moveon.utils.AppUtils
-import pt.amn.moveon.utils.START_MAP_LATITUDE
-import pt.amn.moveon.utils.START_MAP_LONGITUDE
-import timber.log.Timber
+import pt.amn.moveon.common.AppUtils
+import pt.amn.moveon.common.LogNavigator
+import pt.amn.moveon.common.START_MAP_LATITUDE
+import pt.amn.moveon.common.START_MAP_LONGITUDE
 
 @AndroidEntryPoint
 class MapFragment : Fragment(), OnMapReadyCallback {
@@ -45,7 +44,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private var places = listOf<MoveOnPlace>()
 
     private val handlerException = CoroutineExceptionHandler { _, throwable ->
-        Timber.d("$TAG, exception handled ${throwable.message}")
+        LogNavigator.debugMessage("$TAG, exception handled ${throwable.message}")
     }
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main + handlerException)
 
@@ -71,8 +70,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private fun initializeUI() {
         if (!AppUtils.isOnline(context))
-            Toast.makeText(requireContext(), "Internet unavailable", Toast.LENGTH_LONG)
-                .show()
+            LogNavigator.toastMessage(requireContext(), R.string.error_message_internet_unavailable)
 
         googleMapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         googleMapFragment.getMapAsync(this@MapFragment)
@@ -84,8 +82,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     countries = resCountries.data ?: emptyList()
                 }
                 LoadStatus.ERROR -> {
-                    Toast.makeText(requireContext(), resCountries.message, Toast.LENGTH_LONG)
-                        .show()
+                    LogNavigator.toastMessage(requireContext(), resCountries.message)
                 }
                 LoadStatus.LOADING -> {
                 }
@@ -98,8 +95,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     places = resPlaces.data ?: emptyList()
                 }
                 LoadStatus.ERROR -> {
-                    Toast.makeText(requireContext(), resPlaces.message, Toast.LENGTH_LONG)
-                        .show()
+                    LogNavigator.toastMessage(requireContext(), resPlaces.message)
                 }
                 LoadStatus.LOADING -> {
                 }
@@ -184,7 +180,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 .title(country.getLocalName())
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker_green)))
         } catch (ex: Exception) {
-            Timber.d("$TAG, Error of adding country at the map $ex")
+            LogNavigator.debugMessage("$TAG, Error of adding country at the map $ex")
         }
 
     }
@@ -208,7 +204,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     .title(place.name)
                     .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_marker_blue)))
         } catch (ex: Exception) {
-            Timber.d("$TAG, Error of adding place at the map $ex")
+            LogNavigator.debugMessage("$TAG, Error of adding place at the map $ex")
         }
 
     }

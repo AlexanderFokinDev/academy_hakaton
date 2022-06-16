@@ -1,4 +1,4 @@
-package pt.amn.moveon.utils
+package pt.amn.moveon.common
 
 const val DATABASE_NAME = "moveon_db"
 const val COUNTRIES_DATA_FILENAME = "countries.json"

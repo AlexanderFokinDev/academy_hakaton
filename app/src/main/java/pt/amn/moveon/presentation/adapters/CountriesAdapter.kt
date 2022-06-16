@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import pt.amn.moveon.databinding.ViewHolderCountryBinding
 import pt.amn.moveon.domain.models.Country
-import pt.amn.moveon.utils.loadDrawableImage
+import pt.amn.moveon.common.loadDrawableImage
 
 class CountriesAdapter(val context: Context, private val listener: OnRecyclerCountriesClicked)
     : RecyclerView.Adapter<CountriesAdapter.CountriesViewHolder>() {

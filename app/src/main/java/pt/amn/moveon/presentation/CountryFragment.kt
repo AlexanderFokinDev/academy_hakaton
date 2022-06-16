@@ -6,16 +6,13 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.widget.AutocompleteSupportFragment
 import com.google.android.libraries.places.widget.listener.PlaceSelectionListener
 import dagger.hilt.android.AndroidEntryPoint
-import pt.amn.moveon.BuildConfig
 import pt.amn.moveon.R
 import pt.amn.moveon.databinding.FragmentCountryBinding
 import pt.amn.moveon.domain.models.Country
@@ -23,9 +20,9 @@ import pt.amn.moveon.domain.models.MoveOnPlace
 import pt.amn.moveon.presentation.adapters.PlacesAdapter
 import pt.amn.moveon.presentation.viewmodels.CountryViewModel
 import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
-import pt.amn.moveon.utils.AppUtils
-import pt.amn.moveon.utils.loadDrawableImage
-import timber.log.Timber
+import pt.amn.moveon.common.AppUtils
+import pt.amn.moveon.common.LogNavigator
+import pt.amn.moveon.common.loadDrawableImage
 
 const val ARG_COUNTRY = "country"
 
@@ -76,8 +73,7 @@ class CountryFragment : Fragment() {
                     updateData(resPlaces.data ?: emptyList())
                 }
                 LoadStatus.ERROR -> {
-                    Toast.makeText(requireContext(), resPlaces.message, Toast.LENGTH_LONG)
-                        .show()
+                    LogNavigator.toastMessage(requireContext(), resPlaces.message)
                 }
                 else -> {}
             }
@@ -145,24 +141,19 @@ class CountryFragment : Fragment() {
                     }
 
                 } else {
-                    Timber.d("$TAG, ${getString(R.string.place_didnt_find)}")
-                    Toast.makeText(
-                        requireContext(),
-                        getString(R.string.place_didnt_find),
-                        Toast.LENGTH_LONG
-                    ).show()
+                    LogNavigator.debugMessage("$TAG, ${getString(R.string.place_didnt_find)}")
+                    LogNavigator.toastMessage(
+                        requireContext(), getString(R.string.place_didnt_find))
                 }
 
                 autocompleteSupportFragment.setText("")
             }
 
             override fun onError(status: Status) {
-                Timber.d("$TAG, ${getString(R.string.place_error_occured)} $status")
-                Toast.makeText(
-                    requireContext(),
-                    getString(R.string.place_error_occured) + status.statusMessage,
-                    Toast.LENGTH_LONG
-                ).show()
+                LogNavigator.debugMessage("$TAG, ${getString(R.string.place_error_occured)} $status")
+                LogNavigator.toastMessage(
+                    requireContext(), getString(R.string.place_error_occured) + status.statusMessage
+                )
             }
 
         })
