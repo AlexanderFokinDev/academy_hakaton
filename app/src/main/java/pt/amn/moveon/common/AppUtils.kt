@@ -1,4 +1,4 @@
-package pt.amn.moveon.utils
+package pt.amn.moveon.common
 
 import android.content.Context
 import android.net.ConnectivityManager

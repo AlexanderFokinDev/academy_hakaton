@@ -39,4 +39,7 @@
     <string name="cont_descr_cb_check" translatable="false">Check</string>
     <string name="menu_item_back" translatable="false">Back</string>
 
+    <!-- Messages -->
+    <string name="error_message_internet_unavailable">"Internet unavailable"</string>
+
 </resources>

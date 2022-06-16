@@ -33,4 +33,7 @@
     <string name="bt_restore_backup">Restore backup</string>
     <string name="app_version">Версия %1$s</string>
 
+    <!-- Messages -->
+    <string name="error_message_internet_unavailable">"Интернет недоступен"</string>
+
 </resources>

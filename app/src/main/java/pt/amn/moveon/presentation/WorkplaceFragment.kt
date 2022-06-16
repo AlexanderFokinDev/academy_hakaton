@@ -15,8 +15,8 @@ import pt.amn.moveon.R
 import pt.amn.moveon.databinding.FragmentWorkplaceBinding
 import pt.amn.moveon.presentation.viewmodels.WorkplaceViewModel
 import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
-import pt.amn.moveon.utils.COUNT_COUNTRIES_IN_THE_WORLD
-import timber.log.Timber
+import pt.amn.moveon.common.COUNT_COUNTRIES_IN_THE_WORLD
+import pt.amn.moveon.common.LogNavigator
 
 @AndroidEntryPoint
 class WorkplaceFragment : Fragment() {
@@ -31,7 +31,7 @@ class WorkplaceFragment : Fragment() {
     private var countVisitedPlaces: Int = 0
 
     private val handlerException = CoroutineExceptionHandler { _, throwable ->
-        Timber.d("${TAG}, exception handled ${throwable.message}")
+        LogNavigator.debugMessage("${TAG}, exception handled ${throwable.message}")
     }
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main + handlerException)
 

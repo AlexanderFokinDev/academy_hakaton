@@ -6,12 +6,12 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import pt.amn.moveon.R
+import pt.amn.moveon.common.LogNavigator
 import pt.amn.moveon.databinding.FragmentCountriesBinding
 import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.presentation.adapters.CountriesAdapter
@@ -58,8 +58,7 @@ class CountriesFragment : Fragment() {
                     updateData(resCountries.data ?: emptyList())
                 }
                 LoadStatus.ERROR -> {
-                    Toast.makeText(requireContext(), resCountries.message, Toast.LENGTH_LONG)
-                        .show()
+                    LogNavigator.toastMessage(requireContext(), resCountries.message)
                 }
                 LoadStatus.LOADING -> {
                 }
