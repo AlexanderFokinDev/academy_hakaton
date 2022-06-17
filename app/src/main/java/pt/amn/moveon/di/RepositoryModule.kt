@@ -4,7 +4,9 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import pt.amn.moveon.data.repositories.BackupRepositoryImpl
 import pt.amn.moveon.data.repositories.MoveOnRepositoryImpl
+import pt.amn.moveon.domain.repositories.BackupRepository
 import pt.amn.moveon.domain.repositories.MoveOnRepository
 import javax.inject.Singleton
 
@@ -14,6 +16,10 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindRepository(moveOnRepositoryImpl: MoveOnRepositoryImpl) : MoveOnRepository
+    abstract fun bindRepositoryMoveOn(moveOnRepositoryImpl: MoveOnRepositoryImpl) : MoveOnRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindRepositoryBackup(backupRepositoryImpl: BackupRepositoryImpl) : BackupRepository
 
 }

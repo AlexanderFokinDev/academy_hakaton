@@ -36,6 +36,7 @@ class MoveonDatabaseWorker @AssistedInject constructor(
             }
         } catch (ex: Exception) {
             LogNavigator.debugMessage("$TAG, Error seeding database $ex")
+            LogNavigator.toastMessage(applicationContext, "$TAG, Error seeding database $ex")
             Result.failure()
         }
 
