@@ -1,22 +1,27 @@
 package pt.amn.moveon.presentation
 
-import android.app.ProgressDialog.show
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import dagger.hilt.android.AndroidEntryPoint
 import pt.amn.moveon.BuildConfig
 import pt.amn.moveon.R
 import pt.amn.moveon.common.LogNavigator
 import pt.amn.moveon.databinding.FragmentSettingsBinding
+import pt.amn.moveon.presentation.viewmodels.SettingsViewModel
 
+@AndroidEntryPoint
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
     // This property is only valid between onCreateView and onDestroyView
     private val binding get() = _binding!!
+
+    private val viewModel : SettingsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +42,7 @@ class SettingsFragment : Fragment() {
 
         binding.run {
             btCreateBackup.setOnClickListener {
-                LogNavigator.toastMessage(requireContext(), R.string.bt_create_backup)
+                viewModel.createBackup(requireContext())
             }
             btRestoreBackup.setOnClickListener {
                 LogNavigator.toastMessage(requireContext(), R.string.bt_restore_backup)
