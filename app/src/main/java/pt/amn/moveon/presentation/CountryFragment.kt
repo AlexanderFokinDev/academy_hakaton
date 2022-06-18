@@ -23,6 +23,7 @@ import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
 import pt.amn.moveon.common.AppUtils
 import pt.amn.moveon.common.LogNavigator
 import pt.amn.moveon.common.loadDrawableImage
+import pt.amn.moveon.data.local.toDomainModel
 
 const val ARG_COUNTRY = "country"
 
@@ -68,15 +69,9 @@ class CountryFragment : Fragment() {
         }
 
         viewModel.placesList.observe(viewLifecycleOwner, androidx.lifecycle.Observer { resPlaces ->
-            when (resPlaces.status) {
-                LoadStatus.SUCCESS -> {
-                    updateData(resPlaces.data ?: emptyList())
-                }
-                LoadStatus.ERROR -> {
-                    LogNavigator.toastMessage(requireContext(), resPlaces.message)
-                }
-                else -> {}
-            }
+            updateData(resPlaces.map { entityDB ->
+                entityDB.toDomainModel()
+            })
         })
 
         initializeAutocompleteSupportFragment()

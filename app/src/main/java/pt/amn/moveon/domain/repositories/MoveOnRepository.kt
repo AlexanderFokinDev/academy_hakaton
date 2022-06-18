@@ -1,20 +1,23 @@
 package pt.amn.moveon.domain.repositories
 
+import androidx.lifecycle.LiveData
+import pt.amn.moveon.data.local.CountryEntity
+import pt.amn.moveon.data.local.PlaceEntity
 import pt.amn.moveon.data.repositories.RepositoryResult
 import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.domain.models.MoveOnPlace
 
 interface MoveOnRepository {
 
-    suspend fun getCountries(): RepositoryResult<Country>
+    suspend fun getCountries(): LiveData<List<CountryEntity>>
 
-    suspend fun getVisitedCountries(): RepositoryResult<Country>
+    suspend fun getVisitedCountries(): LiveData<List<CountryEntity>>
 
     suspend fun updateCountry(country: Country): RepositoryResult<Boolean>
 
-    suspend fun getVisitedPlaces(): RepositoryResult<MoveOnPlace>
+    suspend fun getVisitedPlaces(): LiveData<List<PlaceEntity>>
 
-    suspend fun getVisitedPlacesInCountry(countryId: Int): RepositoryResult<MoveOnPlace>
+    suspend fun getVisitedPlacesInCountry(countryId: Int): LiveData<List<PlaceEntity>>
 
     suspend fun getCountryById(id: Int): RepositoryResult<Country>
 

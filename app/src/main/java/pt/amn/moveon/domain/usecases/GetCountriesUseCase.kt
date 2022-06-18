@@ -1,5 +1,8 @@
 package pt.amn.moveon.domain.usecases
 
+import androidx.lifecycle.LiveData
+import pt.amn.moveon.data.local.CountryEntity
+import pt.amn.moveon.data.local.PlaceEntity
 import pt.amn.moveon.data.repositories.RepositoryResult
 import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.domain.models.MoveOnPlace
@@ -7,11 +10,11 @@ import pt.amn.moveon.domain.repositories.MoveOnRepository
 
 class GetCountriesUseCase(private val repository: MoveOnRepository) {
 
-    suspend fun getCountries() : RepositoryResult<Country> {
+    suspend fun getCountries() : LiveData<List<CountryEntity>> {
         return repository.getCountries()
     }
 
-    suspend fun getVisitedCountries() : RepositoryResult<Country> {
+    suspend fun getVisitedCountries() : LiveData<List<CountryEntity>> {
         return repository.getVisitedCountries()
     }
 
@@ -25,11 +28,11 @@ class GetCountriesUseCase(private val repository: MoveOnRepository) {
         return repository.getCountryById(id)
     }
 
-    suspend fun getVisitedPlaces() : RepositoryResult<MoveOnPlace> {
+    suspend fun getVisitedPlaces() : LiveData<List<PlaceEntity>> {
         return repository.getVisitedPlaces()
     }
 
-    suspend fun getVisitedPlacesInCountry(countryId: Int) : RepositoryResult<MoveOnPlace> {
+    suspend fun getVisitedPlacesInCountry(countryId: Int) : LiveData<List<PlaceEntity>> {
         return repository.getVisitedPlacesInCountry(countryId)
     }
 

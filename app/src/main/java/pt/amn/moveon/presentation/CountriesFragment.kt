@@ -12,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import pt.amn.moveon.R
 import pt.amn.moveon.common.LogNavigator
+import pt.amn.moveon.data.local.toDomainModel
 import pt.amn.moveon.databinding.FragmentCountriesBinding
 import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.presentation.adapters.CountriesAdapter
@@ -53,16 +54,9 @@ class CountriesFragment : Fragment() {
         }
 
         viewModel.countriesList.observe(viewLifecycleOwner, Observer { resCountries ->
-            when (resCountries.status) {
-                LoadStatus.SUCCESS -> {
-                    updateData(resCountries.data ?: emptyList())
-                }
-                LoadStatus.ERROR -> {
-                    LogNavigator.toastMessage(requireContext(), resCountries.message)
-                }
-                LoadStatus.LOADING -> {
-                }
-            }
+            updateData(resCountries.map { entityDB ->
+                entityDB.toDomainModel()
+            })
         })
     }
 

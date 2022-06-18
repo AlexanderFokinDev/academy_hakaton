@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.Transformations.map
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
@@ -17,6 +18,7 @@ import pt.amn.moveon.presentation.viewmodels.WorkplaceViewModel
 import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
 import pt.amn.moveon.common.COUNT_COUNTRIES_IN_THE_WORLD
 import pt.amn.moveon.common.LogNavigator
+import pt.amn.moveon.data.local.toDomainModel
 
 @AndroidEntryPoint
 class WorkplaceFragment : Fragment() {
@@ -27,7 +29,7 @@ class WorkplaceFragment : Fragment() {
 
     private val viewModel: WorkplaceViewModel by viewModels()
 
-    private var countVisitedCountries: Int = 1
+    private var countVisitedCountries: Int = 0
     private var countVisitedPlaces: Int = 0
 
     private val handlerException = CoroutineExceptionHandler { _, throwable ->
@@ -53,18 +55,14 @@ class WorkplaceFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         updateStatistics()
 
-        viewModel.visitedCountries.observe(viewLifecycleOwner, Observer { resCountries ->
-            if (resCountries.status == LoadStatus.SUCCESS) {
-                countVisitedCountries = resCountries.data?.size ?: 1
-                updateStatistics()
-            }
-        })
+        viewModel.visitedCountries.observe(viewLifecycleOwner) { resCountries ->
+            countVisitedCountries = resCountries.size
+            updateStatistics()
+        }
 
         viewModel.visitedPlaces.observe(viewLifecycleOwner, Observer { resPlaces ->
-            if (resPlaces.status == LoadStatus.SUCCESS) {
-                countVisitedPlaces = resPlaces.data?.size ?: 0
-                updateStatistics()
-            }
+            countVisitedPlaces = resPlaces.size ?: 0
+            updateStatistics()
         })
 
         binding.run {
@@ -103,10 +101,15 @@ class WorkplaceFragment : Fragment() {
 
     private fun updateStatistics() {
 
-        val percent_of_the_world = if (countVisitedCountries == 0) 0.0 else {
+        val percentWorld = if (countVisitedCountries == 0) 0.0 else {
             countVisitedCountries / (COUNT_COUNTRIES_IN_THE_WORLD / 100.0)
         }
-        val level = if(countVisitedCountries < 10) 1 else countVisitedCountries / 10
+
+        val level = when(countVisitedCountries) {
+            0 -> 0
+            1 -> 1
+            else -> countVisitedCountries / 10
+        }
 
         binding.run {
 
@@ -114,7 +117,7 @@ class WorkplaceFragment : Fragment() {
                 String.format(getString(R.string.statistics_result1), countVisitedCountries)
 
             tvPercentStatistics.text =
-                String.format(getString(R.string.statistics_result2), percent_of_the_world)
+                String.format(getString(R.string.statistics_result2), percentWorld)
 
             tvLevel.text = String.format(getString(R.string.statistics_level), level)
             progressBarLevel.progress = level
