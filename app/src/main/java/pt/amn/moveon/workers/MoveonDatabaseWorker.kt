@@ -9,7 +9,9 @@ import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.withContext
 import pt.amn.moveon.data.local.CountryEntity
 import pt.amn.moveon.common.COUNTRIES_DATA_FILENAME
 import pt.amn.moveon.common.LogNavigator
@@ -21,22 +23,29 @@ class MoveonDatabaseWorker @AssistedInject constructor(
     private val workerDependency: WorkerDependency
 ) : CoroutineWorker(appContext, workerParams) {
 
-    override suspend fun doWork(): Result = coroutineScope {
+    override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
         try {
-            applicationContext.assets.open(COUNTRIES_DATA_FILENAME).use { inputStream ->
-                JsonReader(inputStream.reader()).use { jsonReader ->
-                    val countryType = object : TypeToken<List<CountryEntity>>() {}.type
-                    val countryList: List<CountryEntity> = Gson().fromJson(jsonReader, countryType)
+            val filename = inputData.getString(KEY_FILENAME)
+            if (filename != null) {
+                applicationContext.assets.open(filename).use { inputStream ->
+                    JsonReader(inputStream.reader()).use { jsonReader ->
+                        val countryType = object : TypeToken<List<CountryEntity>>() {}.type
+                        val countryList: List<CountryEntity> =
+                            Gson().fromJson(jsonReader, countryType)
 
-                    workerDependency.database.countryDao().insertAll(countryList)
+                        workerDependency.database.countryDao().insertAll(countryList)
 
-                    LogNavigator.debugMessage("$TAG, Success seeding database, count of countries = ${countryList.size}")
-                    Result.success()
+                        LogNavigator.debugMessage("$TAG, Success seeding database, count of countries = ${countryList.size}")
+                        Result.success()
+                    }
                 }
+            } else
+            {
+                LogNavigator.debugMessage("$TAG, Error seeding database - no valid filename")
+                Result.failure()
             }
         } catch (ex: Exception) {
             LogNavigator.debugMessage("$TAG, Error seeding database $ex")
-            LogNavigator.toastMessage(applicationContext, "$TAG, Error seeding database $ex")
             Result.failure()
         }
 
@@ -44,6 +53,7 @@ class MoveonDatabaseWorker @AssistedInject constructor(
 
     companion object {
         private const val TAG = "MoveonDatabaseWorker"
+        const val KEY_FILENAME = "COUNTRIES_DATA_FILENAME"
     }
 
 }
