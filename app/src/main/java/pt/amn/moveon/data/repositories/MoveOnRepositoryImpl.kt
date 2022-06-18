@@ -1,8 +1,11 @@
 package pt.amn.moveon.data.repositories
 
-import pt.amn.moveon.data.local.AppDatabase
-import pt.amn.moveon.data.local.toDomainModel
-import pt.amn.moveon.data.local.toEntityModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.map
+import kotlinx.coroutines.flow.map
+import pt.amn.moveon.data.local.*
 import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.domain.models.MoveOnPlace
 import pt.amn.moveon.domain.repositories.MoveOnRepository
@@ -13,11 +16,11 @@ import javax.inject.Singleton
 class MoveOnRepositoryImpl @Inject constructor(private val database: AppDatabase) :
     MoveOnRepository {
 
-    override suspend fun getCountries(): RepositoryResult<Country> =
-        RepositoryResult(false, fetchCountriesFromDatabase(), "")
+    override suspend fun getCountries(): LiveData<List<CountryEntity>> =
+        database.countryDao().getAll().asLiveData()
 
-    override suspend fun getVisitedCountries(): RepositoryResult<Country> =
-        RepositoryResult(false, fetchVisitedCountriesFromDatabase(), "")
+    override suspend fun getVisitedCountries(): LiveData<List<CountryEntity>> =
+        database.countryDao().getVisitedCountries().asLiveData()
 
     override suspend fun updateCountry(country: Country)
             : RepositoryResult<Boolean> {
@@ -25,11 +28,11 @@ class MoveOnRepositoryImpl @Inject constructor(private val database: AppDatabase
         return RepositoryResult(false, listOf(), "")
     }
 
-    override suspend fun getVisitedPlaces(): RepositoryResult<MoveOnPlace> =
-        RepositoryResult(false, fetchVisitedPlacesFromDatabase(), "")
+    override suspend fun getVisitedPlaces(): LiveData<List<PlaceEntity>> =
+        database.placeDao().getAll().asLiveData()
 
-    override suspend fun getVisitedPlacesInCountry(countryId: Int): RepositoryResult<MoveOnPlace> =
-        RepositoryResult(false, fetchVisitedPlacesInCountryFromDatabase(countryId), "")
+    override suspend fun getVisitedPlacesInCountry(countryId: Int): LiveData<List<PlaceEntity>> =
+        database.placeDao().getVisitedPlacesInCountry(countryId).asLiveData()
 
     override suspend fun getCountryById(id: Int): RepositoryResult<Country> =
         RepositoryResult(false, listOf(fetchCountryFromDatabase(id)), "")
@@ -49,39 +52,11 @@ class MoveOnRepositoryImpl @Inject constructor(private val database: AppDatabase
         }
     }
 
-
-    private suspend fun fetchCountriesFromDatabase(): List<Country> =
-        database.countryDao().getAll()
-            .map { countryEntity ->
-                countryEntity.toDomainModel()
-            }
-
-    private suspend fun fetchVisitedCountriesFromDatabase(): List<Country> =
-        database.countryDao().getVisitedCountries()
-            .map { countryEntity ->
-                countryEntity.toDomainModel()
-            }
-
     private suspend fun fetchCountryFromDatabase(id: Int): Country =
         database.countryDao().getCountryById(id).toDomainModel()
 
     private suspend fun updateCountryInDatabase(country: Country) =
         database.countryDao().update(country.toEntityModel())
-
-    private suspend fun fetchVisitedPlacesFromDatabase(): List<MoveOnPlace> =
-        database.placeDao().getAll()
-            .map { placeEntity ->
-                placeEntity.toDomainModel()
-            }
-
-    private suspend fun fetchVisitedPlacesInCountryFromDatabase(countryId: Int)
-    : List<MoveOnPlace> {
-        return database.placeDao().getVisitedPlacesInCountry(countryId)
-            .map { placeEntity ->
-                placeEntity.toDomainModel()
-            }
-    }
-
 
     private suspend fun addPlaceInDatabase(place: MoveOnPlace) =
         database.placeDao().insert(place.toEntityModel())

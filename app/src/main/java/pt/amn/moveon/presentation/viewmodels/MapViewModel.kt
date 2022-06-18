@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import pt.amn.moveon.data.local.CountryEntity
+import pt.amn.moveon.data.local.PlaceEntity
 import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.domain.models.MoveOnPlace
 import pt.amn.moveon.domain.repositories.MoveOnRepository
@@ -20,38 +22,17 @@ class MapViewModel @Inject constructor(
 
     private val interactor = GetCountriesUseCase(repository)
 
-    // Variable data not available outside the class. You can change them only within this class
-    private val _mutableVisitedCountries: MutableLiveData<Resource<List<Country>>> by lazy {
-        MutableLiveData<Resource<List<Country>>>().also {
-            viewModelScope.launch {
-                interactor.getVisitedCountries().also { result ->
-                    when (result.isError) {
-                        true -> _mutableVisitedCountries.postValue(Resource.error(result.description,
-                            result.dataList))
-                        false -> _mutableVisitedCountries.postValue(Resource.success(result.dataList))
-                    }
-                }
-            }
+    private lateinit var _mVisitedCountries: LiveData<List<CountryEntity>>
+    val visitedCountries : LiveData<List<CountryEntity>> get() = _mVisitedCountries
+
+    private lateinit var _mVisitedPlaces: LiveData<List<PlaceEntity>>
+    val visitedPlaces : LiveData<List<PlaceEntity>> get() = _mVisitedPlaces
+
+    init {
+        viewModelScope.launch {
+            _mVisitedCountries = interactor.getVisitedCountries()
+            _mVisitedPlaces = interactor.getVisitedPlaces()
         }
     }
-
-    private val _mutableVisitedPlaces: MutableLiveData<Resource<List<MoveOnPlace>>> by lazy {
-        MutableLiveData<Resource<List<MoveOnPlace>>>().also {
-            viewModelScope.launch {
-                interactor.getVisitedPlaces().also { result ->
-                    when (result.isError) {
-                        true -> _mutableVisitedPlaces.postValue(Resource.error(result.description,
-                            result.dataList))
-                        false -> _mutableVisitedPlaces.postValue(Resource.success(result.dataList))
-                    }
-                }
-            }
-        }
-    }
-
-    // A variable of the LiveData type will be available outside, you can only subscribe to it,
-    // you cannot change the data stored inside
-    val visitedCountries: LiveData<Resource<List<Country>>> get() = _mutableVisitedCountries
-    val visitedPlaces: LiveData<Resource<List<MoveOnPlace>>> get() = _mutableVisitedPlaces
 
 }
