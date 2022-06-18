@@ -7,8 +7,12 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
+import androidx.work.workDataOf
+import pt.amn.moveon.common.COUNTRIES_DATA_FILENAME
 import pt.amn.moveon.common.DATABASE_NAME
+import pt.amn.moveon.common.LogNavigator
 import pt.amn.moveon.workers.MoveonDatabaseWorker
+import pt.amn.moveon.workers.MoveonDatabaseWorker.Companion.KEY_FILENAME
 
 @Database(entities = [CountryEntity::class, PlaceEntity::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
@@ -34,7 +38,9 @@ abstract class AppDatabase : RoomDatabase() {
                     object : RoomDatabase.Callback() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
                             super.onCreate(db)
-                            val request = OneTimeWorkRequestBuilder<MoveonDatabaseWorker>().build()
+                            val request = OneTimeWorkRequestBuilder<MoveonDatabaseWorker>()
+                                .setInputData(workDataOf(KEY_FILENAME to COUNTRIES_DATA_FILENAME))
+                                .build()
                             WorkManager.getInstance(context).enqueue(request)
                         }
                     }
