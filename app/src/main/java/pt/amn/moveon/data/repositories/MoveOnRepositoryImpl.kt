@@ -43,6 +43,11 @@ class MoveOnRepositoryImpl @Inject constructor(private val database: AppDatabase
         return RepositoryResult(false, listOf(), "")
     }
 
+    override suspend fun deletePlace(place: MoveOnPlace): RepositoryResult<Boolean> {
+        deletePlaceInDatabase(place)
+        return RepositoryResult(false, listOf(), "")
+    }
+
     override suspend fun getPlaceByName(name: String): RepositoryResult<MoveOnPlace> {
         val result = fetchPlaceFromDatabaseByName(name)
         return if (result == null) {
@@ -60,6 +65,9 @@ class MoveOnRepositoryImpl @Inject constructor(private val database: AppDatabase
 
     private suspend fun addPlaceInDatabase(place: MoveOnPlace) =
         database.placeDao().insert(place.toEntityModel())
+
+    private suspend fun deletePlaceInDatabase(place: MoveOnPlace) =
+        database.placeDao().delete(place.toEntityModel())
 
     private suspend fun fetchPlaceFromDatabaseByName(name: String): MoveOnPlace? =
         database.placeDao().getPlaceByName(name)?.toDomainModel()

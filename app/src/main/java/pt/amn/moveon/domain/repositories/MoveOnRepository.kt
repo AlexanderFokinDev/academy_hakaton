@@ -23,6 +23,8 @@ interface MoveOnRepository {
 
     suspend fun addPlace(place: MoveOnPlace): RepositoryResult<Boolean>
 
+    suspend fun deletePlace(place: MoveOnPlace): RepositoryResult<Boolean>
+
     suspend fun getPlaceByName(name: String): RepositoryResult<MoveOnPlace>
 
 }

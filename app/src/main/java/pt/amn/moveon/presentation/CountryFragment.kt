@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.ItemTouchHelper
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
@@ -24,6 +25,7 @@ import pt.amn.moveon.common.AppUtils
 import pt.amn.moveon.common.LogNavigator
 import pt.amn.moveon.common.loadDrawableImage
 import pt.amn.moveon.data.local.toDomainModel
+import pt.amn.moveon.presentation.adapters.SimpleItemTouchHelperCallback
 
 const val ARG_COUNTRY = "country"
 
@@ -45,6 +47,7 @@ class CountryFragment : Fragment() {
             country = bundle.getParcelable<Country>(ARG_COUNTRY) ?: return
         }
         adapter = PlacesAdapter()
+
         setHasOptionsMenu(true)
     }
 
@@ -66,6 +69,9 @@ class CountryFragment : Fragment() {
             rvPlaces.adapter = adapter
             tvCountry.text = country.getLocalName()
             ivFlag.loadDrawableImage(requireContext(), binding.root, country.flagResId)
+
+            ItemTouchHelper(SimpleItemTouchHelperCallback(viewModel, adapter))
+                .attachToRecyclerView(rvPlaces)
         }
 
         viewModel.placesList.observe(viewLifecycleOwner, androidx.lifecycle.Observer { resPlaces ->
@@ -145,10 +151,13 @@ class CountryFragment : Fragment() {
             }
 
             override fun onError(status: Status) {
-                LogNavigator.debugMessage("$TAG, ${getString(R.string.place_error_occured)} $status")
-                LogNavigator.toastMessage(
-                    requireContext(), getString(R.string.place_error_occured) + status.statusMessage
-                )
+                if (status != Status.RESULT_CANCELED) {
+                    LogNavigator.debugMessage("$TAG, ${getString(R.string.place_error_occured)} $status")
+                    LogNavigator.toastMessage(
+                        requireContext(),
+                        getString(R.string.place_error_occured) + status.statusMessage
+                    )
+                }
             }
 
         })

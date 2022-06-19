@@ -5,10 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import pt.amn.moveon.databinding.ViewHolderPlaceBinding
 import pt.amn.moveon.domain.models.MoveOnPlace
+import pt.amn.moveon.presentation.viewmodels.CountryViewModel
 
-class PlacesAdapter : RecyclerView.Adapter<PlacesAdapter.PlacesViewHolder>() {
+class PlacesAdapter : RecyclerView.Adapter<PlacesAdapter.PlacesViewHolder>(),
+    ItemTouchHelperAdapter {
 
-    private var places: List<MoveOnPlace> = listOf()
+    private var places: MutableList<MoveOnPlace> = arrayListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PlacesViewHolder {
         return PlacesViewHolder(
@@ -28,7 +30,7 @@ class PlacesAdapter : RecyclerView.Adapter<PlacesAdapter.PlacesViewHolder>() {
     }
 
     fun bindPlaces(newPlaces: List<MoveOnPlace>) {
-        places = newPlaces
+        places.addAll(newPlaces)
     }
 
     class PlacesViewHolder(private val binding: ViewHolderPlaceBinding) :
@@ -42,6 +44,13 @@ class PlacesAdapter : RecyclerView.Adapter<PlacesAdapter.PlacesViewHolder>() {
 
         }
 
+    }
+
+    override fun onItemDismiss(viewModel: CountryViewModel, position: Int) {
+
+        viewModel.removePlace(places.get(position))
+        places.removeAt(position)
+        notifyItemRemoved(position)
     }
 
 }
