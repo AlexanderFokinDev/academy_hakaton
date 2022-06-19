@@ -30,7 +30,7 @@ class PlacesAdapter : RecyclerView.Adapter<PlacesAdapter.PlacesViewHolder>(),
     }
 
     fun bindPlaces(newPlaces: List<MoveOnPlace>) {
-        places.addAll(newPlaces)
+        places = newPlaces.toMutableList()
     }
 
     class PlacesViewHolder(private val binding: ViewHolderPlaceBinding) :
