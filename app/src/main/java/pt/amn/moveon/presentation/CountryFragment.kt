@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.google.android.gms.common.api.Status
 import com.google.android.libraries.places.api.Places
@@ -20,7 +21,6 @@ import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.domain.models.MoveOnPlace
 import pt.amn.moveon.presentation.adapters.PlacesAdapter
 import pt.amn.moveon.presentation.viewmodels.CountryViewModel
-import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
 import pt.amn.moveon.common.AppUtils
 import pt.amn.moveon.common.LogNavigator
 import pt.amn.moveon.common.loadDrawableImage
@@ -74,7 +74,7 @@ class CountryFragment : Fragment() {
                 .attachToRecyclerView(rvPlaces)
         }
 
-        viewModel.placesList.observe(viewLifecycleOwner, androidx.lifecycle.Observer { resPlaces ->
+        viewModel.placesList.observe(viewLifecycleOwner, Observer { resPlaces ->
             updateData(resPlaces.map { entityDB ->
                 entityDB.toDomainModel()
             })
