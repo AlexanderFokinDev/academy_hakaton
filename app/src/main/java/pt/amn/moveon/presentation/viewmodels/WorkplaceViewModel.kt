@@ -1,18 +1,15 @@
 package pt.amn.moveon.presentation.viewmodels
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import pt.amn.moveon.data.local.CountryEntity
 import pt.amn.moveon.data.local.PlaceEntity
-import pt.amn.moveon.domain.models.Country
-import pt.amn.moveon.domain.models.MoveOnPlace
 import pt.amn.moveon.domain.repositories.MoveOnRepository
-import pt.amn.moveon.domain.usecases.GetCountriesUseCase
-import pt.amn.moveon.presentation.viewmodels.utils.Resource
+import pt.amn.moveon.domain.usecases.CountriesUseCase
+import pt.amn.moveon.domain.usecases.PlacesUseCase
 import javax.inject.Inject
 
 @HiltViewModel
@@ -20,7 +17,8 @@ class WorkplaceViewModel @Inject constructor(
     private val repository: MoveOnRepository
 ) : ViewModel() {
 
-    private val interactor = GetCountriesUseCase(repository)
+    private val interactorCountries = CountriesUseCase(repository)
+    private val interactorPlaces = PlacesUseCase(repository)
 
     private lateinit var _mVisitedCountries: LiveData<List<CountryEntity>>
     val visitedCountries : LiveData<List<CountryEntity>> get() = _mVisitedCountries
@@ -31,8 +29,8 @@ class WorkplaceViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            _mVisitedCountries = interactor.getVisitedCountries()
-            _mVisitedPlaces = interactor.getVisitedPlaces()
+            _mVisitedCountries = interactorCountries.getVisitedCountries()
+            _mVisitedPlaces = interactorPlaces.getVisitedPlaces()
         }
     }
 

@@ -1,9 +1,6 @@
 package pt.amn.moveon.data.local
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -17,6 +14,9 @@ interface PlaceDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(place: PlaceEntity)
+
+    @Delete
+    suspend fun delete(place: PlaceEntity)
 
     @Query("SELECT * FROM places WHERE name = :name")
     suspend fun getPlaceByName(name: String): PlaceEntity?
