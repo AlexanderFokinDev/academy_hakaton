@@ -7,10 +7,13 @@ import kotlinx.coroutines.flow.Flow
 interface PlaceDao {
 
     @Query("SELECT * FROM places ORDER BY name")
-    fun getAll(): Flow<List<PlaceEntity>>
+    fun getAllFlow(): Flow<List<PlaceEntity>>
+
+    @Query("SELECT * FROM places ORDER BY name")
+    fun getAll(): List<PlaceEntity>
 
     @Query("SELECT * FROM places WHERE country_id = :countryId ORDER BY name")
-    fun getVisitedPlacesInCountry(countryId: Int): Flow<List<PlaceEntity>>
+    fun getVisitedPlacesInCountryFlow(countryId: Int): Flow<List<PlaceEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(place: PlaceEntity)
