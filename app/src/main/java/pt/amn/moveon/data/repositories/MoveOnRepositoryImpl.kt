@@ -1,10 +1,7 @@
 package pt.amn.moveon.data.repositories
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
-import androidx.lifecycle.map
-import kotlinx.coroutines.flow.map
 import pt.amn.moveon.data.local.*
 import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.domain.models.MoveOnPlace
@@ -17,10 +14,10 @@ class MoveOnRepositoryImpl @Inject constructor(private val database: AppDatabase
     MoveOnRepository {
 
     override suspend fun getCountries(): LiveData<List<CountryEntity>> =
-        database.countryDao().getAll().asLiveData()
+        database.countryDao().getAllFlow().asLiveData()
 
     override suspend fun getVisitedCountries(): LiveData<List<CountryEntity>> =
-        database.countryDao().getVisitedCountries().asLiveData()
+        database.countryDao().getVisitedCountriesFlow().asLiveData()
 
     override suspend fun updateCountry(country: Country)
             : RepositoryResult<Boolean> {
@@ -29,10 +26,10 @@ class MoveOnRepositoryImpl @Inject constructor(private val database: AppDatabase
     }
 
     override suspend fun getVisitedPlaces(): LiveData<List<PlaceEntity>> =
-        database.placeDao().getAll().asLiveData()
+        database.placeDao().getAllFlow().asLiveData()
 
     override suspend fun getVisitedPlacesInCountry(countryId: Int): LiveData<List<PlaceEntity>> =
-        database.placeDao().getVisitedPlacesInCountry(countryId).asLiveData()
+        database.placeDao().getVisitedPlacesInCountryFlow(countryId).asLiveData()
 
     override suspend fun getCountryById(id: Int): RepositoryResult<Country> =
         RepositoryResult(false, listOf(fetchCountryFromDatabase(id)), "")

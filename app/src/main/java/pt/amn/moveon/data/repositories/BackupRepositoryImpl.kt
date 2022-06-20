@@ -1,16 +1,19 @@
 package pt.amn.moveon.data.repositories
 
 import com.google.gson.Gson
+import kotlinx.coroutines.flow.toList
+import pt.amn.moveon.data.local.AppDatabase
 import pt.amn.moveon.domain.repositories.BackupRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class BackupRepositoryImpl @Inject constructor(): BackupRepository {
+class BackupRepositoryImpl @Inject constructor(private val database: AppDatabase) :
+    BackupRepository {
 
-    override fun getBackupDataInJson(): String {
+    override suspend fun getBackupDataInJson(): String {
 
-        /*val config1: MutableMap<String, String> = HashMap()
+        /*val countries: MutableMap<String, String> = HashMap()
         config1["component1"] = "url1"
         config1["component2"] = "url1"
         config1["component3"] = "url1"
@@ -30,8 +33,18 @@ class BackupRepositoryImpl @Inject constructor(): BackupRepository {
         Gson gson = new Gson();
         String json = gson.toJson(data);*/
 
-        val data = HashMap<String, String>()
-        data.put("Uruguay", "WasThere")
+        val countriesMap: MutableMap<Int, String> = HashMap()
+        for (countryEntity in database.countryDao().getVisitedCountries()) {
+            countriesMap[countryEntity.id] = countryEntity.nameEn
+        }
+
+        /*val placesMap: MutableMap<Int, String> = HashMap()
+        for (placeEntity in database.placeDao().getAll()) {
+            placesMap[placeEntity.id] = placeEntity.nameEn
+        }*/
+
+        val data = HashMap<String, Map<Int, String>>()
+        data.put("countries", countriesMap)
 
         val gson = Gson()
         return gson.toJson(data)
