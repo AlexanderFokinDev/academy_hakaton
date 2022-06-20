@@ -5,14 +5,18 @@ import android.content.Intent
 import android.net.Uri
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.content.FileProvider
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import pt.amn.moveon.domain.repositories.BackupRepository
 import java.io.File
 
 class BackupUseCase(private val repository: BackupRepository) {
 
-    fun getBackupData(): String = repository.getBackupDataInJson()
+    suspend fun getBackupData(): String = withContext(Dispatchers.IO) {
+        repository.getBackupDataInJson()
+    }
 
-    fun sendBackup(context: Context) {
+    suspend fun sendBackup(context: Context) = withContext(Dispatchers.IO) {
 
         val backupFile = File(context.filesDir, "backup_moveon.json")
         backupFile.writeText(getBackupData())
