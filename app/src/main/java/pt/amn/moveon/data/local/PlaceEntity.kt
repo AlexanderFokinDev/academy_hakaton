@@ -37,3 +37,14 @@ fun MoveOnPlace.toEntityModel(): PlaceEntity {
         country_id = this.country_id
     )
 }
+
+fun PlaceEntity.toJsonModel(): PlaceJson {
+
+    return PlaceJson(
+        id = this.id,
+        name = this.name,
+        latitude = this.latitude,
+        longitude = this.longitude,
+        countryID = this.country_id
+    )
+}

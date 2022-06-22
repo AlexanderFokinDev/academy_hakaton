@@ -12,7 +12,7 @@ import java.io.File
 
 class BackupUseCase(private val repository: BackupRepository) {
 
-    suspend fun getBackupData(): String = withContext(Dispatchers.IO) {
+    private suspend fun getBackupData(): String = withContext(Dispatchers.IO) {
         repository.getBackupDataInJson()
     }
 
@@ -31,6 +31,10 @@ class BackupUseCase(private val repository: BackupRepository) {
             type = "text/json"
         }
         startActivity(context, Intent.createChooser(shareIntent, "Send a backup file"), null)
+    }
+
+    suspend fun restoreBackup(context: Context, uri: Uri) = withContext(Dispatchers.IO) {
+        repository.loadDataFromBackupFile(context, uri)
     }
 
 }
