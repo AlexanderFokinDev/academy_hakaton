@@ -33,8 +33,8 @@ class BackupUseCase(private val repository: BackupRepository) {
         startActivity(context, Intent.createChooser(shareIntent, "Send a backup file"), null)
     }
 
-    suspend fun restoreBackup(context: Context, uri: Uri) = withContext(Dispatchers.IO) {
-        repository.loadDataFromBackupFile(context, uri)
+    suspend fun restoreBackup(context: Context, uri: Uri) : Boolean = withContext(Dispatchers.IO) {
+        return@withContext repository.loadDataFromBackupFile(context, uri)
     }
 
 }

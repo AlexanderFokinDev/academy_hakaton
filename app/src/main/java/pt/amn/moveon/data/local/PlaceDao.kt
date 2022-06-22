@@ -21,6 +21,9 @@ interface PlaceDao {
     @Delete
     suspend fun delete(place: PlaceEntity)
 
+    @Query("DELETE FROM places")
+    suspend fun deleteAll()
+
     @Query("SELECT * FROM places WHERE name = :name")
     suspend fun getPlaceByName(name: String): PlaceEntity?
 
