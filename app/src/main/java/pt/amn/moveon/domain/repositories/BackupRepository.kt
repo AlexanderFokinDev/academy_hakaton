@@ -7,6 +7,6 @@ interface BackupRepository {
 
     suspend fun getBackupDataInJson(): String
 
-    suspend fun loadDataFromBackupFile(context: Context, uri: Uri)
+    suspend fun loadDataFromBackupFile(context: Context, uri: Uri) : Boolean
 
 }

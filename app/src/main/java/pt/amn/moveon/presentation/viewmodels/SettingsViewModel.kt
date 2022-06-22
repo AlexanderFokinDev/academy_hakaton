@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import pt.amn.moveon.R
 import pt.amn.moveon.common.LogNavigator
 import pt.amn.moveon.domain.repositories.BackupRepository
 import pt.amn.moveon.domain.usecases.BackupUseCase
@@ -30,7 +31,9 @@ class SettingsViewModel @Inject constructor(private val repository: BackupReposi
 
         if (uri != null) {
             viewModelScope.launch {
-                interactor.restoreBackup(context, uri)
+                if (interactor.restoreBackup(context, uri)) {
+                    LogNavigator.toastMessage(context, R.string.message_restore_backup_success)
+                }
             }
         } else
         {

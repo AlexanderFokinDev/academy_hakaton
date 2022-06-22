@@ -23,4 +23,10 @@ interface CountryDao {
 
     @Update
     suspend fun update(country: CountryEntity)
+
+    @Query("UPDATE countries SET visited = 0")
+    suspend fun removeVisitedFlagForAll()
+
+    @Query("UPDATE countries SET visited = 1 WHERE id = :id")
+    suspend fun setVisitedFlag(id: Int)
 }
