@@ -1,11 +1,14 @@
 package pt.amn.moveon.presentation
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import pt.amn.moveon.BuildConfig
@@ -40,12 +43,25 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val intentGetJson = Intent().apply {
+            type = "*/json"
+            action = Intent.ACTION_GET_CONTENT
+        }
+
+        val resultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    viewModel.restoreBackup(requireContext(), result.data)
+                }
+            }
+
         binding.run {
             btCreateBackup.setOnClickListener {
                 viewModel.createBackup(requireContext())
             }
+
             btRestoreBackup.setOnClickListener {
-                LogNavigator.toastMessage(requireContext(), R.string.bt_restore_backup)
+                resultLauncher.launch(intentGetJson)
             }
 
             tvVersion.text =

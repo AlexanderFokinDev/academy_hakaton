@@ -46,3 +46,10 @@ fun Country.toEntityModel(): CountryEntity {
         alpha2 = this.alpha2
     )
 }
+
+fun CountryEntity.toJsonModel(): CountryJson {
+
+    return CountryJson(
+        id = this.id
+    )
+}
