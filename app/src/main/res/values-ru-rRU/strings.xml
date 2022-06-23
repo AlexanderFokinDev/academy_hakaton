@@ -29,7 +29,7 @@
     <string name="switch_map">Показать посещенные места</string>
 
     <!-- Settings fragment -->
-    <string name="bt_create_backup">Create backup</string>
+    <string name="bt_create_backup">Сохранить бэкап</string>
     <string name="message_restore_backup_success">Бэкап успешно восстановлен</string>
     <string name="bt_restore_backup">Восстановить бэкап</string>
     <string name="app_version">Версия %1$s</string>
