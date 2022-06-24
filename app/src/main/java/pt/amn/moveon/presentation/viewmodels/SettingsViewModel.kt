@@ -3,7 +3,9 @@ package pt.amn.moveon.presentation.viewmodels
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.webkit.PermissionRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -30,14 +32,10 @@ class SettingsViewModel @Inject constructor(private val repository: BackupReposi
 
     fun restoreBackup(context: Context, intentData: Intent?) {
 
-        var permissionGranted = false
-        when {
-            ContextCompat.checkSelfPermission(context, android.Manifest.permission.READ_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_GRANTED -> {
-                permissionGranted = true
-            }
-            //else -> requestPermissionLauncher.
-        }
+
+    }
+
+    private fun loadDataFromExternalFile(intentData: Intent?, context: Context) {
 
         val uri = intentData?.data
 
@@ -47,9 +45,11 @@ class SettingsViewModel @Inject constructor(private val repository: BackupReposi
                     LogNavigator.toastMessage(context, R.string.message_restore_backup_success)
                 }
             }
-        } else
-        {
+        } else {
             // TODO: an error message
         }
     }
+
+
+
 }

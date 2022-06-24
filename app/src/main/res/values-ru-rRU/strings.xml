@@ -37,4 +37,11 @@
     <!-- Messages -->
     <string name="error_message_internet_unavailable">"Интернет недоступен"</string>
 
+    <!-- Permissions -->
+    <string name="permission_not_granted_text">Разрешение не получено</string>
+    <string name="permission_explanation_read_storage_text">Для продолжения разрешите приложению доступ к чтению файлов, пожалуйста</string>
+    <string name="permission_dialog_denied_read_storage_text">Функция не доступна без доступа к чтению файлов. Открыть настройки приложения?</string>
+    <string name="dialog_positive_button">ОК</string>
+    <string name="dialog_negative_button">Отмена</string>
+
 </resources>

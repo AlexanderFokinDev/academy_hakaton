@@ -43,4 +43,11 @@
     <!-- Messages -->
     <string name="error_message_internet_unavailable">"Internet unavailable"</string>
 
+    <!-- Permissions -->
+    <string name="permission_not_granted_text">Permission not granted</string>
+    <string name="permission_explanation_read_storage_text">To continue grant access to read an external storage, please</string>
+    <string name="permission_dialog_denied_read_storage_text">This feature is not available without reading an external storage permissions. Open app settings?</string>
+    <string name="dialog_positive_button">OK</string>
+    <string name="dialog_negative_button">Cancel</string>
+
 </resources>
