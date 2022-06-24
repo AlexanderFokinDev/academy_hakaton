@@ -32,6 +32,7 @@ class SettingsViewModel @Inject constructor(private val repository: BackupReposi
 
     fun restoreBackup(context: Context, intentData: Intent?) {
 
+        loadDataFromExternalFile(intentData, context)
 
     }
 

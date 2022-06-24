@@ -16,8 +16,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.result.registerForActivityResult
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,11 +35,21 @@ class SettingsFragment : Fragment() {
     private var isRationaleShown = false
     private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
 
+    private lateinit var resultLauncher: ActivityResultLauncher<Intent>
+
     private val viewModel : SettingsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
+
+        resultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    viewModel.restoreBackup(requireContext(), result.data)
+                }
+            }
+
     }
 
     override fun onCreateView(
@@ -53,10 +61,8 @@ class SettingsFragment : Fragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        restorePreferencesData()
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
 
         requestPermissionLauncher =
             registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
@@ -69,6 +75,13 @@ class SettingsFragment : Fragment() {
                     )
                 }
             }
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        restorePreferencesData()
 
         binding.run {
             btCreateBackup.setOnClickListener {
@@ -158,13 +171,6 @@ class SettingsFragment : Fragment() {
             action = Intent.ACTION_GET_CONTENT
         }
 
-        val resultLauncher =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-                if (result.resultCode == Activity.RESULT_OK) {
-                    viewModel.restoreBackup(requireContext(), result.data)
-                }
-            }
-
         resultLauncher.launch(intentGetJson)
     }
 
@@ -187,6 +193,12 @@ class SettingsFragment : Fragment() {
         menu.findItem(R.id.workplaceFragment).isVisible = true
         menu.findItem(R.id.mainmenu_action_back).isVisible = false
         super.onPrepareOptionsMenu(menu)
+    }
+
+    override fun onDetach() {
+        requestPermissionLauncher.unregister()
+        resultLauncher.unregister()
+        super.onDetach()
     }
 
     override fun onDestroyView() {
