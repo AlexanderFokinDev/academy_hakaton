@@ -1,18 +1,13 @@
-package pt.amn.moveon
+package pt.amn.moveon.data.local
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
-import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.After
-import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
+import org.junit.Assert.*
 import pt.amn.moveon.data.local.AppDatabase
 import pt.amn.moveon.data.local.CountryDao
-import pt.amn.moveon.workers.MoveonDatabaseWorker
-import kotlin.jvm.Throws
 
-@RunWith(AndroidJUnit4::class)
 class CountryDaoTest {
 
     private lateinit var countryDao: CountryDao
@@ -30,8 +25,7 @@ class CountryDaoTest {
     }
 
     @Test
-    @Throws(Exception::class)
-    fun `The file for the first seeding database is exist and correct`() {
+    fun fileForSeedingIsExistAndCorrect() {
 
         /*val context = ApplicationProvider.getApplicationContext<Context>()
 
@@ -50,11 +44,10 @@ class CountryDaoTest {
                     ListenableWorker.Result.success()
                 }*/
             }*/
-
+        assertTrue(true)
     }
 
     @After
-    @Throws(Exception::class)
     fun closeDb() {
         db.close()
     }
