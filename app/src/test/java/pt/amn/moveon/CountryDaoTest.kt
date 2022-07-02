@@ -33,7 +33,7 @@ class CountryDaoTest {
     @Throws(Exception::class)
     fun `The file for the first seeding database is exist and correct`() {
 
-        val context = ApplicationProvider.getApplicationContext<Context>()
+        /*val context = ApplicationProvider.getApplicationContext<Context>()
 
         val filename = MoveonDatabaseWorker.KEY_FILENAME
 
@@ -49,7 +49,7 @@ class CountryDaoTest {
                     LogNavigator.debugMessage("${MoveonDatabaseWorker.TAG}, Success seeding database, count of countries = ${countryList.size}")
                     ListenableWorker.Result.success()
                 }*/
-            }
+            }*/
 
     }
 
