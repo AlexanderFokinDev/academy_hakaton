@@ -8,17 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.Transformations.map
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
 import pt.amn.moveon.R
 import pt.amn.moveon.databinding.FragmentWorkplaceBinding
 import pt.amn.moveon.presentation.viewmodels.WorkplaceViewModel
-import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
-import pt.amn.moveon.common.COUNT_COUNTRIES_IN_THE_WORLD
 import pt.amn.moveon.common.LogNavigator
-import pt.amn.moveon.data.local.toDomainModel
+import pt.amn.moveon.domain.usecases.StatisticsSolver
 
 @AndroidEntryPoint
 class WorkplaceFragment : Fragment() {
@@ -101,15 +98,9 @@ class WorkplaceFragment : Fragment() {
 
     private fun updateStatistics() {
 
-        val percentWorld = if (countVisitedCountries == 0) 0.0 else {
-            countVisitedCountries / (COUNT_COUNTRIES_IN_THE_WORLD / 100.0)
-        }
-
-        val level = when(countVisitedCountries) {
-            0 -> 0
-            1 -> 1
-            else -> countVisitedCountries / 10
-        }
+        val statisticsSolver = StatisticsSolver.Base()
+        val percentWorld = statisticsSolver.getPercentOfTheWorld(countVisitedCountries)
+        val level = statisticsSolver.getLevelOfTraveler(countVisitedCountries)
 
         binding.run {
 
