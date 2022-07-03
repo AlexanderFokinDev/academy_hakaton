@@ -15,7 +15,6 @@ import pt.amn.moveon.R
 import pt.amn.moveon.databinding.FragmentWorkplaceBinding
 import pt.amn.moveon.presentation.viewmodels.WorkplaceViewModel
 import pt.amn.moveon.common.LogNavigator
-import pt.amn.moveon.domain.usecases.StatisticsSolver
 
 @AndroidEntryPoint
 class WorkplaceFragment : Fragment() {
@@ -25,9 +24,6 @@ class WorkplaceFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: WorkplaceViewModel by viewModels()
-
-    private var countVisitedCountries: Int = 0
-    private var countVisitedPlaces: Int = 0
 
     private val handlerException = CoroutineExceptionHandler { _, throwable ->
         LogNavigator.debugMessage("${TAG}, exception handled ${throwable.message}")
@@ -50,15 +46,14 @@ class WorkplaceFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        updateStatistics()
 
         viewModel.visitedCountries.observe(viewLifecycleOwner) { resCountries ->
-            countVisitedCountries = resCountries.size
+            viewModel.countVisitedCountries = resCountries.size
             updateStatistics()
         }
 
         viewModel.visitedPlaces.observe(viewLifecycleOwner, Observer { resPlaces ->
-            countVisitedPlaces = resPlaces.size ?: 0
+            viewModel.countVisitedPlaces = resPlaces.size
             updateStatistics()
         })
 
@@ -98,22 +93,16 @@ class WorkplaceFragment : Fragment() {
 
     private fun updateStatistics() {
 
-        val statisticsSolver = StatisticsSolver.Base()
-        val percentWorld = statisticsSolver.getPercentOfTheWorld(countVisitedCountries)
-        val level = statisticsSolver.getLevelOfTraveler(countVisitedCountries)
+        val fullStatistics =
+            viewModel.fullStatistics.convertToStatisticsOfTravelerText(context ?: return)
 
         binding.run {
 
-            tvCountStatistics.text =
-                String.format(getString(R.string.statistics_result1), countVisitedCountries)
-
-            tvPercentStatistics.text =
-                String.format(getString(R.string.statistics_result2), percentWorld)
-
-            tvLevel.text = String.format(getString(R.string.statistics_level), level)
-            progressBarLevel.progress = level
-
-            tvPlacesStatistics.text = String.format(getString(R.string.statistics_result3), countVisitedPlaces)
+            tvCountStatistics.text = fullStatistics.countriesText
+            tvPercentStatistics.text = fullStatistics.percentText
+            tvLevel.text = fullStatistics.levelText
+            tvPlacesStatistics.text = fullStatistics.placesText
+            progressBarLevel.progress = fullStatistics.progress
 
             scope.launch {
                 playAnimation()
@@ -128,3 +117,4 @@ class WorkplaceFragment : Fragment() {
     }
 
 }
+
