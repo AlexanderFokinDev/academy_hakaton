@@ -10,10 +10,8 @@ import com.google.gson.stream.JsonReader
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
 import pt.amn.moveon.data.local.CountryEntity
-import pt.amn.moveon.common.COUNTRIES_DATA_FILENAME
 import pt.amn.moveon.common.LogNavigator
 
 @HiltWorker
