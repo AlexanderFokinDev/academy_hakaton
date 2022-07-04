@@ -28,14 +28,8 @@ class WorkplaceViewModel @Inject constructor(
     var countVisitedCountries: Int = 0
     var countVisitedPlaces: Int = 0
 
-    private val statisticsSolver = StatisticsSolver.Base()
-    private val percentWorld get() = statisticsSolver.getPercentOfTheWorld(countVisitedCountries)
-    private val level get() = statisticsSolver.getLevelOfTraveler(countVisitedCountries)
-
-    private val _mFullStatistics = UpdateStatistics.Base()
+    private val _mFullStatistics = UpdateStatistics.Base(StatisticsSolver.Base())
     val fullStatistics get() = _mFullStatistics.getStatisticsOfTraveler(
-            level,
-            percentWorld,
             countVisitedCountries,
             countVisitedPlaces
         )

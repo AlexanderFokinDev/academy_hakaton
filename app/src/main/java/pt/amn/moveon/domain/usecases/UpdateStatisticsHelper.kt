@@ -5,24 +5,25 @@ import pt.amn.moveon.R
 
 interface UpdateStatistics {
 
-    fun getStatisticsOfTraveler(level: Int,
-                                percentWorld: Double,
-                                countVisitedCountries: Int,
-                                countVisitedPlaces: Int) : StatisticsOfTraveler
+    fun getStatisticsOfTraveler(
+        countVisitedCountries: Int,
+        countVisitedPlaces: Int
+    ): StatisticsOfTraveler
 
-    class Base() : UpdateStatistics {
-        override fun getStatisticsOfTraveler(level: Int,
-                                             percentWorld: Double,
-                                             countVisitedCountries: Int,
-                                             countVisitedPlaces: Int) : StatisticsOfTraveler {
+    class Base(private val statisticsSolver: StatisticsSolver) : UpdateStatistics {
 
-            return StatisticsOfTraveler(
-                level,
-                percentWorld,
+        override fun getStatisticsOfTraveler(
+            countVisitedCountries: Int,
+            countVisitedPlaces: Int
+        ): StatisticsOfTraveler =
+
+            StatisticsOfTraveler(
+                statisticsSolver.getLevelOfTraveler(countVisitedCountries),
+                statisticsSolver.getPercentOfTheWorld(countVisitedCountries),
                 countVisitedCountries,
                 countVisitedPlaces
             )
-        }
+
     }
 }
 
