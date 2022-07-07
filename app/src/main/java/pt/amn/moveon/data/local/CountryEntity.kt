@@ -16,7 +16,8 @@ data class CountryEntity(
     val longitude: Double,
     val visited: Boolean = false,
     val flagResId: String = "",
-    val alpha2: String = ""
+    val alpha2: String = "",
+    val continent: String
 )
 
 fun CountryEntity.toDomainModel(): Country {
@@ -29,7 +30,8 @@ fun CountryEntity.toDomainModel(): Country {
         longitude = this.longitude,
         visited = this.visited,
         flagResId = this.flagResId,
-        alpha2 = this.alpha2
+        alpha2 = this.alpha2,
+        continent = this.continent
     )
 }
 
@@ -43,7 +45,8 @@ fun Country.toEntityModel(): CountryEntity {
         longitude = this.longitude,
         visited = this.visited,
         flagResId = this.flagResId,
-        alpha2 = this.alpha2
+        alpha2 = this.alpha2,
+        continent = this.continent
     )
 }
 

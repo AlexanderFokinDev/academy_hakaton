@@ -13,7 +13,8 @@ data class Country(
     val longitude: Double,
     var visited: Boolean,
     val flagResId: String,
-    val alpha2: String
+    val alpha2: String,
+    val continent: String
 ) : Parcelable {
 
     fun getLocalName(): String =
