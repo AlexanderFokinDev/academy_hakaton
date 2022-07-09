@@ -4,13 +4,13 @@ import android.content.Context
 import androidx.hilt.work.HiltWorker
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.google.gson.stream.JsonReader
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import pt.amn.moveon.data.local.CountryEntity
 import pt.amn.moveon.common.LogNavigator
 
@@ -21,21 +21,17 @@ class MoveonDatabaseWorker @AssistedInject constructor(
     private val workerDependency: WorkerDependency
 ) : CoroutineWorker(appContext, workerParams) {
 
+    @OptIn(ExperimentalSerializationApi::class)
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
         try {
             val filename = inputData.getString(KEY_FILENAME)
             if (filename != null) {
                 applicationContext.assets.open(filename).use { inputStream ->
-                    JsonReader(inputStream.reader()).use { jsonReader ->
-                        val countryType = object : TypeToken<List<CountryEntity>>() {}.type
-                        val countryList: List<CountryEntity> =
-                            Gson().fromJson(jsonReader, countryType)
+                    val countryList = Json.decodeFromStream<List<CountryEntity>>(inputStream)
+                    workerDependency.database.countryDao().insertAll(countryList)
 
-                        workerDependency.database.countryDao().insertAll(countryList)
-
-                        LogNavigator.debugMessage("$TAG, Success seeding database, count of countries = ${countryList.size}")
-                        Result.success()
-                    }
+                    LogNavigator.debugMessage("$TAG, Success seeding database, count of countries = ${countryList.size}")
+                    Result.success()
                 }
             } else
             {

@@ -1,12 +1,12 @@
 package pt.amn.moveon.data.local
 import android.content.Context
-import com.google.gson.stream.JsonReader
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.serialization.ExperimentalSerializationApi
+import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.decodeFromStream
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -35,26 +35,23 @@ class CountryDaoTest {
 
     }
 
+    @OptIn(ExperimentalSerializationApi::class)
     @Test
     fun fileForSeedingIsExistAndCorrect() {
 
         val context = ApplicationProvider.getApplicationContext<Context>()
 
-            context.assets.open(COUNTRIES_DATA_FILENAME).use { inputStream ->
-               JsonReader(inputStream.reader()).use { jsonReader ->
-                    val countryType = object : TypeToken<List<CountryEntity>>() {}.type
-                    val countryList: List<CountryEntity> =
-                        Gson().fromJson(jsonReader, countryType)
-                   assertTrue(countryList.isNotEmpty())
-                }
-            }
+        context.assets.open(COUNTRIES_DATA_FILENAME).use { inputStream ->
+            val countryList = Json.decodeFromStream<List<CountryEntity>>(inputStream)
+            assertTrue(countryList.isNotEmpty())
+        }
     }
 
     @Test
     fun operationCRUDCorrected() {
-        val country1 = CountryEntity(1001, "Test1001", "Тест1001", 0.0, 0.0)
-        val country2 = CountryEntity(1002, "Test1002", "Тест1002", 0.0, 0.0)
-        val country3 = CountryEntity(1003, "Test1003", "Тест1003", 0.0, 0.0)
+        val country1 = CountryEntity(1001, "Test1001", "Тест1001", 0.0, 0.0, continent = "Africa")
+        val country2 = CountryEntity(1002, "Test1002", "Тест1002", 0.0, 0.0, continent = "South America")
+        val country3 = CountryEntity(1003, "Test1003", "Тест1003", 0.0, 0.0, continent = "Australia")
         val countries = listOf<CountryEntity>(country1, country2, country3)
 
         scope.launch {

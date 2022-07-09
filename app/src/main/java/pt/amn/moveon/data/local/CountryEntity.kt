@@ -3,8 +3,10 @@ package pt.amn.moveon.data.local
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import kotlinx.serialization.Serializable
 import pt.amn.moveon.domain.models.Country
 
+@Serializable
 @Entity(tableName = "countries")
 data class CountryEntity(
     @PrimaryKey
@@ -17,7 +19,7 @@ data class CountryEntity(
     val visited: Boolean = false,
     val flagResId: String = "",
     val alpha2: String = "",
-    val continent: String
+    val continent: String = ""
 )
 
 fun CountryEntity.toDomainModel(): Country {
