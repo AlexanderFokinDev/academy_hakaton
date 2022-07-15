@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import pt.amn.moveon.R
 import pt.amn.moveon.common.LogNavigator
@@ -17,6 +18,7 @@ import pt.amn.moveon.databinding.FragmentCountriesBinding
 import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.presentation.adapters.CountriesAdapter
 import pt.amn.moveon.presentation.adapters.OnRecyclerCountriesClicked
+import pt.amn.moveon.presentation.adapters.decorations.HorizontalDividerItemDecoration
 import pt.amn.moveon.presentation.viewmodels.CountriesViewModel
 import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
 
@@ -29,11 +31,11 @@ class CountriesFragment : Fragment() {
 
     private val viewModel: CountriesViewModel by viewModels()
 
-    private lateinit var adapter: CountriesAdapter
+    private lateinit var countriesAdapter: CountriesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = CountriesAdapter(requireContext(), recyclerListener)
+        countriesAdapter = CountriesAdapter(requireContext(), recyclerListener)
         setHasOptionsMenu(true)
     }
 
@@ -49,8 +51,10 @@ class CountriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.run {
-            rvCountries.adapter = adapter
+        with(binding) {
+            rvCountries.adapter = countriesAdapter
+            //rvCountries.addItemDecoration(HorizontalDividerItemDecoration(50))
+            rvCountries.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
 
         viewModel.countriesList.observe(viewLifecycleOwner, Observer { resCountries ->
@@ -72,8 +76,8 @@ class CountriesFragment : Fragment() {
     }
 
     private fun updateData(countriesList: List<Country>) {
-        adapter.bindCountries(countriesList)
-        adapter.notifyDataSetChanged()
+        countriesAdapter.bindCountries(countriesList)
+        countriesAdapter.notifyDataSetChanged()
     }
 
     private val recyclerListener = object : OnRecyclerCountriesClicked {
