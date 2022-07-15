@@ -19,8 +19,10 @@ class HorizontalDividerItemDecoration(
         val oneSideHorizontalDivider = divider / 2
 
         with(outRect) {
-            left = oneSideHorizontalDivider
-            right = oneSideHorizontalDivider
+            //left = oneSideHorizontalDivider
+            //right = oneSideHorizontalDivider
+            top = oneSideHorizontalDivider
+            bottom = oneSideHorizontalDivider
         }
     }
 }
