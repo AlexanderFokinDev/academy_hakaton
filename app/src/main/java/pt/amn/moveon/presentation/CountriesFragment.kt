@@ -53,7 +53,7 @@ class CountriesFragment : Fragment() {
 
         with(binding) {
             rvCountries.adapter = countriesAdapter
-            //rvCountries.addItemDecoration(HorizontalDividerItemDecoration(50))
+            rvCountries.addItemDecoration(HorizontalDividerItemDecoration(50))
             rvCountries.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
         }
 
