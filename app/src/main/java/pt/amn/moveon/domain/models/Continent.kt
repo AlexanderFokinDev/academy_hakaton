@@ -5,16 +5,10 @@ import kotlinx.parcelize.Parcelize
 import java.util.*
 
 @Parcelize
-data class Country(
+data class Continent(
     val id: Int,
     val nameEn: String,
-    val nameRu: String,
-    val latitude: Double,
-    val longitude: Double,
-    var visited: Boolean,
-    val flagResId: String,
-    val alpha2: String,
-    val continent: Continent
+    val nameRu: String
 ) : Parcelable {
 
     fun getLocalName(): String =

@@ -12,15 +12,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import pt.amn.moveon.R
-import pt.amn.moveon.common.LogNavigator
 import pt.amn.moveon.data.local.toDomainModel
 import pt.amn.moveon.databinding.FragmentCountriesBinding
 import pt.amn.moveon.domain.models.Country
-import pt.amn.moveon.presentation.adapters.CountriesAdapter
+import pt.amn.moveon.presentation.adapters.CountriesComplexAdapter
 import pt.amn.moveon.presentation.adapters.OnRecyclerCountriesClicked
 import pt.amn.moveon.presentation.adapters.decorations.HorizontalDividerItemDecoration
 import pt.amn.moveon.presentation.viewmodels.CountriesViewModel
-import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
 
 @AndroidEntryPoint
 class CountriesFragment : Fragment() {
@@ -31,11 +29,11 @@ class CountriesFragment : Fragment() {
 
     private val viewModel: CountriesViewModel by viewModels()
 
-    private lateinit var countriesAdapter: CountriesAdapter
+    private lateinit var countriesAdapter: CountriesComplexAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        countriesAdapter = CountriesAdapter(requireContext(), recyclerListener)
+        countriesAdapter = CountriesComplexAdapter(requireContext(), recyclerListener)
         setHasOptionsMenu(true)
     }
 

@@ -7,7 +7,7 @@
     "nameRu": "Афганистан",
     "flagResId": "flag_af",
     "alpha2": "AF",
-    "continent": ""
+    "continent": 1
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@
     "nameRu": "Албания",
     "flagResId": "flag_al",
     "alpha2": "AL",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 3,
@@ -26,7 +26,8 @@
     "nameEn": "Algeria",
     "nameRu": "Алжир",
     "flagResId": "flag_dz",
-    "alpha2": "DZ"
+    "alpha2": "DZ",
+    "continent": 1
   },
   {
     "id": 4,
@@ -36,7 +37,7 @@
     "nameRu": "Андорра",
     "flagResId": "flag_ad",
     "alpha2": "AD",
-    "continent": "Eurasia"
+    "continent": 2
   },
   {
     "id": 5,
@@ -45,7 +46,8 @@
     "nameEn": "Angola",
     "nameRu": "Ангола",
     "flagResId": "flag_ao",
-    "alpha2": "AO"
+    "alpha2": "AO",
+    "continent": 2
   },
   {
     "id": 6,
@@ -54,7 +56,8 @@
     "nameEn": "Antigua and Barbuda",
     "nameRu": "Антигуа и Барбуда",
     "flagResId": "flag_ag",
-    "alpha2": "AG"
+    "alpha2": "AG",
+    "continent": 7
   },
   {
     "id": 7,
@@ -63,7 +66,8 @@
     "nameEn": "Argentina",
     "nameRu": "Аргентина",
     "flagResId": "flag_ar",
-    "alpha2": "AR"
+    "alpha2": "AR",
+    "continent": 4
   },
   {
     "id": 8,
@@ -73,7 +77,7 @@
     "nameRu": "Армения",
     "flagResId": "flag_am",
     "alpha2": "AM",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 9,
@@ -82,7 +86,8 @@
     "nameEn": "Australia",
     "nameRu": "Австралия",
     "flagResId": "flag_au",
-    "alpha2": "AU"
+    "alpha2": "AU",
+    "continent": 5
   },
   {
     "id": 10,
@@ -92,7 +97,7 @@
     "nameRu": "Австрия",
     "flagResId": "flag_at",
     "alpha2": "AT",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 11,
@@ -102,7 +107,7 @@
     "nameRu": "Азербайджан",
     "flagResId": "flag_az",
     "alpha2": "AZ",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 12,
@@ -111,7 +116,8 @@
     "nameEn": "Bahamas",
     "nameRu": "Багамские Острова",
     "flagResId": "flag_bs",
-    "alpha2": "BS"
+    "alpha2": "BS",
+    "continent": 7
   },
   {
     "id": 13,
@@ -120,7 +126,8 @@
     "nameEn": "Bahrain",
     "nameRu": "Бахрейн",
     "flagResId": "flag_bh",
-    "alpha2": "BH"
+    "alpha2": "BH",
+    "continent": 1
   },
   {
     "id": 14,
@@ -129,7 +136,8 @@
     "nameEn": "Bangladesh",
     "nameRu": "Бангладеш",
     "flagResId": "flag_bd",
-    "alpha2": "BD"
+    "alpha2": "BD",
+    "continent": 1
   },
   {
     "id": 15,
@@ -138,7 +146,8 @@
     "nameEn": "Barbados",
     "nameRu": "Барбадос",
     "flagResId": "flag_bb",
-    "alpha2": "BB"
+    "alpha2": "BB",
+    "continent": 7
   },
   {
     "id": 16,
@@ -148,7 +157,7 @@
     "nameRu": "Бельгия",
     "flagResId": "flag_be",
     "alpha2": "BE",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 17,
@@ -157,7 +166,8 @@
     "nameEn": "Belize",
     "nameRu": "Белиз",
     "flagResId": "flag_bz",
-    "alpha2": "BZ"
+    "alpha2": "BZ",
+    "continent": 3
   },
   {
     "id": 18,
@@ -167,7 +177,7 @@
     "nameRu": "Белоруссия",
     "flagResId": "flag_by",
     "alpha2": "BY",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 19,
@@ -176,7 +186,8 @@
     "nameEn": "Benin",
     "nameRu": "Бенин",
     "flagResId": "flag_bj",
-    "alpha2": "BJ"
+    "alpha2": "BJ",
+    "continent": 2
   },
   {
     "id": 20,
@@ -185,7 +196,8 @@
     "nameEn": "Bolivia",
     "nameRu": "Боливия",
     "flagResId": "flag_bo",
-    "alpha2": "BO"
+    "alpha2": "BO",
+    "continent": 4
   },
   {
     "id": 21,
@@ -195,7 +207,7 @@
     "nameRu": "Босния и Герцеговина",
     "flagResId": "flag_ba",
     "alpha2": "BA",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 22,
@@ -204,7 +216,8 @@
     "nameEn": "Botswana",
     "nameRu": "Ботсвана",
     "flagResId": "flag_bw",
-    "alpha2": "BW"
+    "alpha2": "BW",
+    "continent": 2
   },
   {
     "id": 23,
@@ -213,7 +226,8 @@
     "nameEn": "Brazil",
     "nameRu": "Бразилия",
     "flagResId": "flag_br",
-    "alpha2": "BR"
+    "alpha2": "BR",
+    "continent": 4
   },
   {
     "id": 24,
@@ -222,7 +236,8 @@
     "nameEn": "Brunei",
     "nameRu": "Бруней",
     "flagResId": "flag_bn",
-    "alpha2": "BN"
+    "alpha2": "BN",
+    "continent": 1
   },
   {
     "id": 25,
@@ -232,7 +247,7 @@
     "nameRu": "Болгария",
     "flagResId": "flag_bg",
     "alpha2": "BG",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 26,
@@ -241,7 +256,8 @@
     "nameEn": "Burkina Faso",
     "nameRu": "Буркина-Фасо",
     "flagResId": "flag_bf",
-    "alpha2": "BF"
+    "alpha2": "BF",
+    "continent": 2
   },
   {
     "id": 27,
@@ -250,7 +266,8 @@
     "nameEn": "Burundi",
     "nameRu": "Бурунди",
     "flagResId": "flag_bi",
-    "alpha2": "BI"
+    "alpha2": "BI",
+    "continent": 2
   },
   {
     "id": 28,
@@ -259,7 +276,8 @@
     "nameEn": "Butane",
     "nameRu": "Бутан",
     "flagResId": "flag_bt",
-    "alpha2": "BT"
+    "alpha2": "BT",
+    "continent": 1
   },
   {
     "id": 29,
@@ -268,7 +286,8 @@
     "nameEn": "Cambodia",
     "nameRu": "Камбоджа",
     "flagResId": "flag_kh",
-    "alpha2": "KH"
+    "alpha2": "KH",
+    "continent": 1
   },
   {
     "id": 30,
@@ -277,7 +296,8 @@
     "nameEn": "Cameroon",
     "nameRu": "Камерун",
     "flagResId": "flag_cm",
-    "alpha2": "CM"
+    "alpha2": "CM",
+    "continent": 2
   },
   {
     "id": 31,
@@ -286,7 +306,8 @@
     "nameEn": "Canada",
     "nameRu": "Канада",
     "flagResId": "flag_ca",
-    "alpha2": "CA"
+    "alpha2": "CA",
+    "continent": 3
   },
   {
     "id": 32,
@@ -295,7 +316,8 @@
     "nameEn": "Cape Verde",
     "nameRu": "Кабо-Верде",
     "flagResId": "flag_cv",
-    "alpha2": "CV"
+    "alpha2": "CV",
+    "continent": 7
   },
   {
     "id": 33,
@@ -304,7 +326,8 @@
     "nameEn": "Central African Republic",
     "nameRu": "Центральноафриканская Республика",
     "flagResId": "flag_cf",
-    "alpha2": "CF"
+    "alpha2": "CF",
+    "continent": 2
   },
   {
     "id": 34,
@@ -313,7 +336,8 @@
     "nameEn": "Chad",
     "nameRu": "Чад",
     "flagResId": "flag_td",
-    "alpha2": "TD"
+    "alpha2": "TD",
+    "continent": 2
   },
   {
     "id": 35,
@@ -322,7 +346,8 @@
     "nameEn": "Chile",
     "nameRu": "Чили",
     "flagResId": "flag_cl",
-    "alpha2": "CL"
+    "alpha2": "CL",
+    "continent": 4
   },
   {
     "id": 36,
@@ -331,7 +356,8 @@
     "nameEn": "Colombia",
     "nameRu": "Колумбия",
     "flagResId": "flag_co",
-    "alpha2": "CO"
+    "alpha2": "CO",
+    "continent": 4
   },
   {
     "id": 37,
@@ -340,7 +366,8 @@
     "nameEn": "Comoros",
     "nameRu": "Коморы",
     "flagResId": "flag_km",
-    "alpha2": "KM"
+    "alpha2": "KM",
+    "continent": 7
   },
   {
     "id": 38,
@@ -349,7 +376,8 @@
     "nameEn": "Costa Rica",
     "nameRu": "Коста-Рика",
     "flagResId": "flag_cr",
-    "alpha2": "CR"
+    "alpha2": "CR",
+    "continent": 4
   },
   {
     "id": 39,
@@ -358,7 +386,8 @@
     "nameEn": "Cote d'Ivoire",
     "nameRu": "Кот-д’Ивуар",
     "flagResId": "flag_ci",
-    "alpha2": "CI"
+    "alpha2": "CI",
+    "continent": 2
   },
   {
     "id": 40,
@@ -368,7 +397,7 @@
     "nameRu": "Хорватия",
     "flagResId": "flag_hr",
     "alpha2": "HR",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 41,
@@ -377,7 +406,8 @@
     "nameEn": "Cuba",
     "nameRu": "Куба",
     "flagResId": "flag_cu",
-    "alpha2": "CU"
+    "alpha2": "CU",
+    "continent": 7
   },
   {
     "id": 42,
@@ -386,7 +416,8 @@
     "nameEn": "Cyprus",
     "nameRu": "Кипр",
     "flagResId": "flag_cy",
-    "alpha2": "CY"
+    "alpha2": "CY",
+    "continent": 7
   },
   {
     "id": 43,
@@ -396,7 +427,7 @@
     "nameRu": "Чехия",
     "flagResId": "flag_cz",
     "alpha2": "CZ",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 44,
@@ -405,7 +436,8 @@
     "nameEn": "Democratic People's Republic of Korea",
     "nameRu": "Корейская Народно-Демократическая Республика",
     "flagResId": "flag_kp",
-    "alpha2": "KP"
+    "alpha2": "KP",
+    "continent": 1
   },
   {
     "id": 45,
@@ -414,7 +446,8 @@
     "nameEn": "Democratic Republic of Congo",
     "nameRu": "Демократическая Республика Конго",
     "flagResId": "flag_cd",
-    "alpha2": "CD"
+    "alpha2": "CD",
+    "continent": 2
   },
   {
     "id": 46,
@@ -424,7 +457,7 @@
     "nameRu": "Дания",
     "flagResId": "flag_dk",
     "alpha2": "DK",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 47,
@@ -433,7 +466,8 @@
     "nameEn": "Djibouti",
     "nameRu": "Джибути",
     "flagResId": "flag_dj",
-    "alpha2": "DJ"
+    "alpha2": "DJ",
+    "continent": 2
   },
   {
     "id": 48,
@@ -442,7 +476,8 @@
     "nameEn": "Dominica",
     "nameRu": "Доминика",
     "flagResId": "flag_dm",
-    "alpha2": "DM"
+    "alpha2": "DM",
+    "continent": 7
   },
   {
     "id": 49,
@@ -451,7 +486,8 @@
     "nameEn": "Dominican Republic",
     "nameRu": "Доминиканская Республика",
     "flagResId": "flag_do",
-    "alpha2": "DO"
+    "alpha2": "DO",
+    "continent": 7
   },
   {
     "id": 50,
@@ -460,7 +496,8 @@
     "nameEn": "East Timor",
     "nameRu": "Восточный Тимор",
     "flagResId": "flag_tl",
-    "alpha2": "TL"
+    "alpha2": "TL",
+    "continent": 1
   },
   {
     "id": 51,
@@ -469,7 +506,8 @@
     "nameEn": "Ecuador",
     "nameRu": "Эквадор",
     "flagResId": "flag_ec",
-    "alpha2": "EC"
+    "alpha2": "EC",
+    "continent": 4
   },
   {
     "id": 52,
@@ -478,7 +516,8 @@
     "nameEn": "Egypt",
     "nameRu": "Египет",
     "flagResId": "flag_eg",
-    "alpha2": "EG"
+    "alpha2": "EG",
+    "continent": 2
   },
   {
     "id": 53,
@@ -487,7 +526,8 @@
     "nameEn": "Equatorial Guinea",
     "nameRu": "Экваториальная Гвинея",
     "flagResId": "flag_gq",
-    "alpha2": "GQ"
+    "alpha2": "GQ",
+    "continent": 2
   },
   {
     "id": 54,
@@ -496,7 +536,8 @@
     "nameEn": "Eritrea",
     "nameRu": "Эритрея",
     "flagResId": "flag_er",
-    "alpha2": "ER"
+    "alpha2": "ER",
+    "continent": 2
   },
   {
     "id": 55,
@@ -506,7 +547,7 @@
     "nameRu": "Эстония",
     "flagResId": "flag_ee",
     "alpha2": "EE",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 56,
@@ -515,7 +556,8 @@
     "nameEn": "Ethiopia",
     "nameRu": "Эфиопия",
     "flagResId": "flag_et",
-    "alpha2": "ET"
+    "alpha2": "ET",
+    "continent": 2
   },
   {
     "id": 57,
@@ -524,7 +566,8 @@
     "nameEn": "Federated States of Micronesia",
     "nameRu": "Федеративные Штаты Микронезии",
     "flagResId": "flag_fm",
-    "alpha2": "FM"
+    "alpha2": "FM",
+    "continent": 7
   },
   {
     "id": 58,
@@ -533,7 +576,8 @@
     "nameEn": "Fiji",
     "nameRu": "Фиджи",
     "flagResId": "flag_fj",
-    "alpha2": "FJ"
+    "alpha2": "FJ",
+    "continent": 7
   },
   {
     "id": 59,
@@ -543,7 +587,7 @@
     "nameRu": "Финляндия",
     "flagResId": "flag_fi",
     "alpha2": "FI",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 60,
@@ -553,7 +597,7 @@
     "nameRu": "Франция",
     "flagResId": "flag_fr",
     "alpha2": "FR",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 61,
@@ -562,7 +606,8 @@
     "nameEn": "Gabon",
     "nameRu": "Габон",
     "flagResId": "flag_ga",
-    "alpha2": "GA"
+    "alpha2": "GA",
+    "continent": 2
   },
   {
     "id": 62,
@@ -571,7 +616,8 @@
     "nameEn": "Gambia",
     "nameRu": "Гамбия",
     "flagResId": "flag_gm",
-    "alpha2": "GM"
+    "alpha2": "GM",
+    "continent": 2
   },
   {
     "id": 63,
@@ -581,7 +627,7 @@
     "nameRu": "Грузия",
     "flagResId": "flag_ge",
     "alpha2": "GE",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 64,
@@ -591,7 +637,7 @@
     "nameRu": "Германия",
     "flagResId": "flag_de",
     "alpha2": "DE",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 65,
@@ -600,7 +646,8 @@
     "nameEn": "Ghana",
     "nameRu": "Гана",
     "flagResId": "flag_gh",
-    "alpha2": "GH"
+    "alpha2": "GH",
+    "continent": 2
   },
   {
     "id": 66,
@@ -610,7 +657,7 @@
     "nameRu": "Великобритания",
     "flagResId": "flag_gb",
     "alpha2": "GB",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 67,
@@ -620,7 +667,7 @@
     "nameRu": "Греция",
     "flagResId": "flag_gr",
     "alpha2": "GR",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 68,
@@ -629,7 +676,8 @@
     "nameEn": "Grenada",
     "nameRu": "Гренада",
     "flagResId": "flag_gd",
-    "alpha2": "GD"
+    "alpha2": "GD",
+    "continent": 7
   },
   {
     "id": 69,
@@ -638,7 +686,8 @@
     "nameEn": "Guatemala",
     "nameRu": "Гватемала",
     "flagResId": "flag_gt",
-    "alpha2": "GT"
+    "alpha2": "GT",
+    "continent": 3
   },
   {
     "id": 70,
@@ -647,7 +696,8 @@
     "nameEn": "Guinea bissau",
     "nameRu": "Гвинея-Бисау",
     "flagResId": "flag_gw",
-    "alpha2": "GW"
+    "alpha2": "GW",
+    "continent": 2
   },
   {
     "id": 71,
@@ -656,7 +706,8 @@
     "nameEn": "Guinea",
     "nameRu": "Гвинея",
     "flagResId": "flag_gn",
-    "alpha2": "GN"
+    "alpha2": "GN",
+    "continent": 2
   },
   {
     "id": 72,
@@ -665,7 +716,8 @@
     "nameEn": "Guyana",
     "nameRu": "Гайана",
     "flagResId": "flag_gy",
-    "alpha2": "GY"
+    "alpha2": "GY",
+    "continent": 4
   },
   {
     "id": 73,
@@ -674,7 +726,8 @@
     "nameEn": "Haiti",
     "nameRu": "Гаити",
     "flagResId": "flag_ht",
-    "alpha2": "HT"
+    "alpha2": "HT",
+    "continent": 7
   },
   {
     "id": 74,
@@ -683,7 +736,8 @@
     "nameEn": "Honduras",
     "nameRu": "Гондурас",
     "flagResId": "flag_hn",
-    "alpha2": "HN"
+    "alpha2": "HN",
+    "continent": 3
   },
   {
     "id": 75,
@@ -693,7 +747,7 @@
     "nameRu": "Венгрия",
     "flagResId": "flag_hu",
     "alpha2": "HU",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 76,
@@ -703,7 +757,7 @@
     "nameRu": "Исландия",
     "flagResId": "flag_is",
     "alpha2": "IS",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 77,
@@ -712,7 +766,8 @@
     "nameEn": "India",
     "nameRu": "Индия",
     "flagResId": "flag_in",
-    "alpha2": "IN"
+    "alpha2": "IN",
+    "continent": 1
   },
   {
     "id": 78,
@@ -721,7 +776,8 @@
     "nameEn": "Indonesia",
     "nameRu": "Индонезия",
     "flagResId": "flag_id",
-    "alpha2": "ID"
+    "alpha2": "ID",
+    "continent": 1
   },
   {
     "id": 79,
@@ -730,7 +786,8 @@
     "nameEn": "Iran",
     "nameRu": "Иран",
     "flagResId": "flag_ir",
-    "alpha2": "IR"
+    "alpha2": "IR",
+    "continent": 1
   },
   {
     "id": 80,
@@ -739,7 +796,8 @@
     "nameEn": "Iraq",
     "nameRu": "Ирак",
     "flagResId": "flag_iq",
-    "alpha2": "IQ"
+    "alpha2": "IQ",
+    "continent": 1
   },
   {
     "id": 81,
@@ -749,7 +807,7 @@
     "nameRu": "Ирландия",
     "flagResId": "flag_ie",
     "alpha2": "IE",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 82,
@@ -759,7 +817,7 @@
     "nameRu": "Израиль",
     "flagResId": "flag_il",
     "alpha2": "IL",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 83,
@@ -769,7 +827,7 @@
     "nameRu": "Италия",
     "flagResId": "flag_it",
     "alpha2": "IT",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 84,
@@ -778,7 +836,8 @@
     "nameEn": "Jamaica",
     "nameRu": "Ямайка",
     "flagResId": "flag_jm",
-    "alpha2": "JM"
+    "alpha2": "JM",
+    "continent": 7
   },
   {
     "id": 85,
@@ -787,7 +846,8 @@
     "nameEn": "Japan",
     "nameRu": "Япония",
     "flagResId": "flag_jp",
-    "alpha2": "JP"
+    "alpha2": "JP",
+    "continent": 7
   },
   {
     "id": 86,
@@ -796,7 +856,8 @@
     "nameEn": "Jordan",
     "nameRu": "Иордания",
     "flagResId": "flag_io",
-    "alpha2": "JO"
+    "alpha2": "JO",
+    "continent": 1
   },
   {
     "id": 87,
@@ -806,7 +867,7 @@
     "nameRu": "Казахстан",
     "flagResId": "flag_kz",
     "alpha2": "KZ",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 88,
@@ -815,7 +876,8 @@
     "nameEn": "Kenya",
     "nameRu": "Кения",
     "flagResId": "flag_ke",
-    "alpha2": "KE"
+    "alpha2": "KE",
+    "continent": 2
   },
   {
     "id": 89,
@@ -824,7 +886,8 @@
     "nameEn": "Kiribati",
     "nameRu": "Кирибати",
     "flagResId": "flag_ki",
-    "alpha2": "KI"
+    "alpha2": "KI",
+    "continent": 7
   },
   {
     "id": 90,
@@ -833,7 +896,8 @@
     "nameEn": "Kuwait",
     "nameRu": "Кувейт",
     "flagResId": "flag_kw",
-    "alpha2": "KW"
+    "alpha2": "KW",
+    "continent": 1
   },
   {
     "id": 91,
@@ -843,7 +907,7 @@
     "nameRu": "Киргизия",
     "flagResId": "flag_kg",
     "alpha2": "KG",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 92,
@@ -852,7 +916,8 @@
     "nameEn": "Laos",
     "nameRu": "Лаос",
     "flagResId": "flag_la",
-    "alpha2": "LA"
+    "alpha2": "LA",
+    "continent": 1
   },
   {
     "id": 93,
@@ -862,7 +927,7 @@
     "nameRu": "Латвия",
     "flagResId": "flag_lv",
     "alpha2": "LV",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 94,
@@ -871,7 +936,8 @@
     "nameEn": "Lebanon",
     "nameRu": "Ливан",
     "flagResId": "flag_lb",
-    "alpha2": "LB"
+    "alpha2": "LB",
+    "continent": 1
   },
   {
     "id": 95,
@@ -880,7 +946,8 @@
     "nameEn": "Lesotho",
     "nameRu": "Лесото",
     "flagResId": "flag_ls",
-    "alpha2": "LS"
+    "alpha2": "LS",
+    "continent": 2
   },
   {
     "id": 96,
@@ -889,7 +956,8 @@
     "nameEn": "Liberia",
     "nameRu": "Либерия",
     "flagResId": "flag_lr",
-    "alpha2": "LR"
+    "alpha2": "LR",
+    "continent": 2
   },
   {
     "id": 97,
@@ -898,7 +966,8 @@
     "nameEn": "Libya",
     "nameRu": "Ливия",
     "flagResId": "flag_ly",
-    "alpha2": "LY"
+    "alpha2": "LY",
+    "continent": 2
   },
   {
     "id": 98,
@@ -908,7 +977,7 @@
     "nameRu": "Лихтенштейн",
     "flagResId": "flag_li",
     "alpha2": "LI",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 99,
@@ -918,7 +987,7 @@
     "nameRu": "Литва",
     "flagResId": "flag_lt",
     "alpha2": "LT",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 100,
@@ -928,7 +997,7 @@
     "nameRu": "Люксембург",
     "flagResId": "flag_lu",
     "alpha2": "LU",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 101,
@@ -938,7 +1007,7 @@
     "nameRu": "Македония",
     "flagResId": "flag_mk",
     "alpha2": "MK",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 102,
@@ -947,7 +1016,8 @@
     "nameEn": "Madagascar",
     "nameRu": "Мадагаскар",
     "flagResId": "flag_mg",
-    "alpha2": "MG"
+    "alpha2": "MG",
+    "continent": 7
   },
   {
     "id": 103,
@@ -956,7 +1026,8 @@
     "nameEn": "Malawi",
     "nameRu": "Малави",
     "flagResId": "flag_mw",
-    "alpha2": "MW"
+    "alpha2": "MW",
+    "continent": 2
   },
   {
     "id": 104,
@@ -965,7 +1036,8 @@
     "nameEn": "Malaysia",
     "nameRu": "Малайзия",
     "flagResId": "flag_my",
-    "alpha2": "MY"
+    "alpha2": "MY",
+    "continent": 1
   },
   {
     "id": 105,
@@ -974,7 +1046,8 @@
     "nameEn": "Maldives",
     "nameRu": "Мальдивы",
     "flagResId": "flag_mv",
-    "alpha2": "MV"
+    "alpha2": "MV",
+    "continent": 7
   },
   {
     "id": 106,
@@ -983,7 +1056,8 @@
     "nameEn": "Mali",
     "nameRu": "Мали",
     "flagResId": "flag_ml",
-    "alpha2": "ML"
+    "alpha2": "ML",
+    "continent": 2
   },
   {
     "id": 107,
@@ -992,7 +1066,8 @@
     "nameEn": "Malta",
     "nameRu": "Мальта",
     "flagResId": "flag_mt",
-    "alpha2": "MT"
+    "alpha2": "MT",
+    "continent": 7
   },
   {
     "id": 108,
@@ -1001,7 +1076,8 @@
     "nameEn": "Marshall Islands",
     "nameRu": "Маршалловы Острова",
     "flagResId": "flag_mh",
-    "alpha2": "MH"
+    "alpha2": "MH",
+    "continent": 7
   },
   {
     "id": 109,
@@ -1010,7 +1086,8 @@
     "nameEn": "Mauritania",
     "nameRu": "Мавритания",
     "flagResId": "flag_mr",
-    "alpha2": "MR"
+    "alpha2": "MR",
+    "continent": 2
   },
   {
     "id": 110,
@@ -1019,7 +1096,8 @@
     "nameEn": "Mauritius",
     "nameRu": "Маврикий",
     "flagResId": "flag_mu",
-    "alpha2": "MU"
+    "alpha2": "MU",
+    "continent": 7
   },
   {
     "id": 111,
@@ -1028,7 +1106,8 @@
     "nameEn": "Mexico",
     "nameRu": "Мексика",
     "flagResId": "flag_mx",
-    "alpha2": "MX"
+    "alpha2": "MX",
+    "continent": 3
   },
   {
     "id": 112,
@@ -1038,7 +1117,7 @@
     "nameRu": "Молдавия",
     "flagResId": "flag_md",
     "alpha2": "MD",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 113,
@@ -1048,7 +1127,7 @@
     "nameRu": "Монако",
     "flagResId": "flag_mc",
     "alpha2": "MC",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 114,
@@ -1058,7 +1137,7 @@
     "nameRu": "Монголия",
     "flagResId": "flag_mn",
     "alpha2": "MN",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 115,
@@ -1068,7 +1147,7 @@
     "nameRu": "Черногория",
     "flagResId": "flag_me",
     "alpha2": "ME",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 116,
@@ -1077,7 +1156,8 @@
     "nameEn": "Morocco",
     "nameRu": "Марокко",
     "flagResId": "flag_ma",
-    "alpha2": "MA"
+    "alpha2": "MA",
+    "continent": 2
   },
   {
     "id": 117,
@@ -1086,7 +1166,8 @@
     "nameEn": "Mozambique",
     "nameRu": "Мозамбик",
     "flagResId": "flag_mz",
-    "alpha2": "MZ"
+    "alpha2": "MZ",
+    "continent": 2
   },
   {
     "id": 118,
@@ -1095,7 +1176,8 @@
     "nameEn": "Myanmar",
     "nameRu": "Мьянма",
     "flagResId": "flag_mm",
-    "alpha2": "MM"
+    "alpha2": "MM",
+    "continent": 1
   },
   {
     "id": 119,
@@ -1104,7 +1186,8 @@
     "nameEn": "Namibia",
     "nameRu": "Намибия",
     "flagResId": "flag_na",
-    "alpha2": "NA"
+    "alpha2": "NA",
+    "continent": 2
   },
   {
     "id": 120,
@@ -1113,7 +1196,8 @@
     "nameEn": "Nauru",
     "nameRu": "Науру",
     "flagResId": "flag_nr",
-    "alpha2": "NR"
+    "alpha2": "NR",
+    "continent": 7
   },
   {
     "id": 121,
@@ -1122,7 +1206,8 @@
     "nameEn": "Nepal",
     "nameRu": "Непал",
     "flagResId": "flag_np",
-    "alpha2": "NP"
+    "alpha2": "NP",
+    "continent": 1
   },
   {
     "id": 122,
@@ -1132,7 +1217,7 @@
     "nameRu": "Нидерланды",
     "flagResId": "flag_nl",
     "alpha2": "NL",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 123,
@@ -1141,7 +1226,8 @@
     "nameEn": "New Zealand",
     "nameRu": "Новая Зеландия",
     "flagResId": "flag_nz",
-    "alpha2": "NZ"
+    "alpha2": "NZ",
+    "continent": 7
   },
   {
     "id": 124,
@@ -1150,7 +1236,8 @@
     "nameEn": "Nicaragua",
     "nameRu": "Никарагуа",
     "flagResId": "flag_ni",
-    "alpha2": "NI"
+    "alpha2": "NI",
+    "continent": 4
   },
   {
     "id": 125,
@@ -1159,7 +1246,8 @@
     "nameEn": "Niger",
     "nameRu": "Нигер",
     "flagResId": "flag_ne",
-    "alpha2": "NE"
+    "alpha2": "NE",
+    "continent": 2
   },
   {
     "id": 126,
@@ -1168,7 +1256,8 @@
     "nameEn": "Nigeria",
     "nameRu": "Нигерия",
     "flagResId": "flag_ng",
-    "alpha2": "NG"
+    "alpha2": "NG",
+    "continent": 2
   },
   {
     "id": 127,
@@ -1178,7 +1267,7 @@
     "nameRu": "Норвегия",
     "flagResId": "flag_no",
     "alpha2": "NO",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 128,
@@ -1187,7 +1276,8 @@
     "nameEn": "Oman",
     "nameRu": "Оман",
     "flagResId": "flag_om",
-    "alpha2": "OM"
+    "alpha2": "OM",
+    "continent": 1
   },
   {
     "id": 129,
@@ -1196,7 +1286,8 @@
     "nameEn": "Pakistan",
     "nameRu": "Пакистан",
     "flagResId": "flag_pk",
-    "alpha2": "PK"
+    "alpha2": "PK",
+    "continent": 1
   },
   {
     "id": 130,
@@ -1205,7 +1296,8 @@
     "nameEn": "Palau",
     "nameRu": "Палау",
     "flagResId": "flag_pw",
-    "alpha2": "PW"
+    "alpha2": "PW",
+    "continent": 7
   },
   {
     "id": 131,
@@ -1215,7 +1307,7 @@
     "nameRu": "Палестина",
     "flagResId": "flag_ps",
     "alpha2": "PS",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 132,
@@ -1224,7 +1316,8 @@
     "nameEn": "Panama",
     "nameRu": "Панама",
     "flagResId": "flag_pa",
-    "alpha2": "PA"
+    "alpha2": "PA",
+    "continent": 3
   },
   {
     "id": 133,
@@ -1233,7 +1326,8 @@
     "nameEn": "Papua New Guinea",
     "nameRu": "Папуа — Новая Гвинея",
     "flagResId": "flag_pg",
-    "alpha2": "PG"
+    "alpha2": "PG",
+    "continent": 7
   },
   {
     "id": 134,
@@ -1242,7 +1336,8 @@
     "nameEn": "Paraguay",
     "nameRu": "Парагвай",
     "flagResId": "flag_py",
-    "alpha2": "PY"
+    "alpha2": "PY",
+    "continent": 4
   },
   {
     "id": 135,
@@ -1251,7 +1346,8 @@
     "nameEn": "People's Republic of China",
     "nameRu": "Китайская Народная Республика",
     "flagResId": "flag_cn",
-    "alpha2": "CN"
+    "alpha2": "CN",
+    "continent": 1
   },
   {
     "id": 136,
@@ -1260,7 +1356,8 @@
     "nameEn": "Peru",
     "nameRu": "Перу",
     "flagResId": "flag_pe",
-    "alpha2": "PE"
+    "alpha2": "PE",
+    "continent": 4
   },
   {
     "id": 137,
@@ -1269,7 +1366,8 @@
     "nameEn": "Philippines",
     "nameRu": "Филиппины",
     "flagResId": "flag_ph",
-    "alpha2": "PH"
+    "alpha2": "PH",
+    "continent": 7
   },
   {
     "id": 138,
@@ -1279,7 +1377,7 @@
     "nameRu": "Польша",
     "flagResId": "flag_pl",
     "alpha2": "PL",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 139,
@@ -1289,7 +1387,7 @@
     "nameRu": "Португалия",
     "flagResId": "flag_pt",
     "alpha2": "PT",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 140,
@@ -1298,7 +1396,8 @@
     "nameEn": "Qatar",
     "nameRu": "Катар",
     "flagResId": "flag_qa",
-    "alpha2": "QA"
+    "alpha2": "QA",
+    "continent": 1
   },
   {
     "id": 141,
@@ -1307,7 +1406,8 @@
     "nameEn": "Republic of the Congo",
     "nameRu": "Республика Конго",
     "flagResId": "flag_cg",
-    "alpha2": "CG"
+    "alpha2": "CG",
+    "continent": 2
   },
   {
     "id": 142,
@@ -1317,7 +1417,7 @@
     "nameRu": "Румыния",
     "flagResId": "flag_ro",
     "alpha2": "RO",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 143,
@@ -1327,7 +1427,7 @@
     "nameRu": "Россия",
     "flagResId": "flag_ru",
     "alpha2": "RU",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 144,
@@ -1336,7 +1436,8 @@
     "nameEn": "Rwanda",
     "nameRu": "Руанда",
     "flagResId": "flag_rw",
-    "alpha2": "RW"
+    "alpha2": "RW",
+    "continent": 2
   },
   {
     "id": 145,
@@ -1345,7 +1446,8 @@
     "nameEn": "Saint Kitts and Nevis",
     "nameRu": "Сент-Китс и Невис",
     "flagResId": "flag_kn",
-    "alpha2": "KN"
+    "alpha2": "KN",
+    "continent": 7
   },
   {
     "id": 146,
@@ -1354,7 +1456,8 @@
     "nameEn": "Saint Lucia",
     "nameRu": "Сент-Люсия",
     "flagResId": "flag_lc",
-    "alpha2": "LC"
+    "alpha2": "LC",
+    "continent": 7
   },
   {
     "id": 147,
@@ -1363,7 +1466,8 @@
     "nameEn": "Saint Vincent and the Grenadines",
     "nameRu": "Сент-Винсент и Гренадины",
     "flagResId": "flag_vc",
-    "alpha2": "VC"
+    "alpha2": "VC",
+    "continent": 7
   },
   {
     "id": 148,
@@ -1372,7 +1476,8 @@
     "nameEn": "Salvador",
     "nameRu": "Сальвадор",
     "flagResId": "flag_sv",
-    "alpha2": "SV"
+    "alpha2": "SV",
+    "continent": 3
   },
   {
     "id": 149,
@@ -1381,7 +1486,8 @@
     "nameEn": "Samoa",
     "nameRu": "Самоа",
     "flagResId": "flag_ws",
-    "alpha2": "WS"
+    "alpha2": "WS",
+    "continent": 7
   },
   {
     "id": 150,
@@ -1391,7 +1497,7 @@
     "nameRu": "Сан-Марино",
     "flagResId": "flag_sm",
     "alpha2": "SM",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 151,
@@ -1400,7 +1506,8 @@
     "nameEn": "Sao Tome and Principe",
     "nameRu": "Сан-Томе и Принсипи",
     "flagResId": "flag_st",
-    "alpha2": "ST"
+    "alpha2": "ST",
+    "continent": 7
   },
   {
     "id": 152,
@@ -1409,7 +1516,8 @@
     "nameEn": "Saudi Arabia",
     "nameRu": "Саудовская Аравия",
     "flagResId": "flag_sa",
-    "alpha2": "SA"
+    "alpha2": "SA",
+    "continent": 1
   },
   {
     "id": 153,
@@ -1418,7 +1526,8 @@
     "nameEn": "Senegal",
     "nameRu": "Сенегал",
     "flagResId": "flag_sn",
-    "alpha2": "SN"
+    "alpha2": "SN",
+    "continent": 2
   },
   {
     "id": 154,
@@ -1428,7 +1537,7 @@
     "nameRu": "Сербия",
     "flagResId": "flag_rs",
     "alpha2": "RS",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 155,
@@ -1437,7 +1546,8 @@
     "nameEn": "Seychelles",
     "nameRu": "Сейшельские Острова",
     "flagResId": "flag_sc",
-    "alpha2": "SC"
+    "alpha2": "SC",
+    "continent": 7
   },
   {
     "id": 156,
@@ -1446,7 +1556,8 @@
     "nameEn": "Sierra Leone",
     "nameRu": "Сьерра-Леоне",
     "flagResId": "flag_sl",
-    "alpha2": "SL"
+    "alpha2": "SL",
+    "continent": 2
   },
   {
     "id": 157,
@@ -1455,7 +1566,8 @@
     "nameEn": "Singapore",
     "nameRu": "Сингапур",
     "flagResId": "flag_sg",
-    "alpha2": "SG"
+    "alpha2": "SG",
+    "continent": 1
   },
   {
     "id": 158,
@@ -1465,7 +1577,7 @@
     "nameRu": "Словакия",
     "flagResId": "flag_sk",
     "alpha2": "SK",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 159,
@@ -1475,7 +1587,7 @@
     "nameRu": "Словения",
     "flagResId": "flag_si",
     "alpha2": "SI",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 160,
@@ -1484,7 +1596,8 @@
     "nameEn": "Solomon islands",
     "nameRu": "Соломоновы Острова",
     "flagResId": "flag_sb",
-    "alpha2": "SB"
+    "alpha2": "SB",
+    "continent": 7
   },
   {
     "id": 161,
@@ -1493,7 +1606,8 @@
     "nameEn": "Somalia",
     "nameRu": "Сомали",
     "flagResId": "flag_so",
-    "alpha2": "SO"
+    "alpha2": "SO",
+    "continent": 2
   },
   {
     "id": 162,
@@ -1502,7 +1616,8 @@
     "nameEn": "South Africa",
     "nameRu": "Южно-Африканская Республика",
     "flagResId": "flag_za",
-    "alpha2": "ZA"
+    "alpha2": "ZA",
+    "continent": 2
   },
   {
     "id": 163,
@@ -1511,7 +1626,8 @@
     "nameEn": "South Sudan",
     "nameRu": "Южный Судан",
     "flagResId": "flag_ss",
-    "alpha2": "SS"
+    "alpha2": "SS",
+    "continent": 2
   },
   {
     "id": 164,
@@ -1521,7 +1637,7 @@
     "nameRu": "Испания",
     "flagResId": "flag_es",
     "alpha2": "ES",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 165,
@@ -1530,7 +1646,8 @@
     "nameEn": "Sri Lanka",
     "nameRu": "Шри-Ланка",
     "flagResId": "flag_lk",
-    "alpha2": "LK"
+    "alpha2": "LK",
+    "continent": 7
   },
   {
     "id": 166,
@@ -1539,7 +1656,8 @@
     "nameEn": "Sudan",
     "nameRu": "Судан",
     "flagResId": "flag_sd",
-    "alpha2": "SD"
+    "alpha2": "SD",
+    "continent": 2
   },
   {
     "id": 167,
@@ -1548,7 +1666,8 @@
     "nameEn": "Suriname",
     "nameRu": "Суринам",
     "flagResId": "flag_sr",
-    "alpha2": "SR"
+    "alpha2": "SR",
+    "continent": 4
   },
   {
     "id": 168,
@@ -1557,7 +1676,8 @@
     "nameEn": "Swaziland",
     "nameRu": "Свазиленд",
     "flagResId": "flag_sz",
-    "alpha2": "SZ"
+    "alpha2": "SZ",
+    "continent": 2
   },
   {
     "id": 169,
@@ -1567,7 +1687,7 @@
     "nameRu": "Швеция",
     "flagResId": "flag_se",
     "alpha2": "SE",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 170,
@@ -1577,7 +1697,7 @@
     "nameRu": "Швейцария",
     "flagResId": "flag_ch",
     "alpha2": "CH",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 171,
@@ -1586,7 +1706,8 @@
     "nameEn": "Syria",
     "nameRu": "Сирия",
     "flagResId": "flag_sy",
-    "alpha2": "SY"
+    "alpha2": "SY",
+    "continent": 1
   },
   {
     "id": 172,
@@ -1596,7 +1717,7 @@
     "nameRu": "Таджикистан",
     "flagResId": "flag_tj",
     "alpha2": "TJ",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 173,
@@ -1605,7 +1726,8 @@
     "nameEn": "Tanzania",
     "nameRu": "Танзания",
     "flagResId": "flag_tz",
-    "alpha2": "TZ"
+    "alpha2": "TZ",
+    "continent": 2
   },
   {
     "id": 174,
@@ -1614,7 +1736,8 @@
     "nameEn": "Thailand",
     "nameRu": "Таиланд",
     "flagResId": "flag_th",
-    "alpha2": "TH"
+    "alpha2": "TH",
+    "continent": 1
   },
   {
     "id": 175,
@@ -1623,7 +1746,8 @@
     "nameEn": "The Republic of Korea",
     "nameRu": "Республика Корея",
     "flagResId": "flag_kr",
-    "alpha2": "KR"
+    "alpha2": "KR",
+    "continent": 1
   },
   {
     "id": 176,
@@ -1632,7 +1756,8 @@
     "nameEn": "Togo",
     "nameRu": "Того",
     "flagResId": "flag_tg",
-    "alpha2": "TG"
+    "alpha2": "TG",
+    "continent": 2
   },
   {
     "id": 177,
@@ -1641,7 +1766,8 @@
     "nameEn": "Tonga",
     "nameRu": "Тонга",
     "flagResId": "flag_to",
-    "alpha2": "TO"
+    "alpha2": "TO",
+    "continent": 2
   },
   {
     "id": 178,
@@ -1650,7 +1776,8 @@
     "nameEn": "Trinidad and Tobago",
     "nameRu": "Тринидад и Тобаго",
     "flagResId": "flag_tt",
-    "alpha2": "TT"
+    "alpha2": "TT",
+    "continent": 7
   },
   {
     "id": 179,
@@ -1659,7 +1786,8 @@
     "nameEn": "Tunisia",
     "nameRu": "Тунис",
     "flagResId": "flag_tn",
-    "alpha2": "TN"
+    "alpha2": "TN",
+    "continent": 2
   },
   {
     "id": 180,
@@ -1668,7 +1796,8 @@
     "nameEn": "Turkey",
     "nameRu": "Турция",
     "flagResId": "flag_tr",
-    "alpha2": "TR"
+    "alpha2": "TR",
+    "continent": 1
   },
   {
     "id": 181,
@@ -1678,7 +1807,7 @@
     "nameRu": "Туркмения",
     "flagResId": "flag_tm",
     "alpha2": "TM",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 182,
@@ -1687,7 +1816,8 @@
     "nameEn": "Tuvalu",
     "nameRu": "Тувалу",
     "flagResId": "flag_tv",
-    "alpha2": "TV"
+    "alpha2": "TV",
+    "continent": 7
   },
   {
     "id": 183,
@@ -1696,7 +1826,8 @@
     "nameEn": "Uganda",
     "nameRu": "Уганда",
     "flagResId": "flag_ug",
-    "alpha2": "UG"
+    "alpha2": "UG",
+    "continent": 2
   },
   {
     "id": 184,
@@ -1706,7 +1837,7 @@
     "nameRu": "Украина",
     "flagResId": "flag_ua",
     "alpha2": "UA",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 185,
@@ -1715,7 +1846,8 @@
     "nameEn": "United Arab Emirates",
     "nameRu": "Объединённые Арабские Эмираты",
     "flagResId": "flag_ae",
-    "alpha2": "AE"
+    "alpha2": "AE",
+    "continent": 1
   },
   {
     "id": 186,
@@ -1724,7 +1856,8 @@
     "nameEn": "United States of America",
     "nameRu": "Соединённые Штаты Америки",
     "flagResId": "flag_us",
-    "alpha2": "US"
+    "alpha2": "US",
+    "continent": 3
   },
   {
     "id": 187,
@@ -1733,7 +1866,8 @@
     "nameEn": "Uruguay",
     "nameRu": "Уругвай",
     "flagResId": "flag_uy",
-    "alpha2": "UY"
+    "alpha2": "UY",
+    "continent": 4
   },
   {
     "id": 188,
@@ -1743,7 +1877,7 @@
     "nameRu": "Узбекистан",
     "flagResId": "flag_uz",
     "alpha2": "UZ",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 189,
@@ -1752,7 +1886,8 @@
     "nameEn": "Vanuatu",
     "nameRu": "Вануату",
     "flagResId": "flag_vu",
-    "alpha2": "VU"
+    "alpha2": "VU",
+    "continent": 7
   },
   {
     "id": 190,
@@ -1762,7 +1897,7 @@
     "nameRu": "Ватикан",
     "flagResId": "flag_va",
     "alpha2": "VA",
-    "continent": "Eurasia"
+    "continent": 1
   },
   {
     "id": 191,
@@ -1771,7 +1906,8 @@
     "nameEn": "Venezuela",
     "nameRu": "Венесуэла",
     "flagResId": "flag_ve",
-    "alpha2": "VE"
+    "alpha2": "VE",
+    "continent": 4
   },
   {
     "id": 192,
@@ -1780,7 +1916,8 @@
     "nameEn": "Vietnam",
     "nameRu": "Вьетнам",
     "flagResId": "flag_vn",
-    "alpha2": "VN"
+    "alpha2": "VN",
+    "continent": 1
   },
   {
     "id": 193,
@@ -1789,7 +1926,8 @@
     "nameEn": "Yemen",
     "nameRu": "Йемен",
     "flagResId": "flag_ye",
-    "alpha2": "YE"
+    "alpha2": "YE",
+    "continent": 1
   },
   {
     "id": 194,
@@ -1798,7 +1936,8 @@
     "nameEn": "Zambia",
     "nameRu": "Замбия",
     "flagResId": "flag_zm",
-    "alpha2": "ZM"
+    "alpha2": "ZM",
+    "continent": 2
   },
   {
     "id": 195,
@@ -1807,6 +1946,7 @@
     "nameEn": "Zimbabwe",
     "nameRu": "Зимбабве",
     "flagResId": "flag_zw",
-    "alpha2": "ZW"
+    "alpha2": "ZW",
+    "continent": 2
   }
 ]
