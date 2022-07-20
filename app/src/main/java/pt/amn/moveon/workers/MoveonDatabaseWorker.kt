@@ -13,6 +13,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
 import pt.amn.moveon.data.local.CountryEntity
 import pt.amn.moveon.common.LogNavigator
+import pt.amn.moveon.data.local.ContinentEntity
 
 @HiltWorker
 class MoveonDatabaseWorker @AssistedInject constructor(
@@ -21,33 +22,56 @@ class MoveonDatabaseWorker @AssistedInject constructor(
     private val workerDependency: WorkerDependency
 ) : CoroutineWorker(appContext, workerParams) {
 
-    @OptIn(ExperimentalSerializationApi::class)
     override suspend fun doWork(): Result = withContext(Dispatchers.IO) {
-        try {
-            val filename = inputData.getString(KEY_FILENAME)
-            if (filename != null) {
-                applicationContext.assets.open(filename).use { inputStream ->
-                    val countryList = Json.decodeFromStream<List<CountryEntity>>(inputStream)
-                    workerDependency.database.countryDao().insertAll(countryList)
+        loadContinentsFromAsset()
+        loadCountriesFromAsset()
+    }
 
-                    LogNavigator.debugMessage("$TAG, Success seeding database, count of countries = ${countryList.size}")
-                    Result.success()
-                }
-            } else
-            {
-                LogNavigator.debugMessage("$TAG, Error seeding database - no valid filename")
-                Result.failure()
+    @OptIn(ExperimentalSerializationApi::class)
+    private suspend fun loadCountriesFromAsset() = try {
+        val filename = inputData.getString(KEY_FILENAME_COUNTRIES_ASSET)
+        if (filename != null) {
+            applicationContext.assets.open(filename).use { inputStream ->
+                val countryList = Json.decodeFromStream<List<CountryEntity>>(inputStream)
+                workerDependency.database.countryDao().insertAll(countryList)
+
+                LogNavigator.debugMessage("$TAG, Success seeding database, count of countries = ${countryList.size}")
+                Result.success()
             }
-        } catch (ex: Exception) {
-            LogNavigator.debugMessage("$TAG, Error seeding database $ex")
+        } else {
+            LogNavigator.debugMessage("$TAG, Error seeding database - no valid filename")
             Result.failure()
         }
+    } catch (ex: Exception) {
+        LogNavigator.debugMessage("$TAG, Error seeding database $ex")
+        Result.failure()
+    }
 
+    @OptIn(ExperimentalSerializationApi::class)
+    private suspend fun loadContinentsFromAsset() = try {
+        val filename = inputData.getString(KEY_FILENAME_CONTINENTS_ASSET)
+        if (filename != null) {
+            applicationContext.assets.open(filename).use { inputStream ->
+                val continentsList = Json.decodeFromStream<List<ContinentEntity>>(inputStream)
+                workerDependency.database.continentDao().insertAll(continentsList)
+
+                LogNavigator.debugMessage("$TAG, Success seeding database," +
+                        " count of continents = ${continentsList.size}")
+                Result.success()
+            }
+        } else {
+            LogNavigator.debugMessage("$TAG, Error seeding database - no valid filename")
+            Result.failure()
+        }
+    } catch (ex: Exception) {
+        LogNavigator.debugMessage("$TAG, Error seeding database $ex")
+        Result.failure()
     }
 
     companion object {
         private const val TAG = "MoveonDatabaseWorker"
-        const val KEY_FILENAME = "COUNTRIES_DATA_FILENAME"
+        const val KEY_FILENAME_COUNTRIES_ASSET = "COUNTRIES_DATA_FILENAME"
+        const val KEY_FILENAME_CONTINENTS_ASSET = "CONTINENTS_DATA_FILENAME"
     }
 
 }

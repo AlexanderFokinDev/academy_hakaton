@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "nameEn": "Eurasia",
+    "nameRu": "Евразия",
+  },
+  {
+    "id": 2,
+    "nameEn": "Africa",
+    "nameRu": "Африка"
+  },
+  {
+    "id": 3,
+    "nameEn": "North America",
+    "nameRu": "Северная Америка"
+  },
+  {
+    "id": 4,
+    "nameEn": "South America",
+    "nameRu": "Южная Америка"
+  },
+  {
+    "id": 5,
+    "nameEn": "Australia",
+    "nameRu": "Австралия"
+  },
+  {
+    "id": 6,
+    "nameEn": "Antarctica",
+    "nameRu": "Антарктида"
+  },
+  {
+    "id": 7,
+    "nameEn": "Island",
+    "nameRu": "Остров"
+  }
+]

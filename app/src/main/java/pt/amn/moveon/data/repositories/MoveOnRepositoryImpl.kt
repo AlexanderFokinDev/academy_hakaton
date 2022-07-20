@@ -13,10 +13,10 @@ import javax.inject.Singleton
 class MoveOnRepositoryImpl @Inject constructor(private val database: AppDatabase) :
     MoveOnRepository {
 
-    override suspend fun getCountries(): LiveData<List<CountryEntity>> =
+    override suspend fun getCountries(): LiveData<List<CountryWithContinent>> =
         database.countryDao().getAllFlow().asLiveData()
 
-    override suspend fun getVisitedCountries(): LiveData<List<CountryEntity>> =
+    override suspend fun getVisitedCountries(): LiveData<List<CountryWithContinent>> =
         database.countryDao().getVisitedCountriesFlow().asLiveData()
 
     override suspend fun updateCountry(country: Country)

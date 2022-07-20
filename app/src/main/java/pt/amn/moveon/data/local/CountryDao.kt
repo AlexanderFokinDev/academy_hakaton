@@ -6,20 +6,24 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface CountryDao {
 
+    @Transaction
     @Query("SELECT * FROM countries ORDER BY nameRu")
-    fun getAllFlow(): Flow<List<CountryEntity>>
+    fun getAllFlow(): Flow<List<CountryWithContinent>>
 
+    @Transaction
     @Query("SELECT * FROM countries WHERE visited")
-    fun getVisitedCountriesFlow(): Flow<List<CountryEntity>>
+    fun getVisitedCountriesFlow(): Flow<List<CountryWithContinent>>
 
+    @Transaction
     @Query("SELECT * FROM countries WHERE visited")
-    fun getVisitedCountries(): List<CountryEntity>
+    fun getVisitedCountries(): List<CountryWithContinent>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(countries: List<CountryEntity>)
 
+    @Transaction
     @Query("SELECT * FROM countries WHERE id = :id")
-    suspend fun getCountryById(id: Int): CountryEntity
+    suspend fun getCountryById(id: Int): CountryWithContinent
 
     @Update
     suspend fun update(country: CountryEntity)
