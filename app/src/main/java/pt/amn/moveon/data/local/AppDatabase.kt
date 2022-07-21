@@ -10,6 +10,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.workDataOf
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.withContext
 import pt.amn.moveon.common.CONTINENTS_DATA_FILENAME
 import pt.amn.moveon.common.COUNTRIES_DATA_FILENAME
 import pt.amn.moveon.common.DATABASE_NAME
@@ -57,6 +59,19 @@ abstract class AppDatabase : RoomDatabase() {
                                 )
                                 .build()
                             WorkManager.getInstance(context).enqueue(request)
+                        }
+
+                        override fun onOpen(db: SupportSQLiteDatabase) {
+                            super.onOpen(db)
+                            /*val request = OneTimeWorkRequestBuilder<MoveonDatabaseWorker>()
+                                .setInputData(
+                                    workDataOf(
+                                        KEY_FILENAME_COUNTRIES_ASSET to COUNTRIES_DATA_FILENAME,
+                                        KEY_FILENAME_CONTINENTS_ASSET to CONTINENTS_DATA_FILENAME
+                                    )
+                                )
+                                .build()
+                            WorkManager.getInstance(context).enqueue(request)*/
                         }
                     }
                 )

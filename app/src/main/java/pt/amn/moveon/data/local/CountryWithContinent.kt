@@ -3,6 +3,7 @@ package pt.amn.moveon.data.local
 import androidx.room.Embedded
 import androidx.room.Relation
 import kotlinx.serialization.Serializable
+import pt.amn.moveon.domain.models.Continent
 import pt.amn.moveon.domain.models.Country
 
 data class CountryWithContinent(
@@ -25,7 +26,7 @@ fun CountryWithContinent.toDomainModel(): Country {
         visited = this.countryEntity.visited,
         flagResId = this.countryEntity.flagResId,
         alpha2 = this.countryEntity.alpha2,
-        continent = this.continentEntity.toDomainModel()
+        continent = this.continentEntity.toDomainModel()// ?: Continent(0, "test", "test")
     )
 }
 
