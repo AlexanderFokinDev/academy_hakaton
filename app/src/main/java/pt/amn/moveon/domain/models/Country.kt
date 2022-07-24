@@ -15,7 +15,7 @@ data class Country(
     val flagResId: String,
     val alpha2: String,
     val continent: Continent
-) : Parcelable {
+) : Parcelable, PartOfTheWorld {
 
     fun getLocalName(): String =
         when (Locale.getDefault().language) {

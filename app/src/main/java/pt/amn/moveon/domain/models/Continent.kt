@@ -5,11 +5,11 @@ import kotlinx.parcelize.Parcelize
 import java.util.*
 
 @Parcelize
-data class Continent(
+data class Continent (
     val id: Int,
     val nameEn: String,
     val nameRu: String
-) : Parcelable {
+) : Parcelable, PartOfTheWorld {
 
     fun getLocalName(): String =
         when (Locale.getDefault().language) {

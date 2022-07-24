@@ -12,9 +12,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import pt.amn.moveon.R
+import pt.amn.moveon.common.COUNT_CONTINENTS_IN_THE_WORLD
+import pt.amn.moveon.common.COUNT_COUNTRIES_IN_THE_WORLD
 import pt.amn.moveon.data.local.toDomainModel
 import pt.amn.moveon.databinding.FragmentCountriesBinding
 import pt.amn.moveon.domain.models.Country
+import pt.amn.moveon.domain.models.PartOfTheWorld
 import pt.amn.moveon.presentation.adapters.CountriesComplexAdapter
 import pt.amn.moveon.presentation.adapters.OnRecyclerCountriesClicked
 import pt.amn.moveon.presentation.adapters.decorations.HorizontalDividerItemDecoration
@@ -74,7 +77,21 @@ class CountriesFragment : Fragment() {
     }
 
     private fun updateData(countriesList: List<Country>) {
-        countriesAdapter.bindCountries(countriesList)
+
+        val mapContinents = countriesList.groupBy {
+                country -> country.continent
+        }
+
+        val adapterList = mutableListOf<PartOfTheWorld>()
+
+        for (mapEl in mapContinents) {
+            adapterList.add(mapEl.key)
+            for (country in mapEl.value) {
+                adapterList.add(country)
+            }
+        }
+
+        countriesAdapter.bindCountries(adapterList)
         countriesAdapter.notifyDataSetChanged()
     }
 
