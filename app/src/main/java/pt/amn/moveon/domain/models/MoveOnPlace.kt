@@ -6,4 +6,4 @@ data class MoveOnPlace(
     val latitude: Double,
     val longitude: Double,
     val country_id: Int
-)
+) : PartOfTheWorld
