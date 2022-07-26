@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "nameEn": "Eurasia",
-    "nameRu": "Евразия"
+    "nameEn": "Europe",
+    "nameRu": "Европа"
   },
   {
     "id": 2,
@@ -26,12 +26,17 @@
   },
   {
     "id": 6,
-    "nameEn": "Antarctica",
-    "nameRu": "Антарктида"
+    "nameEn": "Central America",
+    "nameRu": "Центральная Америка"
   },
   {
     "id": 7,
-    "nameEn": "Island",
-    "nameRu": "Остров"
+    "nameEn": "Asia",
+    "nameRu": "Азия"
+  },
+  {
+    "id": 8,
+    "nameEn": "Oceania",
+    "nameRu": "Океания"
   }
 ]

@@ -5,7 +5,7 @@ const val COUNTRIES_DATA_FILENAME = "countries.json"
 const val CONTINENTS_DATA_FILENAME = "continents.json"
 
 const val COUNT_COUNTRIES_IN_THE_WORLD = 195
-const val COUNT_CONTINENTS_IN_THE_WORLD = 7
+const val COUNT_CONTINENTS_IN_THE_WORLD = 8
 
 // Moscow
 const val START_MAP_LATITUDE = 55.7520263

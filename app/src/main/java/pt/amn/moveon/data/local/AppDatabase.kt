@@ -9,6 +9,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
+import androidx.work.impl.WorkDatabaseMigrations.MIGRATION_1_2
 import androidx.work.workDataOf
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
