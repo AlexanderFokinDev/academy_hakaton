@@ -937,7 +937,7 @@
     "nameRu": "Ливан",
     "flagResId": "flag_lb",
     "alpha2": "LB",
-    "continentId": 1
+    "continentId": 7
   },
   {
     "id": 95,
@@ -1307,7 +1307,7 @@
     "nameRu": "Палестина",
     "flagResId": "flag_ps",
     "alpha2": "PS",
-    "continentId": 1
+    "continentId": 7
   },
   {
     "id": 132,

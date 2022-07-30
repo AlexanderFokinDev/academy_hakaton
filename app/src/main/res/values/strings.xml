@@ -21,7 +21,7 @@
     <string name="image_desc_country_flag">Country flag</string>
 
     <!-- Country fragment -->
-    <string name="place_name">Visited place in the country</string>
+    <string name="place_name">Select places</string>
     <string name="place_didnt_find">Place LatLng haven\'t found</string>
     <string name="place_error_occured">An error occurred:</string>
 

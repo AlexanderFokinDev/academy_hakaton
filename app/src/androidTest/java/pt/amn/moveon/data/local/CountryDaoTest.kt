@@ -49,16 +49,16 @@ class CountryDaoTest {
 
     @Test
     fun operationCRUDCorrected() {
-        val country1 = CountryEntity(1001, "Test1001", "Тест1001", 0.0, 0.0, continent = "Africa")
-        val country2 = CountryEntity(1002, "Test1002", "Тест1002", 0.0, 0.0, continent = "South America")
-        val country3 = CountryEntity(1003, "Test1003", "Тест1003", 0.0, 0.0, continent = "Australia")
+        val country1 = CountryEntity(1001, "Test1001", "Тест1001", 0.0, 0.0, continentId = 2)
+        val country2 = CountryEntity(1002, "Test1002", "Тест1002", 0.0, 0.0, continentId = 4)
+        val country3 = CountryEntity(1003, "Test1003", "Тест1003", 0.0, 0.0, continentId = 5)
         val countries = listOf<CountryEntity>(country1, country2, country3)
 
         scope.launch {
             countryDao.removeVisitedFlagForAll()
             assertEquals(0, countryDao.getVisitedCountries().size)
             countryDao.getAllFlow().firstOrNull()?.map { entity ->
-                countryDao.setVisitedFlag(entity.id)
+                countryDao.setVisitedFlag(entity.countryEntity.id)
             }
             assertEquals(COUNT_COUNTRIES_IN_THE_WORLD, countryDao.getVisitedCountries().size)
         }
