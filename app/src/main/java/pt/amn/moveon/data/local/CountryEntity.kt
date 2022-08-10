@@ -21,5 +21,5 @@ data class CountryEntity(
     val visited: Boolean = false,
     val flagResId: String = "",
     val alpha2: String = "",
-    val continentId: Int
+    val continentId: Int = 0
 )

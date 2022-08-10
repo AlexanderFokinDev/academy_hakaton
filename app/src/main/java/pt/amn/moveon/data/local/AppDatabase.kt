@@ -107,7 +107,7 @@ abstract class AppDatabase : RoomDatabase() {
                 database.execSQL("DROP TABLE countries")
 
                 // Add column continentId
-                database.execSQL("ALTER TABLE countries_backup ADD COLUMN continentId INTEGER DEFAULT 0 NOT NULL")
+                database.execSQL("ALTER TABLE countries_backup ADD COLUMN continentId INTEGER DEFAULT 0")
 
                 database.execSQL("ALTER TABLE countries_backup RENAME TO countries")
 
