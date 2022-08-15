@@ -22,7 +22,7 @@ import pt.amn.moveon.workers.MoveonDatabaseWorker.Companion.KEY_FILENAME_COUNTRI
 
 @Database(
     entities = [CountryEntity::class, PlaceEntity::class, ContinentEntity::class],
-    version = 3
+    version = 1
 )
 abstract class AppDatabase : RoomDatabase() {
 
@@ -45,8 +45,8 @@ abstract class AppDatabase : RoomDatabase() {
         // https://medium.com/google-developers/7-pro-tips-for-room-fbadea4bfbd1#4785
         private fun buildDatabase(context: Context): AppDatabase {
             return Room.databaseBuilder(context, AppDatabase::class.java, DATABASE_NAME)
-                .addMigrations(MIGRATION_1_2)
-                .addMigrations(MIGRATION_2_3)
+                //.addMigrations(MIGRATION_1_2)
+                //.addMigrations(MIGRATION_2_3)
                 .addCallback(
                     object : RoomDatabase.Callback() {
                         override fun onCreate(db: SupportSQLiteDatabase) {
@@ -79,7 +79,7 @@ abstract class AppDatabase : RoomDatabase() {
                 .build()
         }
 
-        private val MIGRATION_1_2 = object : Migration(1, 2) {
+       /*private val MIGRATION_1_2 = object : Migration(1, 2) {
             override fun migrate(database: SupportSQLiteDatabase) {
                 database.execSQL("ALTER TABLE countries ADD COLUMN continent TEXT DEFAULT '' NOT NULL")
             }
@@ -112,7 +112,7 @@ abstract class AppDatabase : RoomDatabase() {
                 database.execSQL("ALTER TABLE countries_backup RENAME TO countries")
 
             }
-        }
+        }*/
 
     }
 }
