@@ -10,24 +10,14 @@ import pt.amn.moveon.domain.models.Continent
 @Entity(tableName = "continents")
 data class ContinentEntity(
     @PrimaryKey
-    @ColumnInfo(name = "id")
-    val id: Int,
-    val nameEn: String,
-    val nameRu: String,
+    @ColumnInfo(name = "id") val id: Int,
+    @ColumnInfo(name = "nameEn") val nameEn: String,
+    @ColumnInfo(name = "nameRu") val nameRu: String,
 )
 
 fun ContinentEntity.toDomainModel(): Continent {
 
     return Continent(
-        id = this.id,
-        nameEn = this.nameEn,
-        nameRu = this.nameRu
-    )
-}
-
-fun Continent.toEntityModel(): ContinentEntity {
-
-    return ContinentEntity(
         id = this.id,
         nameEn = this.nameEn,
         nameRu = this.nameRu

@@ -12,14 +12,13 @@ import pt.amn.moveon.domain.models.Country
 @Entity(tableName = "countries")
 data class CountryEntity(
     @PrimaryKey
-    @ColumnInfo(name = "id")
-    val id: Int,
-    val nameEn: String,
-    val nameRu: String,
-    val latitude: Double,
-    val longitude: Double,
-    val visited: Boolean = false,
-    val flagResId: String = "",
-    val alpha2: String = "",
-    val continentId: Int = 0
+    @ColumnInfo(name = "id") val id: Int,
+    @ColumnInfo(name = "nameEn") val nameEn: String,
+    @ColumnInfo(name = "nameEn") val nameRu: String,
+    @ColumnInfo(name = "latitude") val latitude: Double,
+    @ColumnInfo(name = "longitude") val longitude: Double,
+    @ColumnInfo(name = "visited") val visited: Boolean = false,
+    @ColumnInfo(name = "flagResId") val flagResId: String = "",
+    @ColumnInfo(name = "alpha2") val alpha2: String = "",
+    @ColumnInfo(name = "continentId") val continentId: Int = 0
 )
