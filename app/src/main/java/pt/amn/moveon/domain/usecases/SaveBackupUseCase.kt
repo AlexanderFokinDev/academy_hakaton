@@ -2,7 +2,6 @@ package pt.amn.moveon.domain.usecases
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.content.FileProvider
 import kotlinx.coroutines.Dispatchers
@@ -10,16 +9,12 @@ import kotlinx.coroutines.withContext
 import pt.amn.moveon.domain.repositories.BackupRepository
 import java.io.File
 
-class BackupUseCase(private val repository: BackupRepository) {
+class SaveBackupUseCase(private val repository: BackupRepository) {
 
-    private suspend fun getBackupData(): String = withContext(Dispatchers.IO) {
-        repository.getBackupDataInJson()
-    }
-
-    suspend fun sendBackup(context: Context) = withContext(Dispatchers.IO) {
+    suspend fun execute(context: Context) = withContext(Dispatchers.IO) {
 
         val backupFile = File(context.filesDir, "backup_moveon.json")
-        backupFile.writeText(getBackupData())
+        backupFile.writeText(repository.getBackupDataInJson())
         val uri = FileProvider.getUriForFile(context, context.applicationContext.packageName
         + ".provider", backupFile)
 
@@ -31,10 +26,6 @@ class BackupUseCase(private val repository: BackupRepository) {
             type = "text/json"
         }
         startActivity(context, Intent.createChooser(shareIntent, "Send a backup file"), null)
-    }
-
-    suspend fun restoreBackup(context: Context, uri: Uri) : Boolean = withContext(Dispatchers.IO) {
-        return@withContext repository.loadDataFromBackupFile(context, uri)
     }
 
 }
