@@ -12,8 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import pt.amn.moveon.R
-import pt.amn.moveon.common.COUNT_CONTINENTS_IN_THE_WORLD
-import pt.amn.moveon.common.COUNT_COUNTRIES_IN_THE_WORLD
 import pt.amn.moveon.data.local.toDomainModel
 import pt.amn.moveon.databinding.FragmentCountriesBinding
 import pt.amn.moveon.domain.models.Country
@@ -104,7 +102,8 @@ class CountriesFragment : Fragment() {
         }
 
         override fun onVisitedCheck(country: Country, visited: Boolean) {
-            viewModel.changeVisitedFlagOfCountry(country, visited)
+            country.visited = visited
+            viewModel.changeVisitedFlagOfCountry(country)
         }
 
     }

@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import pt.amn.moveon.data.local.CountryEntity
 import pt.amn.moveon.data.local.CountryWithContinent
 import pt.amn.moveon.data.local.PlaceEntity
 import pt.amn.moveon.domain.repositories.MoveOnRepository
@@ -17,8 +16,8 @@ class WorkplaceViewModel @Inject constructor(
     private val repository: MoveOnRepository
 ) : ViewModel() {
 
-    private val interactorCountries = CountriesUseCase(repository)
-    private val interactorPlaces = PlacesUseCase(repository)
+    private val interactorCountries = GetCountriesUseCase(repository)
+    private val interactorGetPlaces = GetPlacesUseCase(repository)
 
     private lateinit var _mVisitedCountries: LiveData<List<CountryWithContinent>>
     val visitedCountries: LiveData<List<CountryWithContinent>> get() = _mVisitedCountries
@@ -37,8 +36,8 @@ class WorkplaceViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            _mVisitedCountries = interactorCountries.getVisitedCountries()
-            _mVisitedPlaces = interactorPlaces.getVisitedPlaces()
+            _mVisitedCountries = interactorCountries.execute(onlyVisited = true)
+            _mVisitedPlaces = interactorGetPlaces.execute()
         }
     }
 
