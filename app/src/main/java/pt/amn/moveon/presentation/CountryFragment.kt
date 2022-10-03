@@ -138,7 +138,8 @@ class CountryFragment : Fragment() {
 
                     // When a user adds a new place, the country is marked as visited
                     if (!country.visited) {
-                        viewModel.changeVisitedFlagOfCountry(country, true)
+                        country.visited = true
+                        viewModel.changeVisitedFlagOfCountry(country)
                     }
 
                 } else {
