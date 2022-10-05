@@ -1,4 +1,4 @@
-package pt.amn.moveon.domain.usecases
+package pt.amn.moveon.presentation.viewmodels.utils
 
 import pt.amn.moveon.common.COUNT_COUNTRIES_IN_THE_WORLD
 
