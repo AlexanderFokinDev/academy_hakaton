@@ -3,6 +3,7 @@ package pt.amn.moveon.domain.usecases
 import org.junit.Assert.*
 
 import org.junit.Test
+import pt.amn.moveon.presentation.viewmodels.utils.StatisticsSolver
 
 class StatisticsSolverTest {
 

@@ -1,4 +1,4 @@
-package pt.amn.moveon.domain.usecases
+package pt.amn.moveon.presentation.viewmodels.utils
 
 import android.content.Context
 import pt.amn.moveon.R

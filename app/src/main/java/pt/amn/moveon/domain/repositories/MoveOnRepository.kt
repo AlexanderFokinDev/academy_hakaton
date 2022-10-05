@@ -1,7 +1,6 @@
 package pt.amn.moveon.domain.repositories
 
 import androidx.lifecycle.LiveData
-import pt.amn.moveon.data.local.CountryEntity
 import pt.amn.moveon.data.local.CountryWithContinent
 import pt.amn.moveon.data.local.PlaceEntity
 import pt.amn.moveon.data.repositories.RepositoryResult

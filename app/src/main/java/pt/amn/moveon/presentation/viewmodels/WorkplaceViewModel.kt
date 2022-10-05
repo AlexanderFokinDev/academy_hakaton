@@ -9,6 +9,8 @@ import pt.amn.moveon.data.local.CountryWithContinent
 import pt.amn.moveon.data.local.PlaceEntity
 import pt.amn.moveon.domain.repositories.MoveOnRepository
 import pt.amn.moveon.domain.usecases.*
+import pt.amn.moveon.presentation.viewmodels.utils.StatisticsSolver
+import pt.amn.moveon.presentation.viewmodels.utils.UpdateStatistics
 import javax.inject.Inject
 
 @HiltViewModel
