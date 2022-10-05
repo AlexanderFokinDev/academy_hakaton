@@ -2,11 +2,6 @@ package pt.amn.moveon.presentation.viewmodels
 
 import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.webkit.PermissionRequest
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,19 +9,20 @@ import kotlinx.coroutines.launch
 import pt.amn.moveon.R
 import pt.amn.moveon.common.LogNavigator
 import pt.amn.moveon.domain.repositories.BackupRepository
-import pt.amn.moveon.domain.usecases.BackupUseCase
-import java.util.jar.Manifest
+import pt.amn.moveon.domain.usecases.RestoreBackupUseCase
+import pt.amn.moveon.domain.usecases.SaveBackupUseCase
 import javax.inject.Inject
 
 @HiltViewModel
-class SettingsViewModel @Inject constructor(private val repository: BackupRepository)
+class SettingsViewModel @Inject constructor(repository: BackupRepository)
     : ViewModel() {
 
-    private val interactor = BackupUseCase(repository)
+    private val saveUseCase = SaveBackupUseCase(repository)
+    private val restoreUseCase = RestoreBackupUseCase(repository)
 
     fun createBackup(context: Context) {
         viewModelScope.launch {
-            interactor.sendBackup(context)
+            saveUseCase.execute(context)
         }
     }
 
@@ -42,7 +38,7 @@ class SettingsViewModel @Inject constructor(private val repository: BackupReposi
 
         if (uri != null) {
             viewModelScope.launch {
-                if (interactor.restoreBackup(context, uri)) {
+                if (restoreUseCase.execute(context, uri)) {
                     LogNavigator.toastMessage(context, R.string.message_restore_backup_success)
                 }
             }

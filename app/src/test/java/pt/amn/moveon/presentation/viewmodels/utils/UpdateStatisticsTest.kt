@@ -1,7 +1,9 @@
-package pt.amn.moveon.domain.usecases
+package pt.amn.moveon.presentation.viewmodels.utils
 
 import org.junit.Assert.*
 import org.junit.Test
+import pt.amn.moveon.presentation.viewmodels.utils.StatisticsSolver
+import pt.amn.moveon.presentation.viewmodels.utils.UpdateStatistics
 
 class UpdateStatisticsTest {
 

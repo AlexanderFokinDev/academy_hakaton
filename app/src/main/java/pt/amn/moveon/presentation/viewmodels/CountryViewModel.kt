@@ -9,8 +9,10 @@ import pt.amn.moveon.data.local.PlaceEntity
 import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.domain.models.MoveOnPlace
 import pt.amn.moveon.domain.repositories.MoveOnRepository
-import pt.amn.moveon.domain.usecases.CountriesUseCase
-import pt.amn.moveon.domain.usecases.PlacesUseCase
+import pt.amn.moveon.domain.usecases.AddPlaceUseCase
+import pt.amn.moveon.domain.usecases.GetPlacesUseCase
+import pt.amn.moveon.domain.usecases.RemovePlaceUseCase
+import pt.amn.moveon.domain.usecases.UpdateCountryUseCase
 import javax.inject.Inject
 
 @HiltViewModel
@@ -18,8 +20,10 @@ class CountryViewModel @Inject constructor(
     private val repository: MoveOnRepository
 ) : ViewModel() {
 
-    private val interactorCountries = CountriesUseCase(repository)
-    private val interactorPlaces = PlacesUseCase(repository)
+    private val interactorCountries = UpdateCountryUseCase(repository)
+    private val interactorGetPlaces = GetPlacesUseCase(repository)
+    private val interactorAddPlace = AddPlaceUseCase(repository)
+    private val interactorRemovePlace = RemovePlaceUseCase(repository)
 
     private lateinit var _mPlaces: LiveData<List<PlaceEntity>>
     val placesList : LiveData<List<PlaceEntity>> get() = _mPlaces
@@ -29,25 +33,25 @@ class CountryViewModel @Inject constructor(
     fun setCountry(countrySelect: Country) {
         country = countrySelect
         viewModelScope.launch {
-            _mPlaces = interactorPlaces.getVisitedPlacesInCountry(country.id)
+            _mPlaces = interactorGetPlaces.execute(country.id)
         }
     }
 
-    fun changeVisitedFlagOfCountry(country: Country, visited: Boolean) {
+    fun changeVisitedFlagOfCountry(country: Country) {
         viewModelScope.launch {
-            interactorCountries.changeVisitedFlagOfCountry(country, visited)
+            interactorCountries.execute(country)
         }
     }
 
     fun addPlace(id: String, latitude: Double, longitude: Double, name: String, countryId: Int) {
         viewModelScope.launch {
-            interactorPlaces.addPlace(MoveOnPlace(id, name, latitude, longitude, countryId))
+            interactorAddPlace.execute(MoveOnPlace(id, name, latitude, longitude, countryId))
         }
     }
 
     fun removePlace(place: MoveOnPlace) {
         viewModelScope.launch {
-            interactorPlaces.removePlace(place)
+            interactorRemovePlace.execute(place)
         }
     }
 }
