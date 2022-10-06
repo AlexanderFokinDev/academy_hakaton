@@ -5,8 +5,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import pt.amn.moveon.data.local.CountryWithContinent
-import pt.amn.moveon.data.local.PlaceEntity
+import pt.amn.moveon.domain.models.Country
+import pt.amn.moveon.domain.models.MoveOnPlace
 import pt.amn.moveon.domain.repositories.MoveOnRepository
 import pt.amn.moveon.domain.usecases.GetCountriesUseCase
 import pt.amn.moveon.domain.usecases.GetPlacesUseCase
@@ -20,11 +20,11 @@ class MapViewModel @Inject constructor(
     private val interactorCountries = GetCountriesUseCase(repository)
     private val interactorGetPlaces = GetPlacesUseCase(repository)
 
-    private lateinit var _mVisitedCountries: LiveData<List<CountryWithContinent>>
-    val visitedCountries : LiveData<List<CountryWithContinent>> get() = _mVisitedCountries
+    private lateinit var _mVisitedCountries: LiveData<List<Country>>
+    val visitedCountries : LiveData<List<Country>> get() = _mVisitedCountries
 
-    private lateinit var _mVisitedPlaces: LiveData<List<PlaceEntity>>
-    val visitedPlaces : LiveData<List<PlaceEntity>> get() = _mVisitedPlaces
+    private lateinit var _mVisitedPlaces: LiveData<List<MoveOnPlace>>
+    val visitedPlaces : LiveData<List<MoveOnPlace>> get() = _mVisitedPlaces
 
     init {
         viewModelScope.launch {
