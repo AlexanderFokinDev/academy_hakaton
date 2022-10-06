@@ -14,7 +14,7 @@ data class CountryEntity(
     @PrimaryKey
     @ColumnInfo(name = "id") val id: Int,
     @ColumnInfo(name = "nameEn") val nameEn: String,
-    @ColumnInfo(name = "nameEn") val nameRu: String,
+    @ColumnInfo(name = "nameRu") val nameRu: String,
     @ColumnInfo(name = "latitude") val latitude: Double,
     @ColumnInfo(name = "longitude") val longitude: Double,
     @ColumnInfo(name = "visited") val visited: Boolean = false,

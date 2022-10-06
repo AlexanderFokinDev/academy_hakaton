@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -23,12 +22,10 @@ import pt.amn.moveon.databinding.FragmentMapBinding
 import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.domain.models.MoveOnPlace
 import pt.amn.moveon.presentation.viewmodels.MapViewModel
-import pt.amn.moveon.presentation.viewmodels.utils.LoadStatus
 import pt.amn.moveon.common.AppUtils
 import pt.amn.moveon.common.LogNavigator
 import pt.amn.moveon.common.START_MAP_LATITUDE
 import pt.amn.moveon.common.START_MAP_LONGITUDE
-import pt.amn.moveon.data.local.toDomainModel
 
 @AndroidEntryPoint
 class MapFragment : Fragment(), OnMapReadyCallback {
@@ -78,15 +75,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         googleMapFragment.getMapAsync(this@MapFragment)
 
         viewModel.visitedCountries.observe(viewLifecycleOwner, Observer { resCountries ->
-            countries = resCountries.map { entityDB ->
-                entityDB.toDomainModel()
-            }
+            countries = resCountries
         })
 
         viewModel.visitedPlaces.observe(viewLifecycleOwner, Observer { resPlaces ->
-            places = resPlaces.map { entityDB ->
-                entityDB.toDomainModel()
-            }
+            places = resPlaces
         })
 
         binding.run {

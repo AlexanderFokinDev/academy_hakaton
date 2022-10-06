@@ -8,22 +8,22 @@ interface CountryDao {
 
     @Transaction
     @Query("SELECT * FROM countries ORDER BY nameRu")
-    fun getAllFlow(): Flow<List<CountryWithContinent>>
+    fun getAllFlow(): Flow<List<CountryWithContinentEntity>>
 
     @Transaction
     @Query("SELECT * FROM countries WHERE visited")
-    fun getVisitedCountriesFlow(): Flow<List<CountryWithContinent>>
+    fun getVisitedCountriesFlow(): Flow<List<CountryWithContinentEntity>>
 
     @Transaction
     @Query("SELECT * FROM countries WHERE visited")
-    fun getVisitedCountries(): List<CountryWithContinent>
+    fun getVisitedCountries(): List<CountryWithContinentEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(countries: List<CountryEntity>)
 
     @Transaction
     @Query("SELECT * FROM countries WHERE id = :id")
-    suspend fun getCountryById(id: Int): CountryWithContinent
+    suspend fun getCountryById(id: Int): CountryWithContinentEntity
 
     @Update
     suspend fun update(country: CountryEntity)

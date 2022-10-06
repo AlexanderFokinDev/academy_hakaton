@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import pt.amn.moveon.data.local.CountryWithContinent
 import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.domain.repositories.MoveOnRepository
 import pt.amn.moveon.domain.usecases.GetCountriesUseCase
@@ -20,8 +19,8 @@ class CountriesViewModel @Inject constructor(
     private val interactorGetCountries = GetCountriesUseCase(repository)
     private val interactorUpdateCountry = UpdateCountryUseCase(repository)
 
-    private lateinit var _mAllCountries: LiveData<List<CountryWithContinent>>
-    val countriesList : LiveData<List<CountryWithContinent>> get() = _mAllCountries
+    private lateinit var _mAllCountries: LiveData<List<Country>>
+    val countriesList : LiveData<List<Country>> get() = _mAllCountries
 
     init {
         viewModelScope.launch {
