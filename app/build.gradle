@@ -9,20 +9,6 @@ plugins {
 }
 
 android {
-    signingConfigs {
-        debug {
-            storeFile file('C:\\Users\\Aleksandr\\Documents\\ALL_MINE_HERE\\Android\\Keys\\amn_keys.jks')
-            keyAlias 'AppsAmnPt'
-            keyPassword 'n9Rk-1sN'
-            storePassword '19Ps_nT4'
-        }
-        release {
-            storeFile file('C:\\Users\\Aleksandr\\Documents\\ALL_MINE_HERE\\Android\\Keys\\amn_keys.jks')
-            storePassword '19Ps_nT4'
-            keyAlias 'AppsAmnPt'
-            keyPassword 'n9Rk-1sN'
-        }
-    }
     compileSdkVersion 33
     buildToolsVersion "30.0.3"
 
