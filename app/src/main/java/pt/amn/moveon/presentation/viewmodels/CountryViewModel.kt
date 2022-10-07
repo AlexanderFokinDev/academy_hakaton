@@ -5,7 +5,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import pt.amn.moveon.data.local.PlaceEntity
 import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.domain.models.MoveOnPlace
 import pt.amn.moveon.domain.repositories.MoveOnRepository
@@ -25,8 +24,8 @@ class CountryViewModel @Inject constructor(
     private val interactorAddPlace = AddPlaceUseCase(repository)
     private val interactorRemovePlace = RemovePlaceUseCase(repository)
 
-    private lateinit var _mPlaces: LiveData<List<PlaceEntity>>
-    val placesList : LiveData<List<PlaceEntity>> get() = _mPlaces
+    private lateinit var _mPlaces: LiveData<List<MoveOnPlace>>
+    val placesList : LiveData<List<MoveOnPlace>> get() = _mPlaces
 
     private lateinit var country: Country
 

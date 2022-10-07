@@ -1,12 +1,11 @@
 package pt.amn.moveon.domain.repositories
 
-import android.content.Context
-import android.net.Uri
+import pt.amn.moveon.domain.models.BackupSource
 
 interface BackupRepository {
 
-    suspend fun getBackupDataInJson(): String
+    suspend fun saveBackup(source: BackupSource): Boolean
 
-    suspend fun loadDataFromBackupFile(context: Context, uri: Uri) : Boolean
+    suspend fun loadDataFromBackup(source: BackupSource) : Boolean
 
 }

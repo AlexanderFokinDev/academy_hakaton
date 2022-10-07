@@ -12,7 +12,6 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 import pt.amn.moveon.R
-import pt.amn.moveon.data.local.toDomainModel
 import pt.amn.moveon.databinding.FragmentCountriesBinding
 import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.domain.models.PartOfTheWorld
@@ -57,9 +56,7 @@ class CountriesFragment : Fragment() {
         }
 
         viewModel.countriesList.observe(viewLifecycleOwner, Observer { resCountries ->
-            updateData(resCountries.map { entityDB ->
-                entityDB.toDomainModel()
-            })
+            updateData(resCountries)
         })
     }
 

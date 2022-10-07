@@ -24,7 +24,6 @@ import pt.amn.moveon.presentation.viewmodels.CountryViewModel
 import pt.amn.moveon.common.AppUtils
 import pt.amn.moveon.common.LogNavigator
 import pt.amn.moveon.common.loadDrawableImage
-import pt.amn.moveon.data.local.toDomainModel
 import pt.amn.moveon.presentation.adapters.SimpleItemTouchHelperCallback
 
 const val ARG_COUNTRY = "country"
@@ -75,9 +74,7 @@ class CountryFragment : Fragment() {
         }
 
         viewModel.placesList.observe(viewLifecycleOwner, Observer { resPlaces ->
-            updateData(resPlaces.map { entityDB ->
-                entityDB.toDomainModel()
-            })
+            updateData(resPlaces)
         })
 
         initializeAutocompleteSupportFragment()

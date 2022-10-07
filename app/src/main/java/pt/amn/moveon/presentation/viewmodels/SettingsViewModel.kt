@@ -8,21 +8,24 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import pt.amn.moveon.R
 import pt.amn.moveon.common.LogNavigator
+import pt.amn.moveon.data.models.JsonBackupSourceImpl
 import pt.amn.moveon.domain.repositories.BackupRepository
 import pt.amn.moveon.domain.usecases.RestoreBackupUseCase
 import pt.amn.moveon.domain.usecases.SaveBackupUseCase
 import javax.inject.Inject
 
 @HiltViewModel
-class SettingsViewModel @Inject constructor(repository: BackupRepository)
-    : ViewModel() {
+class SettingsViewModel @Inject constructor(
+    repository: BackupRepository,
+    private val sourceBackup: JsonBackupSourceImpl
+) : ViewModel() {
 
-    private val saveUseCase = SaveBackupUseCase(repository)
-    private val restoreUseCase = RestoreBackupUseCase(repository)
+    private val saveUseCase = SaveBackupUseCase(repository, sourceBackup)
+    private val restoreUseCase = RestoreBackupUseCase(repository, sourceBackup)
 
-    fun createBackup(context: Context) {
+    fun createBackup() {
         viewModelScope.launch {
-            saveUseCase.execute(context)
+            saveUseCase.execute()
         }
     }
 
@@ -37,8 +40,11 @@ class SettingsViewModel @Inject constructor(repository: BackupRepository)
         val uri = intentData?.data
 
         if (uri != null) {
+
+            sourceBackup.setUri(uri)
+
             viewModelScope.launch {
-                if (restoreUseCase.execute(context, uri)) {
+                if (restoreUseCase.execute()) {
                     LogNavigator.toastMessage(context, R.string.message_restore_backup_success)
                 }
             }
@@ -46,7 +52,6 @@ class SettingsViewModel @Inject constructor(repository: BackupRepository)
             // TODO: an error message
         }
     }
-
 
 
 }

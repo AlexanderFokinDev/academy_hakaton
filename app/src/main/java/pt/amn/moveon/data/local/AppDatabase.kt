@@ -1,18 +1,13 @@
 package pt.amn.moveon.data.local
 
 import android.content.Context
-import android.provider.Contacts.SettingsColumns.KEY
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import androidx.work.impl.WorkDatabaseMigrations.MIGRATION_1_2
 import androidx.work.workDataOf
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.withContext
 import pt.amn.moveon.common.CONTINENTS_DATA_FILENAME
 import pt.amn.moveon.common.COUNTRIES_DATA_FILENAME
 import pt.amn.moveon.common.DATABASE_NAME
