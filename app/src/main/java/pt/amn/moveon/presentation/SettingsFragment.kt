@@ -85,7 +85,7 @@ class SettingsFragment : Fragment() {
 
         binding.run {
             btCreateBackup.setOnClickListener {
-                viewModel.createBackup(requireContext())
+                viewModel.createBackup()
             }
 
             btRestoreBackup.setOnClickListener {
