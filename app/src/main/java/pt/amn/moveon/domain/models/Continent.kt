@@ -9,9 +9,9 @@ data class Continent (
     val id: Int,
     val nameEn: String,
     val nameRu: String
-) : Parcelable, PartOfTheWorld {
+) : Parcelable, PartOfTheWorld() {
 
-    fun getLocalName(): String =
+    override fun getLocalName(): String =
         when (Locale.getDefault().language) {
             "ru" -> nameRu
             else -> nameEn

@@ -1,4 +1,7 @@
 package pt.amn.moveon.domain.models
 
-interface PartOfTheWorld {
+abstract class PartOfTheWorld {
+
+    abstract fun getLocalName(): String
+
 }
