@@ -1,6 +1,7 @@
 package pt.amn.moveon.data.local
 
 import androidx.room.*
+import pt.amn.moveon.data.models.ContinentEntity
 
 @Dao
 interface ContinentDao {

@@ -1,12 +1,9 @@
-package pt.amn.moveon.data.local
+package pt.amn.moveon.data.models
 
 import androidx.room.ColumnInfo
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.serialization.Serializable
-import pt.amn.moveon.domain.models.Continent
-import pt.amn.moveon.domain.models.Country
 
 @Serializable
 @Entity(tableName = "countries")

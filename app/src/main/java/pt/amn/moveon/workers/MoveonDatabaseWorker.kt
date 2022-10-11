@@ -11,9 +11,9 @@ import kotlinx.coroutines.withContext
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
-import pt.amn.moveon.data.local.CountryEntity
+import pt.amn.moveon.data.models.CountryEntity
 import pt.amn.moveon.common.LogNavigator
-import pt.amn.moveon.data.local.ContinentEntity
+import pt.amn.moveon.data.models.ContinentEntity
 
 @HiltWorker
 class MoveonDatabaseWorker @AssistedInject constructor(

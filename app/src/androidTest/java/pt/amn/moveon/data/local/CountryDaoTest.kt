@@ -14,6 +14,7 @@ import org.junit.Assert.*
 import org.junit.runner.RunWith
 import pt.amn.moveon.common.COUNTRIES_DATA_FILENAME
 import pt.amn.moveon.common.COUNT_COUNTRIES_IN_THE_WORLD
+import pt.amn.moveon.data.models.CountryEntity
 
 @RunWith(AndroidJUnit4::class)
 class CountryDaoTest {

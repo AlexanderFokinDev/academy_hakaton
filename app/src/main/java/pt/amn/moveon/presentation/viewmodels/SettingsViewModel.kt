@@ -8,7 +8,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import pt.amn.moveon.R
 import pt.amn.moveon.common.LogNavigator
-import pt.amn.moveon.data.models.JsonBackupSourceImpl
+import pt.amn.moveon.data.sources.JsonBackupSourceImpl
 import pt.amn.moveon.domain.repositories.BackupRepository
 import pt.amn.moveon.domain.usecases.RestoreBackupUseCase
 import pt.amn.moveon.domain.usecases.SaveBackupUseCase
