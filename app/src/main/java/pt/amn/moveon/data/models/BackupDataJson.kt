@@ -3,7 +3,7 @@
 // val json             = Json(JsonConfiguration.Stable)
 // val standardResponse = json.parse(StandardResponse.serializer(), jsonString)
 
-package pt.amn.moveon.data.local
+package pt.amn.moveon.data.models
 
 import kotlinx.serialization.*
 

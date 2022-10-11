@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.asLiveData
 import pt.amn.moveon.data.local.*
+import pt.amn.moveon.data.models.toDomainModel
+import pt.amn.moveon.data.models.toEntityModel
 import pt.amn.moveon.domain.models.Country
 import pt.amn.moveon.domain.models.MoveOnPlace
 import pt.amn.moveon.domain.models.UseCaseResult

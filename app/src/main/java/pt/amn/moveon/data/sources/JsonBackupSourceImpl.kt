@@ -1,4 +1,4 @@
-package pt.amn.moveon.data.models
+package pt.amn.moveon.data.sources
 
 import android.content.Context
 import android.content.Intent
@@ -12,9 +12,9 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import pt.amn.moveon.data.local.AppDatabase
-import pt.amn.moveon.data.local.BackupDataJson
-import pt.amn.moveon.data.local.toEntityModel
-import pt.amn.moveon.data.local.toJsonModel
+import pt.amn.moveon.data.models.toEntityModel
+import pt.amn.moveon.data.models.toJsonModel
+import pt.amn.moveon.data.models.BackupDataJson
 import pt.amn.moveon.domain.models.BackupSource
 import java.io.BufferedReader
 import java.io.File

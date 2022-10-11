@@ -1,4 +1,4 @@
-package pt.amn.moveon.data.local
+package pt.amn.moveon.data.models
 
 import androidx.room.Embedded
 import androidx.room.Relation
