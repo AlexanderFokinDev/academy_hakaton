@@ -2,6 +2,7 @@ package pt.amn.moveon.data.local
 
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
+import pt.amn.moveon.data.models.PlaceEntity
 
 @Dao
 interface PlaceDao {

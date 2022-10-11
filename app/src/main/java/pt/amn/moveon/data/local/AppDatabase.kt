@@ -11,6 +11,9 @@ import androidx.work.workDataOf
 import pt.amn.moveon.common.CONTINENTS_DATA_FILENAME
 import pt.amn.moveon.common.COUNTRIES_DATA_FILENAME
 import pt.amn.moveon.common.DATABASE_NAME
+import pt.amn.moveon.data.models.ContinentEntity
+import pt.amn.moveon.data.models.CountryEntity
+import pt.amn.moveon.data.models.PlaceEntity
 import pt.amn.moveon.workers.MoveonDatabaseWorker
 import pt.amn.moveon.workers.MoveonDatabaseWorker.Companion.KEY_FILENAME_CONTINENTS_ASSET
 import pt.amn.moveon.workers.MoveonDatabaseWorker.Companion.KEY_FILENAME_COUNTRIES_ASSET
