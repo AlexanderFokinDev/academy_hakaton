@@ -6,6 +6,7 @@ plugins {
     id 'kotlin-parcelize'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.7.0'
+    id 'de.mannodermaus.android-junit5' version '1.8.2.1'
 }
 
 android {
@@ -59,14 +60,15 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     implementation "androidx.fragment:fragment-ktx:1.4.1"
     implementation "androidx.room:room-runtime:2.4.2"
+    testImplementation 'org.junit.jupiter:junit-jupiter'
     kapt "androidx.room:room-compiler:2.4.2"
     implementation "androidx.room:room-ktx:2.4.2"
     implementation "androidx.work:work-runtime-ktx:2.7.1"
 
-    // For test
+    //****************************************************************************
+    // +++For test
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'androidx.test.ext:junit:1.1.3'
-    testImplementation 'junit:junit:4.13.2'
     testImplementation "androidx.room:room-testing:2.4.2"
     testImplementation 'androidx.test.ext:junit-ktx:1.1.3'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
@@ -78,6 +80,19 @@ dependencies {
     // Espresso dependencies
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     androidTestImplementation 'androidx.test.espresso:espresso-intents:3.4.0'
+
+    // (Required) Writing and executing Unit Tests on the JUnit Platform
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+
+    // Optional -- Mockito framework
+    testImplementation "org.mockito:mockito-core:4.0.0"
+    // Optional -- mockito-kotlin
+    testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
+    // ---For test
+    //****************************************************************************
+
+
 
     // Navigation
     implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
