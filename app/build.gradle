@@ -10,13 +10,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 33
-    buildToolsVersion "30.0.3"
+    compileSdk 35
 
     defaultConfig {
         applicationId "pt.amn.moveon"
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdkVersion 35
         versionCode 12
         versionName "1.0.12"
 
@@ -43,6 +42,7 @@ android {
     testOptions {
         unitTests.includeAndroidResources = true
     }
+    namespace 'pt.amn.moveon'
 }
 
 dependencies {
